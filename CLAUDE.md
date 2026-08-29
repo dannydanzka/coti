@@ -54,6 +54,10 @@ intente `/admin` es devuelto a `/login`; la API responde `403`.
 
 ## Comandos
 
+> **Antes del primer `npm install`**: este repo no trae `vendor/sovereignty-ui/`.
+> Pedile a alguien del equipo el directorio completo (`package.json` + `dist/`, ~1.4 MB),
+> ponelo en `vendor/sovereignty-ui/` y recién ahí instalá. Sin eso el install falla.
+
 ```bash
 npm run dev          # Dev server (Next.js 16, Turbopack)
 npm run build        # prisma generate + next build
@@ -134,7 +138,7 @@ Seed: `prisma/seed.ts`.
 
 | Qué | Detalle |
 |---|---|
-| `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se vendorizó el `dist` v0.7.0 y `package.json` lo referencia como `file:vendor/sovereignty-ui`. **El `dist` no se versiona** (decisión del equipo: es artefacto de build de otro repo), así que del repo sólo bajan `package.json` y `README.md`. ⚠️ **Un clon limpio no compila**: todos los `exports` del paquete apuntan a `dist/`, que no está. Quien clone necesita que alguien le pase `vendor/sovereignty-ui/dist/` (1.4 MB) por fuera de git. La salida de fondo es recuperar el token: volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry` y borrar `vendor/` entero. |
+| `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se bajó el paquete a mano y `package.json` lo referencia como `file:vendor/sovereignty-ui`. **`vendor/` está ignorado por completo**: no es código de Coti, es el artefacto publicado de otro repo. ⚠️ **Un clon limpio no instala** — `npm install` falla con ENOENT porque el directorio no existe. Quien clone necesita que le pasen `vendor/sovereignty-ui/` por fuera de git (ver abajo). La salida de fondo: recuperar el token, volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry` y borrar `vendor/`. |
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
 | Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
 | Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. Los mockups del flujo sí existen, y difieren del modelo en 8 puntos: `.claude/business/mockups/README.md`. |
@@ -193,7 +197,7 @@ organizaciones (Atlassian/Jira/Confluence, publicación del design system, inges
 | `assets/branding/` | Identidad visual: logo, ícono, mascota, escenas, guía de marca |
 | `scripts/eslint-rules/` | Las 41 reglas custom que hacen cumplir la arquitectura |
 | `prisma/` | `prisma/schema.prisma` + `prisma/seed.ts` (destinos + cuenta demo con historial) |
-| `vendor/sovereignty-ui/` | Design system vendorizado (ver Deudas conocidas) |
+| `vendor/sovereignty-ui/` | Design system bajado a mano — **no está en git** (ver Deudas conocidas) |
 
 <!-- BEGIN:nextjs-agent-rules -->
 

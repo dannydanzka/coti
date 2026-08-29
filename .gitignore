@@ -258,14 +258,12 @@ dev-data/
 .env*
 !.env.example
 
-# Deps del paquete vendorizado (npm las instala in-place)
-vendor/**/node_modules
-
-# El dist del design system NO se versiona: es un artefacto de build de otro
-# repo. La regla `dist/` de arriba ya lo cubre; esto lo deja explícito para que
-# nadie lo des-ignore sin querer. Consecuencia: un clon limpio no compila hasta
-# que el dist esté en su lugar — ver "Deudas conocidas" en CLAUDE.md.
-vendor/**/dist/
+# El design system vendorizado NO se versiona: es el paquete publicado de otro
+# repo (@dannydanzka/sovereignty-ui), bajado a mano mientras el token de
+# GitHub Packages de esta máquina siga vencido. No es código de Coti.
+# Consecuencia: un clon limpio no instala hasta tener este directorio —
+# ver "Deudas conocidas" en CLAUDE.md.
+vendor/
 
 # Prisma client generado (se recrea con postinstall)
 /src/generated
