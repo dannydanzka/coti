@@ -16,9 +16,8 @@
 | Necesitas | Lee |
 |---|---|
 | Qué variables de entorno hacen falta | `.env.example` |
-| Qué se construye y qué no | `.claude/business/spec/spec-tecnica-travel-savings-app.md` |
-| Alcance acordado del MVP + los dos injertos | `.claude/plans/index.md` |
-| Infraestructura viva (Vercel, Supabase, riesgos) | `.claude/status/index.md` |
+| Qué se construye y qué no — alcance del MVP y los dos injertos | `.claude/business/spec/coti.md` |
+| Por qué algo quedó así (UI kit, infraestructura, riesgos con fecha) | `.claude/business/decisiones/` |
 | Cómo escribir código aquí | `.claude/rules/_global.md` |
 | Marca, mascota, paleta | `README.md` · `assets/branding/` |
 
@@ -33,8 +32,8 @@
 Un solo `/login` para todos: el rol decide a dónde cae. Un participante que
 intente `/admin` es devuelto a `/login`; la API responde `403`.
 
-> El backlog operativo vive en **MeisterTask**, proyecto `Coti`. `.claude/plans/` es sólo para
-> lo que no cabe en una tarjeta.
+> El backlog operativo vive en **MeisterTask**, proyecto `Coti`. `.claude/business/decisiones/`
+> es sólo para lo que no cabe en una tarjeta.
 
 ---
 
@@ -140,7 +139,7 @@ Seed: `prisma/seed.ts`.
 | Sin proveedor de correo | Se eliminó Resend. `/forgot-password` sigue generando el token en la base, pero **nadie recibe el enlace**: fuera de producción se escribe en el log del servidor para poder recorrer el flujo. Si se necesita correo real, hay que elegir proveedor y cargar su llave en `.env`. |
 | `src/middleware.ts` | Next 16 lo marca deprecado a favor de `proxy.ts`. Funciona; migrar con `npx @next/codemod@canary middleware-to-proxy .` cuando convenga. |
 | Warnings de eslint | ~28, todos `no-unnecessary-type-assertion` — falsos positivos, ver arriba. |
-| Trial de Vercel | El team `wizeline-workshop` está en Pro con trial que vence el **12-sep-2026**. Ver `.claude/status/index.md`. |
+| Trial de Vercel | El team `wizeline-workshop` está en Pro con trial que vence el **12-sep-2026**. Ver `.claude/business/decisiones/infraestructura.md`. |
 
 ---
 
@@ -153,9 +152,12 @@ y podada, propiedad de este proyecto, que se edita libremente.
 
 ```
 .claude/
-├── business/               Spec · banco de ideas · perfiles del equipo
-├── plans/                  Alcance del MVP y decisiones que no caben en una tarjeta
-├── status/                 Instantánea de infraestructura (Vercel, Supabase, riesgos)
+├── business/               Todo el contexto no-código (índice en business/index.md)
+│   ├── spec/coti.md          Fuente de verdad del alcance
+│   ├── decisiones/           Decisiones cerradas: UI kit · infraestructura
+│   ├── mockups/              Los 8 pasos del flujo, móvil y desktop
+│   ├── ideas/                Banco de las 7 ideas del equipo (ganó la #4)
+│   └── team/                 Perfiles de las personas del workshop
 ├── rules/_global.md        Reglas transversales + dónde buscar por tipo de archivo
 └── patterns/
     ├── core/        (57)   Arquitectura · calidad · testing · workflow · git ·

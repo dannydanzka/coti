@@ -72,8 +72,9 @@
 
 | Dónde | Qué |
 |---|---|
-| `.claude/business/spec/` | La especificación del producto — **la fuente de verdad del alcance** |
-| `.claude/plans/index.md` | Alcance acordado del MVP y decisiones de producto |
-| `.claude/status/index.md` | Infraestructura viva: Vercel, Supabase, riesgos con fecha |
+| `.claude/business/index.md` | Índice de todo el contexto de negocio |
+| `.claude/business/spec/coti.md` | La especificación del producto — **la fuente de verdad del alcance** |
+| `.claude/business/decisiones/` | Decisiones cerradas: UI kit · infraestructura y riesgos con fecha |
+| `.claude/business/mockups/` | Los 8 pasos del flujo dibujados (móvil y desktop) |
 | `.claude/business/ideas/` · `.claude/business/team/` | Banco de ideas del workshop y perfiles del equipo |
 | `.claude/patterns/business/` | Patterns exclusivos de este proyecto |

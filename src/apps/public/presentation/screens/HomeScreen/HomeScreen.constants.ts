@@ -13,7 +13,7 @@ export const STORY_STEPS = [
 
 export const PRINCIPLES = ['project', 'value', 'company'] as const;
 
-/** Los 8 pasos del flujo (`.claude/coti-flujo.html`), en orden. */
+/** Los 8 pasos del flujo (`.claude/business/mockups/coti-flujo.html`), en orden. */
 export const FLOW_STEPS = [
   'define',
   'style',

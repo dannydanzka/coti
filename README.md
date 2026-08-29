@@ -25,7 +25,7 @@
 
 Nace de la idea [#4 — Ahorro para viajes](.claude/business/ideas/04-ahorro-viajes.md) del banco de ideas del equipo, con el objetivo de combatir la creencia de que conocer el mundo no es accesible a una edad joven.
 
-📄 Especificación completa: [`.claude/business/spec/spec-tecnica-travel-savings-app.md`](.claude/business/spec/spec-tecnica-travel-savings-app.md)
+📄 Especificación completa: [`.claude/business/spec/coti.md`](.claude/business/spec/coti.md)
 
 ## Estado del proyecto
 
@@ -109,7 +109,7 @@ Consulta la [guía profesional de marca](assets/branding/README.md) antes de cre
 
 ## Cómo contribuir
 
-1. Lee la [especificación técnica](.claude/business/spec/spec-tecnica-travel-savings-app.md).
+1. Lee la [especificación](.claude/business/spec/coti.md).
 2. Mantén el alcance del MVP y documenta cualquier decisión que lo amplíe.
 3. Sigue la [guía de marca](assets/branding/README.md) al producir UI o contenido.
 4. Evita incorporar credenciales, datos personales o artefactos generados temporalmente.

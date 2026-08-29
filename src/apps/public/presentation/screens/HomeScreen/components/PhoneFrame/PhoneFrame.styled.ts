@@ -1,7 +1,7 @@
 /**
  * PhoneFrame Styled Components
  *
- * Device shell that mirrors the 390×844 mockups in `.claude/coti-flujo.html`,
+ * Device shell that mirrors the 390×844 mockups in `.claude/business/mockups/coti-flujo.html`,
  * scaled down for the landing.
  */
 

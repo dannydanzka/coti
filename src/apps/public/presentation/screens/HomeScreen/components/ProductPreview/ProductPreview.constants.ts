@@ -1,7 +1,7 @@
 /**
  * ProductPreview Constants
  *
- * Demo data mirroring `.claude/coti-flujo.html` (Tokio · 2 personas · 9 noches).
+ * Demo data mirroring `.claude/business/mockups/coti-flujo.html` (Tokio · 2 personas · 9 noches).
  * Static by design: the landing shows the shape of the product, not live data.
  */
 
