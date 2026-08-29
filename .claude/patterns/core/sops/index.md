@@ -32,12 +32,13 @@ End-to-end governance from business need to production release. Every SOP is a r
 | # | SOP | Phase | Owner | Location |
 |---|-----|-------|-------|----------|
 
-> **Maturity note**: SCD/SCG/SDP ship alongside the legacy references below. SCI/SQP/SRO are v0.1 drafts synthesized from industry best practices; treat them as starting scaffolds and adapt per organization before adopting as firm process.
+> **Nota local**: en este repo la cadena está recortada a **SBD → SCI → SCD → SCG**
+> (`../../methodology/`). Los eslabones SDP · SQP · SRO no se trajeron.
 
 Handoffs are explicit — each SOP declares exit criteria that become the next SOP's input.
 
 ```
-Business need → SCI → SCD → SCG → SDP → SQP → SRO → Production release
+Business need → SCI → SCD → SCG → (entrega, QA y release fuera de este repo)
     (commercial)  (dev)  (dev) (dev)  (qa)  (sre)
 ```
 
@@ -49,8 +50,8 @@ These are the exhaustive originals. The trilogy orchestrators above are the day-
 
 | SOP | Purpose |
 |-----|---------|
-| [sovereign-context-design.md](sovereign-context-design.md) | SCD long-form: 9-phase checklist (Reframe → Intent → Question → Domain → Spec → Plan → …) |
-| [sovereign-code-governance.md](sovereign-code-governance.md) | SCG long-form: Execute → Validate → Feedback playbook |
+| [`methodology/development/SCD.md`](../../methodology/development/SCD.md) | SCD — diseño de contexto antes de escribir código |
+| [`methodology/development/SCG.md`](../../methodology/development/SCG.md) | SCG — ejecución gobernada del código |
 
 ### Development Workflow
 
@@ -60,7 +61,6 @@ These are the exhaustive originals. The trilogy orchestrators above are the day-
 | [pr-documentation.md](pr-documentation.md) | PR creation workflow (title, description, reviewers) |
 | [feature-delivery-workflow.md](feature-delivery-workflow.md) | End-to-end: ticket → code → PR → review |
 | [branch-merge-strategy.md](branch-merge-strategy.md) | Branch hierarchy, sacrifice-branch pattern, conflict resolution for shared branches |
-| [test-credentials.md](test-credentials.md) | Where test accounts and their secrets may and may not live |
 | [typescript-verification-protocol.md](typescript-verification-protocol.md) | TypeScript --project flag, JS/TS error triage, build system verification |
 
 ### Sovereignty System
@@ -74,7 +74,6 @@ These are the exhaustive originals. The trilogy orchestrators above are the day-
 |-----|---------|
 | [mcp-setup.md](mcp-setup.md) | MCP server setup, auth, troubleshooting |
 | [mcp-context7.md](mcp-context7.md) | Library documentation lookup via MCP |
-| [mcp-playwright.md](mcp-playwright.md) | Visual testing & browser automation via Playwright MCP |
 
 ### Infrastructure & Services
 

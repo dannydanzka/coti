@@ -72,7 +72,8 @@
 
 | Dónde | Qué |
 |---|---|
-| `spec/spec-tecnica-travel-savings-app.md` | La especificación del producto — **la fuente de verdad del alcance** |
-| `ideas/` · `team/` | Banco de ideas del workshop y perfiles del equipo |
-| `.claude/business/` | Contexto de negocio que se vaya generando |
+| `.claude/business/spec/` | La especificación del producto — **la fuente de verdad del alcance** |
+| `.claude/plans/index.md` | Alcance acordado del MVP y decisiones de producto |
+| `.claude/status/index.md` | Infraestructura viva: Vercel, Supabase, riesgos con fecha |
+| `.claude/business/ideas/` · `.claude/business/team/` | Banco de ideas del workshop y perfiles del equipo |
 | `.claude/patterns/business/` | Patterns exclusivos de este proyecto |

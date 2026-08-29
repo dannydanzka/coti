@@ -3,7 +3,7 @@
 > **Module**: frontend/testing
 > **Scope**: React-based UIs (web + native), runner-agnostic, stack-aware
 > **Updated**: 2026-04-22
-> **Status**: Canonical for ALL React projects (YOUR-PROJECT + your-company + future)
+> **Status**: canónico para el testing de este proyecto (Vitest + React Testing Library)
 
 ---
 
@@ -71,8 +71,6 @@ A stack doc may reference Layer 1 ("for behavior-vs-implementation principle see
 
 Project-specific deviations live in the project itself, under its `.claude/patterns/business/` or `.claude/rules/`. Examples:
 
-- **your-company**: `helpers-contract.md` (their `@test-helpers` API), `stable-mocks.md` (OOM-prevention factories).
-- **YOUR-PROJECT**: `sagas.md` if Sagas remain in their stack.
 
 Project overlays add or override; they never re-declare canonical principles.
 

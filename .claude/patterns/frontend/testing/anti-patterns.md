@@ -3,7 +3,6 @@
 > **Layer**: 1 (agnostic — applies to Jest + Vitest, web + RN)
 > **ESLint**: Many of these have lint rules. Where listed, the rule name comes from the canonical custom-rules pack (`@sovereignty/eslint-plugin-essential-testing` or per-project equivalent).
 > **Updated**: 2026-04-22
-> **Origin**: Distilled from your-company audit (2026-04) + DearAdry pattern (2026-04-06)
 
 ---
 

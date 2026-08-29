@@ -96,7 +96,7 @@ Certifico que la totalidad de código de este PR se implementa atendiendo la sol
 
 ## ¿Que tickets son relevantes a este PR?
 
-### https://your-company.atlassian.net/browse/PLUS-XXXX
+### <link al ticket en MeisterTask>
 ```
 
 **Notes on the template:**

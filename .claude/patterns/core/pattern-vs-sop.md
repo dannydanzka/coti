@@ -34,7 +34,6 @@ The taxonomy is **binary**, not ternary:
 **When to create one**: A convention exists in code and needs to be preserved in prose so Claude (or a human) can follow it without re-deriving it.
 
 **Where they live** (3 layers from doctrine):
-- `patterns/doctrine/` — WHY (principles, philosophy)
 - `patterns/core/` — WHAT, cross-discipline (quality, git, testing)
 - `patterns/frontend/` — HOW for React/TS (includes `tooling/`)
 - `patterns/business/` — domain-specific (offers, promotions)
@@ -83,7 +82,6 @@ These are still **patterns** (descriptive knowledge). If a tooling doc is a step
 | A codebase convention (components, hooks, state) | Pattern | `patterns/frontend/{layer}/` |
 | A build-tool configuration choice | Pattern | `patterns/frontend/tooling/` |
 | A cross-cutting principle (quality, git policy) | Pattern | `patterns/core/` |
-| A principle with no procedure attached | Pattern | `patterns/doctrine/` |
 | A multi-step task someone will execute again | **SOP** | `patterns/**/sops/` + `rules/sop/` ref |
 | A business rule or offer-type definition | Pattern | `patterns/business/` |
 | A manual testing flow (curl, browser) | **SOP** | `patterns/business/sops/` |

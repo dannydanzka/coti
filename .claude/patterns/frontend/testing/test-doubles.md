@@ -84,7 +84,7 @@ mockUseAuth(() => authState);
 
 The same applies to mocked context providers, selectors, and any hook returning a fresh array/object.
 
-**Project-level helpers** (`stableI18n()`, `stableToast()` — see your-company overlay) encapsulate this for common cases.
+**Project-level helpers** (`stableI18n()`, `stableToast()`) encapsulate this for common cases.
 
 ---
 

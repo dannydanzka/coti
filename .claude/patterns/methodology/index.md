@@ -5,7 +5,7 @@
 > **EN ESTE PROYECTO**: se conservan los cuatro primeros eslabones — **SBD → SCI → SCD → SCG**.
 > Los eslabones de entrega, QA y release (SDP · SQP · SRO) no se trajeron; viven en el repo de
 > Soberanía del Código si alguna vez se necesitan.
-> **FORK NOTE**: the Betterware fork calls requirement intake **SRD** — it is the same link as our **SCI**.
+> **NOTA**: la intake de requerimientos aparece a veces como **SRD**; es el mismo eslabón que **SCI**.
 
 ---
 
@@ -33,15 +33,9 @@ next link. Reference file first (always loadable), deep-dive sub-SOPs in its sub
 | 3 | **SCG** — Sovereign Code Governance | Dev | SCD plan | Code + tests + lint/tsc green | [`development/SCG.md`](development/SCG.md) + [`development/SCG/`](development/SCG/) |
 
 > industry best practices — adapt per organization before adopting as firm process. SBD imported
-> from the Betterware fork 2026-07-06.
 
 ## Inside SCG — how the code itself gets written
 
 | Practice | File | Note |
 |---|---|---|
 
-## Long-form companions
-
-The exhaustive originals live in `core/sops/`: [`sovereign-context-design.md`](../core/sops/sovereign-context-design.md)
-(SCD 9-phase checklist) and [`sovereign-code-governance.md`](../core/sops/sovereign-code-governance.md)
-(SCG Execute → Validate → Feedback playbook).

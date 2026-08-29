@@ -1,4 +1,4 @@
-# Testing by Layer — your-project
+# Testing by Layer
 
 > **PURPOSE**: Concrete test patterns per architectural layer with your-project examples
 > **FRAMEWORK**: Jest + @testing-library/react-native

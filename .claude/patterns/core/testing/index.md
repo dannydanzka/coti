@@ -54,4 +54,4 @@ it('calls setLoading with true', () => { ... });
 
 ---
 
-**Total**: 4 patterns | **Updated**: 2026-07-06 (qa-scenario-seeds + unit-e2e-complementarity elevated from dearadry)
+**Total**: 3 patterns
