@@ -10,11 +10,7 @@
 import type { ApiResponse } from '@domain-types';
 import { handleRequest } from '@helpers';
 
-import type {
-  ResendVerificationData,
-  SignupData,
-  SignupResponse,
-} from './signup.service.interfaces';
+import type { SignupData, SignupResponse } from './signup.service.interfaces';
 
 export const SignupService = {
   /**
@@ -27,16 +23,5 @@ export const SignupService = {
       method: 'POST',
       timeout: 15000,
     })) as ApiResponse<SignupResponse>;
-  },
-  async resendVerification(
-    data: ResendVerificationData
-  ): Promise<ApiResponse<{ message: string }>> {
-    return (await handleRequest({
-      body: data,
-      customDefaultErrorMessage: 'Error al reenviar el email de verificación',
-      endpoint: '/api/auth/resend-verification',
-      method: 'POST',
-      timeout: 10000,
-    })) as ApiResponse<{ message: string }>;
   },
 };

@@ -37,7 +37,6 @@ export default defineConfig({
       '@payments-infrastructure': path.resolve(__dirname, 'src/libs/infrastructure/payments'),
       '@domain': path.resolve(__dirname, 'src/libs/domain'),
       '@domain-types': path.resolve(__dirname, 'src/libs/domain/types'),
-      '@email': path.resolve(__dirname, 'src/libs/infrastructure/email'),
       '@entities': path.resolve(__dirname, 'src/libs/domain/entities'),
       '@error-provider': path.resolve(
         __dirname,

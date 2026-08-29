@@ -1,7 +1,7 @@
 {
   "name": "travel-savings-app",
   "version": "0.1.0",
-  "description": "Herramienta de planificaci\u00f3n financiera para viajes \u2014 Next.js 16 + Clean Architecture (Soberan\u00eda del C\u00f3digo)",
+  "description": "Herramienta de planificación financiera para viajes — Next.js 16 + Clean Architecture (Soberanía del Código)",
   "type": "module",
   "private": true,
   "sideEffects": [
@@ -22,8 +22,8 @@
     "lint:fix": "npm run lint:tsx -- --fix && npm run lint:css -- --fix && npm run format",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,md,json}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,md,json}\" --ignore-path .gitignore",
-    "clean": "rm -rf .next out dist build .build-cache node_modules/.cache .eslintcache .stylelintcache .tsbuildinfo tsconfig.tsbuildinfo && echo '\u2713 Cache eliminado'",
-    "kill": "lsof -ti :3000,3001,3002 | xargs kill -9 2>/dev/null; pkill -f 'next-server|next dev|node.*next' 2>/dev/null; echo '\u2713 Procesos de desarrollo terminados'",
+    "clean": "rm -rf .next out dist build .build-cache node_modules/.cache .eslintcache .stylelintcache .tsbuildinfo tsconfig.tsbuildinfo && echo '✓ Cache eliminado'",
+    "kill": "lsof -ti :3000,3001,3002 | xargs kill -9 2>/dev/null; pkill -f 'next-server|next dev|node.*next' 2>/dev/null; echo '✓ Procesos de desarrollo terminados'",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -42,8 +42,6 @@
     "@hookform/resolvers": "^5.2.1",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "7",
-    "@react-email/components": "^0.5.7",
-    "@react-email/render": "^1.4.0",
     "@reduxjs/toolkit": "^2.11.2",
     "@types/jsonwebtoken": "^9.0.10",
     "@upstash/ratelimit": "^2.0.8",
@@ -63,7 +61,6 @@
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
-    "resend": "^6.2.2",
     "styled-components": "6.1.14",
     "uuid": "^11.1.0",
     "zod": "^3.24.0"

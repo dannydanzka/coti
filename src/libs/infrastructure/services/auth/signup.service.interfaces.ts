@@ -22,7 +22,3 @@ export interface SignupResponse {
   user?: AuthUserApiData;
   userId: string;
 }
-
-export interface ResendVerificationData extends Record<string, unknown> {
-  email: string;
-}

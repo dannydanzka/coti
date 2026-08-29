@@ -51,12 +51,6 @@ vi.mock('@use-case-error', async () => {
   };
 });
 
-vi.mock('@email', () => ({
-  ResendEmailService: {
-    sendWelcomeEmail: vi.fn().mockResolvedValue(undefined),
-  },
-}));
-
 import type { NextRequest } from 'next/server';
 
 import { expectFailure, expectSuccessData } from '@testing/helpers';
@@ -158,12 +152,6 @@ describe('executeSignup', () => {
       const data = expectSuccessData(await executeSignup(validParams));
       expect(data?.email).toBe('maria.garcia@example.com');
       expect(data?.firstName).toBe('María');
-    });
-
-    it('envía email de bienvenida', async () => {
-      const { ResendEmailService } = await import('@email');
-      expectSuccessData(await executeSignup(validParams));
-      expect(ResendEmailService.sendWelcomeEmail).toHaveBeenCalled();
     });
   });
 });

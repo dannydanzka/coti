@@ -198,9 +198,6 @@
       "@database": [
         "./src/libs/infrastructure/database"
       ],
-      "@email": [
-        "./src/libs/infrastructure/email"
-      ],
       // === SHARED ===
       "@i18n": [
         "./src/libs/shared/i18n"

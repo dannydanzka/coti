@@ -9,8 +9,6 @@
 
 import { createValidationError, handleUseCaseError, UseCaseErrorResponse } from '@use-case-error';
 import { getEnvVar, hashPassword, signToken } from '@helpers';
-import { logError } from '@logger';
-import { ResendEmailService } from '@email';
 import { userRepository } from '@repositories';
 
 import type {
@@ -167,14 +165,6 @@ export const executeSignup = async (params: SignupParams): Promise<SignupResult>
       password: hashedPassword,
       role: 'participant',
     });
-
-    const fullName = `${newUser.firstName} ${newUser.lastName}`.trim();
-
-    ResendEmailService.sendWelcomeEmail(newUser.email, fullName || 'Usuario').catch(
-      (emailError: unknown) => {
-        logError(emailError, 'executeSignup.sendWelcomeEmail');
-      }
-    );
 
     /** Auto-login: issue the same JWT as login so the new user lands authenticated. */
     const jwtSecret = getEnvVar('JWT_SECRET');

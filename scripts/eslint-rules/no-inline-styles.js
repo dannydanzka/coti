@@ -20,7 +20,6 @@
  *   style={{ paddingRight: '48px' }}       → styled component with $hasIcon prop
  *
  * EXCEPTIONS:
- * - Email templates (React Email/Resend requires inline styles — no CSS support)
  * - Test files
  *
  * @version 1.0.0
@@ -50,9 +49,6 @@ export const noInlineStylesRule = {
 
     // Skip test files
     if (/\.(test|spec)\./.test(filename)) return {};
-
-    // Skip email templates — React Email/Resend requires inline styles (no CSS support)
-    if (/\/email\/templates\//.test(filename)) return {};
 
     return {
       JSXAttribute: (node) => {

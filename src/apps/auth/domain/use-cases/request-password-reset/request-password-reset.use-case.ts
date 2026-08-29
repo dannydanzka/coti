@@ -2,7 +2,11 @@
  * Request Password Reset Use Case
  *
  * Business logic for initiating password reset process.
- * Generates secure token, stores it, and sends email with reset link.
+ * Generates a secure token and stores it.
+ *
+ * NO envía correo: el proyecto no tiene proveedor de email. Fuera de producción
+ * el enlace se escribe en el log del servidor para poder recorrer el flujo; en
+ * producción el token queda creado pero nadie lo recibe (ver Deudas conocidas).
  *
  * Security: Always returns success message even if email not found (prevents enumeration)
  */
@@ -12,9 +16,8 @@ import { randomBytes } from 'crypto';
 import { createValidator, getEnvVar } from '@helpers';
 import { handleUseCaseError } from '@use-case-error';
 import { HTTP_STATUS } from '@constants';
-import { logError } from '@logger';
+import { logInfo } from '@logger';
 import { prisma } from '@database';
-import { ResendEmailService } from '@email';
 
 import type {
   RequestPasswordResetErrorResponse,
@@ -95,13 +98,9 @@ export const executeRequestPasswordReset = async (
         },
       });
 
-      const resetUrl = buildResetUrl(token);
-
-      ResendEmailService.sendPasswordResetEmail(user.email, user.firstName, resetUrl).catch(
-        (emailError: unknown) => {
-          logError(emailError, 'executeRequestPasswordReset.sendEmail');
-        }
-      );
+      if (process.env['NODE_ENV'] !== 'production') {
+        logInfo(`Enlace de recuperación: ${buildResetUrl(token)}`, 'executeRequestPasswordReset');
+      }
     }
 
     return {

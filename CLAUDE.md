@@ -15,6 +15,7 @@
 
 | Necesitas | Lee |
 |---|---|
+| Qué variables de entorno hacen falta | `.env.example` |
 | Qué se construye y qué no | `.claude/business/spec/spec-tecnica-travel-savings-app.md` |
 | Alcance acordado del MVP + los dos injertos | `.claude/plans/index.md` |
 | Infraestructura viva (Vercel, Supabase, riesgos) | `.claude/status/index.md` |
@@ -110,7 +111,7 @@ src/
     ├── domain/             entities · interfaces · validation (zod) · mappers · types
     │   └── projection/     proyectarCosto — el corazón del producto
     ├── infrastructure/     prisma · repositories · services · state (RTK) ·
-    │                       middleware (auth, rate-limit, validation) · email (Resend) · config
+    │                       middleware (auth, rate-limit, validation) · config
     ├── presentation/       components · hooks · providers · styles · assets
     └── shared/             constants · helpers · i18n · utils · testing
 ```
@@ -136,6 +137,7 @@ Seed: `prisma/seed.ts`.
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
 | Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
 | Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. |
+| Sin proveedor de correo | Se eliminó Resend. `/forgot-password` sigue generando el token en la base, pero **nadie recibe el enlace**: fuera de producción se escribe en el log del servidor para poder recorrer el flujo. Si se necesita correo real, hay que elegir proveedor y cargar su llave en `.env`. |
 | `src/middleware.ts` | Next 16 lo marca deprecado a favor de `proxy.ts`. Funciona; migrar con `npx @next/codemod@canary middleware-to-proxy .` cuando convenga. |
 | Warnings de eslint | ~28, todos `no-unnecessary-type-assertion` — falsos positivos, ver arriba. |
 | Trial de Vercel | El team `wizeline-workshop` está en Pro con trial que vence el **12-sep-2026**. Ver `.claude/status/index.md`. |

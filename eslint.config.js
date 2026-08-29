@@ -64,7 +64,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * ESLint Configuration - DearAdry Platform
+ * ESLint Configuration - Coti
  *
  * CUSTOM RULES (29 total):
  *
@@ -377,7 +377,7 @@ export default [
       'custom/no-alias-exports': 'warn',
       'custom/no-direct-service-calls': ['warn', {
         /**
-         * Project-specific exceptions for DearAdry.
+         * Project-specific exceptions for Coti.
          * Each pattern is matched via String.includes() against the full file path.
          *
          * IMPORTANT: When replicating this rule in another project, configure YOUR
@@ -733,16 +733,6 @@ export default [
       'custom/no-hardcoded-ui-strings': 'off',
       'custom/design-tokens-policy': 'off',
       'custom/code-size-limits': 'off',
-    },
-  },
-  {
-    files: [
-      'src/libs/infrastructure/email/**/*.{ts,tsx}',
-      'src/libs/infrastructure/config/resend/**/*.{ts,tsx}',
-    ],
-    rules: {
-      // Disable testing-library rule for email services (using @react-email/render, not testing-library)
-      'testing-library/render-result-naming-convention': 'off',
     },
   },
   // Type declaration files - relaxed rules for .d.ts

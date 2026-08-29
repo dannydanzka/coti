@@ -17,8 +17,11 @@ como dominio del proyecto para que quede exenta del SSO. Se eliminaron `alcanza-
 (heredada del nombre viejo) y el alias `coti-wizeline-workshop.vercel.app`.
 
 **Variables en Vercel (Production):** `DATABASE_URL`, `DIRECT_URL`, `JWT_SECRET`.
-`RESEND_API_KEY` no está y no hace falta: es opcional en el código, sólo desactiva el envío del
-correo de recuperación — el token de reseteo se genera igual.
+Los nombres y para qué sirve cada una están en `.env.example`; los valores viven sólo en `.env.local`
+y en Vercel, nunca en el repo.
+
+**Sin proveedor de correo:** Resend se eliminó del proyecto. `/forgot-password` genera el token
+igual, pero no se envía nada; fuera de producción el enlace se escribe en el log del servidor.
 
 **Ojo con el rate limit:** `/api/auth/login` permite 5 intentos por IP cada 15 minutos. Si en el
 workshop varias personas entran desde la misma red, se van a bloquear entre ellas.

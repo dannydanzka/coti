@@ -6,4 +6,3 @@
 export * from './api.config';
 export * from './environment.config';
 export * from './feature-flags.config';
-export * from './resend';

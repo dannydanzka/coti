@@ -71,39 +71,6 @@ describe('SignupService', () => {
     });
   });
 
-  describe('resendVerification', () => {
-    const mockEmailData = {
-      email: 'maria.garcia@ejemplo.com',
-    };
-
-    it('successfully resends verification email', async () => {
-      mockSuccess({ message: 'Email de verificación enviado' });
-
-      const result = await SignupService.resendVerification(mockEmailData);
-
-      expect(handleRequest).toHaveBeenCalledWith(
-        expect.objectContaining({
-          body: mockEmailData,
-          customDefaultErrorMessage: 'Error al reenviar el email de verificación',
-          endpoint: '/api/auth/resend-verification',
-          method: 'POST',
-          timeout: 10000,
-        })
-      );
-
-      expect(result.success).toBe(true);
-    });
-
-    it('returns error when resend fails', async () => {
-      mockError('Usuario no encontrado');
-
-      const result = await SignupService.resendVerification(mockEmailData);
-
-      expect(result.success).toBe(false);
-      expect(result.error).toBe('Usuario no encontrado');
-    });
-  });
-
   describe('Error Handling', () => {
     it('handles network errors in register', async () => {
       mockRejection('Error de red');
@@ -116,12 +83,6 @@ describe('SignupService', () => {
           password: 'pass',
         })
       ).rejects.toThrow();
-    });
-
-    it('handles network errors in resendVerification', async () => {
-      mockRejection('Error de red');
-
-      await expect(SignupService.resendVerification({ email: 'test@test.com' })).rejects.toThrow();
     });
   });
 });

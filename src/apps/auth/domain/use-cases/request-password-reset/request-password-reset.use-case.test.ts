@@ -3,6 +3,7 @@
  *
  * Essential tests for password reset request initiation.
  * Tests email validation and security (no email enumeration).
+ * No hay proveedor de correo: lo observable es la creación del token.
  * Spanish locale mandatory.
  */
 
@@ -20,12 +21,6 @@ vi.mock('@database', () => ({
     user: {
       findUnique: vi.fn(),
     },
-  },
-}));
-
-vi.mock('@email', () => ({
-  ResendEmailService: {
-    sendPasswordResetEmail: vi.fn(() => Promise.resolve()),
   },
 }));
 
@@ -81,29 +76,26 @@ describe('executeRequestPasswordReset', () => {
       expect(data).toBeDefined();
     });
 
-    it('does not send email for inactive user', async () => {
-      const { ResendEmailService } = await import('@email');
+    it('no crea token para un usuario inactivo', async () => {
       vi.mocked(prisma.user.findUnique).mockResolvedValueOnce({
         ...mockUser,
         isActive: false,
       } as never);
       await executeRequestPasswordReset({ email: validEmail });
-      expect(ResendEmailService.sendPasswordResetEmail).not.toHaveBeenCalled();
+      expect(prisma.passwordResetToken.create).not.toHaveBeenCalled();
     });
   });
 
   describe('Success Path', () => {
-    it('crea token y envía email para usuario activo', async () => {
-      const { ResendEmailService } = await import('@email');
+    it('invalida los tokens previos y crea uno nuevo para un usuario activo', async () => {
       expectSuccessData(await executeRequestPasswordReset({ email: validEmail }));
       expect(prisma.passwordResetToken.updateMany).toHaveBeenCalledWith(
         expect.objectContaining({ where: expect.objectContaining({ userId: mockUserId }) })
       );
-      expect(prisma.passwordResetToken.create).toHaveBeenCalled();
-      expect(ResendEmailService.sendPasswordResetEmail).toHaveBeenCalledWith(
-        validEmail,
-        'María',
-        expect.stringContaining('reset-password?token=')
+      expect(prisma.passwordResetToken.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ userId: mockUserId }),
+        })
       );
     });
 
