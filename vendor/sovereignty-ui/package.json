@@ -1,0 +1,58 @@
+{
+  "type": "module",
+  "name": "@dannydanzka/sovereignty-ui",
+  "version": "0.7.0",
+  "description": "Agnostic React component library \u2014 Code Sovereignty UI System",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.cjs"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "styled-components": ">=6"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "component-library",
+    "styled-components",
+    "design-system",
+    "sovereignty"
+  ],
+  "author": "Danny Ramirez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannydanzka/sovereignty-ui.git"
+  },
+  "dependencies": {
+    "lucide-react": "^0.577.0"
+  },
+  "react-native": "src/index.native.ts"
+}

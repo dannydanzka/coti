@@ -23,9 +23,9 @@
 > **Esta herramienta proyecta, no reserva.**
 > No busca vuelos, no cotiza hoteles, no procesa pagos. Te dice *"este viaje te puede costar entre $X–$Y MXN"* y te acompaña hasta que llegues a la meta.
 
-Nace de la idea [#4 — Ahorro para viajes](ideas/04-ahorro-viajes.md) del banco de ideas del equipo, con el objetivo de combatir la creencia de que conocer el mundo no es accesible a una edad joven.
+Nace de la idea [#4 — Ahorro para viajes](.claude/business/ideas/04-ahorro-viajes.md) del banco de ideas del equipo, con el objetivo de combatir la creencia de que conocer el mundo no es accesible a una edad joven.
 
-📄 Especificación completa: [`spec/spec-tecnica-travel-savings-app.md`](spec/spec-tecnica-travel-savings-app.md)
+📄 Especificación completa: [`.claude/business/spec/spec-tecnica-travel-savings-app.md`](.claude/business/spec/spec-tecnica-travel-savings-app.md)
 
 ## Estado del proyecto
 
@@ -35,9 +35,9 @@ Proyecto en fase de concepto y preparación para workshop. El repositorio reúne
 
 | Carpeta | Contenido |
 |---|---|
-| [`spec/`](spec/) | Especificación técnica de Coti (alcance, flujo de usuario, datos, fases) |
-| [`ideas/`](ideas/README.md) | Banco de las 7 ideas propuestas por el equipo |
-| [`team/`](team/README.md) | Perfiles de las personas del workshop |
+| [`.claude/business/spec/`](.claude/business/spec/) | Especificación técnica de Coti (alcance, flujo de usuario, datos, fases) |
+| [`.claude/business/ideas/`](.claude/business/ideas/README.md) | Banco de las 7 ideas propuestas por el equipo |
+| [`.claude/business/team/`](.claude/business/team/README.md) | Perfiles de las personas del workshop |
 | [`assets/branding/`](assets/branding/) | Identidad visual, guía de marca, iconografía y sprites de Coti |
 
 ## Branding
@@ -109,11 +109,11 @@ Consulta la [guía profesional de marca](assets/branding/README.md) antes de cre
 
 ## Cómo contribuir
 
-1. Lee la [especificación técnica](spec/spec-tecnica-travel-savings-app.md).
+1. Lee la [especificación técnica](.claude/business/spec/spec-tecnica-travel-savings-app.md).
 2. Mantén el alcance del MVP y documenta cualquier decisión que lo amplíe.
 3. Sigue la [guía de marca](assets/branding/README.md) al producir UI o contenido.
 4. Evita incorporar credenciales, datos personales o artefactos generados temporalmente.
 
 ## Equipo
 
-Ver [`team/README.md`](team/README.md).
+Ver [`.claude/business/team/README.md`](.claude/business/team/README.md).

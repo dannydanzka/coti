@@ -1,0 +1,32 @@
+/**
+ * HTTP Status Constants
+ *
+ * Centralized HTTP status codes for consistent API responses.
+ * Used across all API routes to maintain standard status codes.
+ */
+
+export const HTTP_STATUS = {
+  ACCEPTED: 202,
+  BAD_GATEWAY: 502,
+  BAD_REQUEST: 400,
+  CONFLICT: 409,
+  CREATED: 201,
+  FORBIDDEN: 403,
+  FOUND: 302,
+  GATEWAY_TIMEOUT: 504,
+  GONE: 410,
+  INTERNAL_SERVER_ERROR: 500,
+  METHOD_NOT_ALLOWED: 405,
+  MOVED_PERMANENTLY: 301,
+  NOT_FOUND: 404,
+  NOT_IMPLEMENTED: 501,
+  NOT_MODIFIED: 304,
+  NO_CONTENT: 204,
+  OK: 200,
+  SERVER_ERROR: 500,
+  SERVICE_UNAVAILABLE: 503,
+  TEMPORARY_REDIRECT: 307,
+  TOO_MANY_REQUESTS: 429,
+  UNAUTHORIZED: 401,
+  UNPROCESSABLE_ENTITY: 422,
+} as const;

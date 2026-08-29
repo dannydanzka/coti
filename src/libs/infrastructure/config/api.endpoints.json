@@ -1,0 +1,23 @@
+{
+  "API_BASE": {
+    "URL": "/api",
+    "ENDPOINTS": {
+      "ADMIN": {
+        "USERS": "/api/admin/users",
+        "USERS_BY_ID": "/api/admin/users/:userId",
+        "USERS_COUNT": "/api/admin/users/count",
+        "USERS_COUNT_BY_ROLE": "/api/admin/users/count-by-role",
+        "USERS_PASSWORD": "/api/admin/users/:userId/password"
+      },
+      "AUTH": {
+        "LOGIN": "/api/auth/login",
+        "LOGOUT": "/api/auth/logout",
+        "ME": "/api/auth/me",
+        "SIGNUP": "/api/auth/signup",
+        "REQUEST_PASSWORD_RESET": "/api/auth/request-password-reset",
+        "RESET_PASSWORD": "/api/auth/reset-password"
+      },
+      "HEALTH": "/api/health"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  // === TYPESCRIPT AUTO-IMPORT CONFIGURATION ===
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.preferences.importModuleSpecifier": "shortest",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+
+  // === PATH RESOLUTION PRIORITY ===
+  // Forces TypeScript to prioritize aliases over relative paths
+  "typescript.preferences.useLabelDetailsInCompletionEntries": true,
+  "typescript.workspaceSymbols.scope": "currentProject",
+
+  // === IMPORT ORGANIZATION ===
+  "typescript.format.semicolons": "insert",
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
+  "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+
+  // === CODE ACTIONS ===
+  /**
+   * CRITICAL: Import organization conflict resolution
+   *
+   * PROBLEM: VSCode's "Organize Imports" (TypeScript) conflicts with ESLint's custom/import-order rule
+   * - TypeScript: Sorts by module path alphabetically
+   * - ESLint: Sorts by imported member name (destructured → namespace → default)
+   *
+   * SOLUTION: Disable TypeScript organize imports, use ESLint only
+   * - source.organizeImports: "never" (prevents TS from reordering)
+   * - source.fixAll.eslint: "explicit" (applies custom/import-order rule)
+   *
+   * DOCUMENTED: 2025-09-30
+   */
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.addMissingImports": "explicit"
+  },
+
+  // === INTELLISENSE OPTIMIZATION ===
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+
+  // === FILE ASSOCIATIONS ===
+  "files.associations": {
+    "*.styled.ts": "typescript",
+    "*.styled.tsx": "typescriptreact"
+  },
+
+  // === SEARCH CONFIGURATION ===
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.jest-cache": true
+  },
+
+  // === PROJECT-SPECIFIC INTELLISENSE ===
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+
+  // === ESLINT FLAT CONFIG SUPPORT ===
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.js"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}

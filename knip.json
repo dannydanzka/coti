@@ -1,0 +1,36 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "eslint.config.js",
+    "next.config.{js,ts,mjs}",
+    "prisma/**/*.{ts,cjs}",
+    "scripts/**/*.{ts,cjs}",
+    "src/app/**/{page,layout,template,loading,error,not-found,global-error,route,default}.{ts,tsx}",
+    "src/app/**/{sitemap,robots,manifest,icon,apple-icon,opengraph-image}.{ts,tsx}",
+    "src/libs/shared/testing/mocks/**/*.{ts,tsx,cjs}",
+    "src/middleware.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx}"
+  ],
+  "ignore": [
+    ".claude/**",
+    ".next/**"
+  ],
+  "ignoreBinaries": [
+    "only-allow"
+  ],
+  "ignoreDependencies": [],
+  "vitest": {
+    "config": [
+      "vitest.config.ts"
+    ]
+  },
+  "next": {
+    "entry": [
+      "next.config.{js,ts,mjs}"
+    ]
+  }
+}

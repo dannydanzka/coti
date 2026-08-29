@@ -1,0 +1,273 @@
+// ============================================================================
+// Prisma Schema — Travel Savings App
+// ============================================================================
+// Principio rector: esta herramienta PROYECTA, no reserva.
+//
+// Dos capas:
+//   IDENTIDAD  User / UserRole / PasswordResetToken — heredado de la Soberanía
+//              del Código (RBAC + soft delete). Lo consume src/apps/auth y
+//              src/apps/admin.
+//   DOMINIO    Destino / Viaje / PlanDeAhorro / … — el catálogo curado de
+//              rangos y la cajita de ahorro.
+// ============================================================================
+
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native"]
+  previewFeatures = []
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================================
+// IDENTIDAD (Soberanía del Código)
+// ============================================================================
+
+enum UserRole {
+  OWNER
+  ADMIN
+  PARTICIPANT
+}
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique @db.VarChar(255)
+  passwordHash String @db.VarChar(255)
+
+  firstName String @db.VarChar(50)
+  lastName  String @db.VarChar(50)
+
+  phone    String? @db.VarChar(20)
+  age      Int?
+  photoUrl String? @db.VarChar(500)
+  bio      String? @db.VarChar(200)
+
+  // Dirección (opcional — la usa el formulario de perfil heredado)
+  street       String? @db.VarChar(150)
+  number       String? @db.VarChar(20)
+  neighborhood String? @db.VarChar(100)
+  city         String? @db.VarChar(100)
+  state        String? @db.VarChar(100)
+  zipCode      String? @db.VarChar(10)
+  country      String? @default("México") @db.VarChar(100)
+
+  role UserRole @default(PARTICIPANT)
+
+  /// La cuenta de demostración del seed se identifica por email (demo@alcanza.mx):
+  /// sembrarla no requiere una columna extra en el modelo de identidad.
+
+  // Soft delete
+  isActive  Boolean   @default(true)
+  deletedAt DateTime?
+  deletedBy String?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  lastLoginAt DateTime?
+
+  viajes Viaje[]
+
+  @@index([email])
+  @@index([role])
+  @@index([isActive])
+  @@map("users")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@map("password_reset_tokens")
+}
+
+// ============================================================================
+// DOMINIO — proyección de viaje y ahorro
+// ============================================================================
+
+// ─── Catálogo curado de destinos (rangos, no precios en vivo) ───
+
+enum Temporada {
+  BAJA
+  MEDIA
+  ALTA
+}
+
+/// Destino con rangos de costo curados manualmente.
+/// Es la base tanto del flujo "ya sé a dónde voy" como del inverso "¿a dónde me alcanza?".
+model Destino {
+  id          String @id @default(cuid())
+  slug        String @unique
+  ciudad      String
+  pais        String
+  continente  String
+  emoji       String
+  descripcion String
+
+  /// Vuelo redondo desde México, MXN
+  vueloMin     Int
+  vueloMax     Int
+  /// Hospedaje por noche, MXN
+  hospedajeMin Int
+  hospedajeMax Int
+  /// Comida + transporte local por día, MXN
+  diarioMin    Int
+  diarioMax    Int
+
+  /// Costo aproximado de visa/trámites, MXN (0 si no aplica)
+  visaCosto     Int @default(0)
+  /// Días mínimos que vale la pena quedarse
+  diasSugeridos Int @default(7)
+
+  temporadas  TemporadaDestino[]
+  atracciones Atraccion[]
+  viajes      Viaje[]
+
+  @@index([continente])
+}
+
+/// Multiplicador de costo por temporada y mes.
+model TemporadaDestino {
+  id            String    @id @default(cuid())
+  destinoId     String
+  destino       Destino   @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+  mes           Int // 1-12
+  temporada     Temporada
+  /// Multiplicador sobre el rango base (ej. 1.35 en temporada alta)
+  multiplicador Float     @default(1.0)
+
+  @@unique([destinoId, mes])
+}
+
+/// Atracción sugerida de un destino. El usuario la clasifica en su viaje.
+model Atraccion {
+  id          String  @id @default(cuid())
+  destinoId   String
+  destino     Destino @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+  nombre      String
+  descripcion String
+  costoMin    Int
+  costoMax    Int
+
+  seleccciones AtraccionViaje[]
+
+  @@index([destinoId])
+}
+
+// ─── Viaje ───
+
+enum EstadoViaje {
+  BORRADOR
+  AHORRANDO
+  COMPLETADO
+}
+
+model Viaje {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destinoId String
+  destino   Destino @relation(fields: [destinoId], references: [id])
+
+  estado      EstadoViaje @default(BORRADOR)
+  fechaSalida DateTime?
+  noches      Int         @default(7)
+  personas    Int         @default(1)
+
+  /// Rango proyectado, congelado al momento de calcular (MXN)
+  costoMin Int
+  costoMax Int
+
+  /// Respuestas del quiz de preferencias
+  estiloAlojamiento String @default("MEDIO") // ECONOMICO | MEDIO | COMODO
+  estiloComida      String @default("MEDIO")
+  ritmo             String @default("MEDIO") // RELAJADO | MEDIO | INTENSO
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  atracciones AtraccionViaje[]
+  plan        PlanDeAhorro?
+
+  @@index([userId])
+}
+
+enum Prioridad {
+  MUST_GO
+  WOULD_BE_NICE
+}
+
+model AtraccionViaje {
+  id          String    @id @default(cuid())
+  viajeId     String
+  viaje       Viaje     @relation(fields: [viajeId], references: [id], onDelete: Cascade)
+  atraccionId String
+  atraccion   Atraccion @relation(fields: [atraccionId], references: [id], onDelete: Cascade)
+  prioridad   Prioridad @default(WOULD_BE_NICE)
+
+  @@unique([viajeId, atraccionId])
+}
+
+// ─── Plan de ahorro y la "cajita" ───
+
+enum Frecuencia {
+  SEMANAL
+  QUINCENAL
+  MENSUAL
+  TRIMESTRAL
+}
+
+model PlanDeAhorro {
+  id      String @id @default(cuid())
+  viajeId String @unique
+  viaje   Viaje  @relation(fields: [viajeId], references: [id], onDelete: Cascade)
+
+  /// Meta = costoMax del viaje, congelada al crear el plan
+  meta          Int
+  montoInicial  Int        @default(0)
+  aportacion    Int
+  frecuencia    Frecuencia @default(MENSUAL)
+  /// Fecha objetivo para juntar la meta
+  fechaObjetivo DateTime
+  recordatorios Boolean    @default(false)
+
+  creadoEn DateTime @default(now())
+
+  registros RegistroDeAhorro[]
+  habitos   HabitoRecorte[]
+}
+
+model RegistroDeAhorro {
+  id     String       @id @default(cuid())
+  planId String
+  plan   PlanDeAhorro @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  monto Int
+  fecha DateTime @default(now())
+  nota  String?
+
+  @@index([planId, fecha])
+}
+
+/// Hábito recortable — alimenta el traductor de costo de oportunidad (enfoque C).
+model HabitoRecorte {
+  id     String       @id @default(cuid())
+  planId String
+  plan   PlanDeAhorro @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  etiqueta     String
+  emoji        String
+  /// Costo mensual si se mantiene el hábito completo
+  costoMensual Int
+  /// Cuánto decidió recortar el usuario (0..costoMensual)
+  recorte      Int    @default(0)
+
+  @@index([planId])
+}
