@@ -89,8 +89,17 @@ El archivo actual es una hoja de referencia rasterizada. Antes de incorporarlo c
 | `coti-mascot.png` | Oficial | Mascota principal |
 | `coti-mascot-transparent.png` | Oficial | Mascota principal con alfa |
 | `coti-scene-*.png` | Oficial | Escenas narrativas |
+| `coti-scene-mundo.jpg` | Candidato | Coti frente a un letrero con destinos icónicos (Par&iacute;s, Kioto, El Cairo, R&iacute;o, Nueva York) y monumentos de fondo — libreta de sellos y maleta viajera |
+| `coti-scene-safari.jpg` | Candidato | Coti en un safari junto a cr&iacute;as de panda y un guardabosques oso, con letrero de destinos de safari (Serengeti, Kruger, Okavango, Maasai Mara, Victoria Falls) |
+| `coti-scene-sendero.jpg` | Candidato | Coti leyendo un mapa junto a un letrero de sendero, lago y monta&ntilde;as de fondo — paleta de oto&ntilde;o |
+| `coti-scene-sendero-hero.jpg` | Candidato | Recorte de `coti-scene-sendero.jpg` con espacio negativo amplio a la izquierda — pensado como banner/hero para landing, no como escena narrativa completa |
 | `coti-sprites-explorador-calido-sheet.png` | Referencia | Estados de producto |
 | `concepts/` | Archivo | Exploraciones descartadas o alternativas |
+
+> Las cuatro escenas `coti-scene-mundo/safari/sendero*` llegaron como JPG (sin canal alfa) el
+> 2026-08-29 y están marcadas **Candidato** — pendientes de confirmación como oficiales por
+> quien sostiene la identidad de marca antes de promoverlas y de generar sus copias
+> optimizadas en `public/brand/scenes/`.
 
 ## Entregables para producción
 
