@@ -62,7 +62,7 @@ intente `/admin` es devuelto a `/login`; la API responde `403`.
 npm run dev          # Dev server (Next.js 16, Turbopack)
 npm run build        # prisma generate + next build
 npm run type-check   # tsc --noEmit
-npm test             # vitest run — 1600 tests
+npm test             # vitest run — 1614 tests
 npm run test:watch   # vitest en watch
 npm run lint         # lint:tsx + lint:css + type-check
 npm run lint:tsx     # eslint (41 reglas custom en scripts/eslint-rules/)
@@ -141,7 +141,7 @@ Seed: `prisma/seed.ts`.
 | `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se bajó el paquete a mano y `package.json` lo referencia como `file:vendor/sovereignty-ui`. **`vendor/` está ignorado por completo**: no es código de Coti, es el artefacto publicado de otro repo. ⚠️ **Un clon limpio no instala** — `npm install` falla con ENOENT porque el directorio no existe. Quien clone necesita que le pasen `vendor/sovereignty-ui/` por fuera de git (ver abajo). La salida de fondo: recuperar el token, volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry` y borrar `vendor/`. |
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
 | Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
-| Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. Los mockups del flujo sí existen, y difieren del modelo en 8 puntos: `.claude/business/mockups/README.md`. |
+| Dominio de viajes a medias | La base y el seed están completos, y la **cajita ya tiene API** (`GET /api/travel/cajita` + `POST /api/travel/cajita/aportes`). Falta todo lo demás: crear el viaje, el quiz, la proyección, el plan — endpoints y pantallas. El dashboard muestra el estado vacío. Los mockups difieren del modelo en 8 puntos: `.claude/business/mockups/README.md`. |
 | Sin proveedor de correo | Se eliminó Resend. `/forgot-password` sigue generando el token en la base, pero **nadie recibe el enlace**: fuera de producción se escribe en el log del servidor para poder recorrer el flujo. Si se necesita correo real, hay que elegir proveedor y cargar su llave en `.env`. |
 | `src/middleware.ts` | Next 16 lo marca deprecado a favor de `proxy.ts`. Funciona; migrar con `npx @next/codemod@canary middleware-to-proxy .` cuando convenga. |
 | Warnings de eslint | ~28, todos `no-unnecessary-type-assertion` — falsos positivos, ver arriba. |
