@@ -102,7 +102,7 @@ quedan** y la **racha de aportes seguidos**.
 | Precios en vivo de vuelos, hoteles o Airbnb | Contradice el principio rector. Se usan **rangos curados**: 18 destinos en `src/data/destinos.ts`. Hay que decirlo explícitamente en el pitch. |
 | Reservación, checkout y pagos | Proyecta, no reserva. |
 | Multi-moneda en tiempo real | Fase futura. |
-| Ahorro grupal entre varias cuentas | El "número de personas" sólo dimensiona el costo; no hay split entre cuentas distintas. |
+| Ahorro grupal entre varias cuentas | El "número de personas" sólo dimensiona el costo; no hay split entre cuentas distintas. **Es la fase 3**, ver sección 6. |
 | Recordatorios por email / push | Se guarda la preferencia, no se envía nada. Un recordatorio no se puede demostrar en un pitch de tres minutos. |
 
 Sobre los datos de precio: una API comercial de tarifas exige partnership o tiene tiers
@@ -112,7 +112,37 @@ promete.
 
 ---
 
-## 5. Cómo quedó implementado
+## 5. Modelo de negocio
+
+Definido en el pitch ([`../pitch/README.md`](../pitch/README.md)), tres capas:
+
+| Capa | Qué es |
+|---|---|
+| **Gratis** | El viaje completo, de principio a fin. Es el producto. |
+| **Coti Plus** | Suscripción para ahorrar para **varios viajes a la vez**. |
+| **Alianzas** | Recomendación de destinos y experiencias de socios. |
+
+**Coti nunca reserva ni cobra dentro del producto.** La capa de alianzas es el borde más
+delgado: recomendar es proyectar, pero un enlace de reserva o una comisión por conversión
+cruzarían la línea. Si esa capa avanza, va con decisión escrita en `../decisiones/`.
+
+No se cobra desde el día uno a propósito: primero hay que probar que el producto cambia el
+comportamiento de ahorro.
+
+## 6. Fases
+
+| Fase | Qué |
+|---|---|
+| **1 — el MVP de este workshop** | Lo descrito en la sección 3. |
+| **2** | Más destinos + **app móvil**. |
+| **3** | **Ahorro compartido** — viajes en grupo con metas en común. |
+
+Lo que **no aparece en ninguna fase**: reservación, checkout y pagos. No es un olvido, es la
+línea que el producto decidió no cruzar.
+
+---
+
+## 7. Cómo quedó implementado
 
 Las preguntas abiertas de la fase de concepto ya están resueltas por lo construido:
 

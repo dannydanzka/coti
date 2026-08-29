@@ -19,6 +19,7 @@
 | Qué se construye y qué no — alcance del MVP y los dos injertos | `.claude/business/spec/coti.md` |
 | Por qué algo quedó así (UI kit, infraestructura, riesgos con fecha) | `.claude/business/decisiones/` |
 | Cómo se ven las 8 pantallas del flujo (y qué no cuadra con el modelo) | `.claude/business/mockups/README.md` |
+| Cómo se cuenta Coti: posicionamiento, modelo de negocio y fases | `.claude/business/pitch/README.md` |
 | Cómo escribir código aquí | `.claude/rules/_global.md` |
 | Marca, mascota, paleta | `README.md` · `assets/branding/` |
 
@@ -157,6 +158,7 @@ y podada, propiedad de este proyecto, que se edita libremente.
 │   ├── spec/coti.md          Fuente de verdad del alcance
 │   ├── decisiones/           Decisiones cerradas: UI kit · infraestructura
 │   ├── mockups/              Los 8 pasos del flujo, móvil y desktop
+│   ├── pitch/                Guion de presentación · modelo de negocio · fases
 │   ├── ideas/                Banco de las 7 ideas del equipo (ganó la #4)
 │   └── team/                 Perfiles de las personas del workshop
 ├── rules/_global.md        Reglas transversales + dónde buscar por tipo de archivo
