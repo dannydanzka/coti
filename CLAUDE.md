@@ -134,7 +134,7 @@ Seed: `prisma/seed.ts`.
 
 | Qué | Detalle |
 |---|---|
-| `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se vendorizó el `dist` v0.7.0 y `package.json` lo referencia como `file:vendor/sovereignty-ui`. Con un token válido: volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry`. |
+| `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se vendorizó el `dist` v0.7.0 y `package.json` lo referencia como `file:vendor/sovereignty-ui`. **El `dist` no se versiona** (decisión del equipo: es artefacto de build de otro repo), así que del repo sólo bajan `package.json` y `README.md`. ⚠️ **Un clon limpio no compila**: todos los `exports` del paquete apuntan a `dist/`, que no está. Quien clone necesita que alguien le pase `vendor/sovereignty-ui/dist/` (1.4 MB) por fuera de git. La salida de fondo es recuperar el token: volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry` y borrar `vendor/` entero. |
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
 | Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
 | Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. Los mockups del flujo sí existen, y difieren del modelo en 8 puntos: `.claude/business/mockups/README.md`. |

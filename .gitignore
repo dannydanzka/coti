@@ -261,5 +261,11 @@ dev-data/
 # Deps del paquete vendorizado (npm las instala in-place)
 vendor/**/node_modules
 
+# El dist del design system NO se versiona: es un artefacto de build de otro
+# repo. La regla `dist/` de arriba ya lo cubre; esto lo deja explícito para que
+# nadie lo des-ignore sin querer. Consecuencia: un clon limpio no compila hasta
+# que el dist esté en su lugar — ver "Deudas conocidas" en CLAUDE.md.
+vendor/**/dist/
+
 # Prisma client generado (se recrea con postinstall)
 /src/generated
