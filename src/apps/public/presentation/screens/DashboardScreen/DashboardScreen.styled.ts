@@ -75,6 +75,9 @@ export const ExploreCTACard = styled.div`
   border-radius: ${shape.xl};
   display: flex;
   gap: ${spacing.lg};
+
+  /* Sin tope se estira a los 1200px del contenedor y queda medio vacío. */
+  max-width: 760px;
   min-width: 0;
   overflow: hidden;
   padding: ${spacing.xl} ${spacing['2xl']};
@@ -148,7 +151,7 @@ export const ExploreCTAHighlight = styled.span`
 `;
 
 export const ExploreCTAButton = styled.button`
-  align-self: center;
+  align-self: flex-start;
   background: ${color.white};
   border: none;
   border-radius: ${shape.lg};
