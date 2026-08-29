@@ -15,6 +15,10 @@ No editar estos PNG a mano: si cambia la marca, se regeneran desde `assets/brand
 | `scenes/cajita.png` | `coti-scene-cajita.png` | Pantalla de la cajita de ahorro |
 | `scenes/piramide.png` | `coti-scene-piramide.png` | Destinos / proyección |
 | `scenes/pueblo.png` | `coti-scene-pueblo.png` | Onboarding / bienvenida |
+| `hero-atardecer.jpg` | `coti-scene-atardecer-hero.png` | Hero de la landing (paisaje full-bleed, Coti a la derecha) |
+| `scenes/sonar.jpg` | `coti-scene-letrero.png` (recorte 4:3) | Landing · "Sueña el destino" |
+| `scenes/ahorrar.jpg` | `coti-scene-cajita-v2.png` (recorte 4:3) | Landing · "Ahorra en tu cajita" y cierre |
+| `scenes/llegar.jpg` | `coti-scene-pueblo-v2.png` (recorte 4:3) | Landing · "Llega" |
 
 Los íconos de navegador y móvil los toma Next.js automáticamente de
 `src/app/` (`icon.png`, `apple-icon.png`, `favicon.ico`), generados también

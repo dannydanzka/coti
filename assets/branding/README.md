@@ -93,6 +93,10 @@ El archivo actual es una hoja de referencia rasterizada. Antes de incorporarlo c
 | `coti-scene-safari.jpg` | Candidato | Coti en un safari junto a cr&iacute;as de panda y un guardabosques oso, con letrero de destinos de safari (Serengeti, Kruger, Okavango, Maasai Mara, Victoria Falls) |
 | `coti-scene-sendero.jpg` | Candidato | Coti leyendo un mapa junto a un letrero de sendero, lago y monta&ntilde;as de fondo — paleta de oto&ntilde;o |
 | `coti-scene-sendero-hero.jpg` | Candidato | Recorte de `coti-scene-sendero.jpg` con espacio negativo amplio a la izquierda — pensado como banner/hero para landing, no como escena narrativa completa |
+| `coti-scene-atardecer-hero.png` | Oficial | Paisaje panorámico de atardecer con Coti a la derecha y cielo despejado para titular — hero de la landing (2026-08-29, generado con Codex a partir de la mascota oficial) |
+| `coti-scene-letrero.png` | Oficial | Coti sentado en su mochila frente a un letrero de destinos — "Sueña el destino" |
+| `coti-scene-cajita-v2.png` | Oficial | Coti metiendo una moneda en el frasco al 40 % — "Ahorra en tu cajita" |
+| `coti-scene-pueblo-v2.png` | Oficial | Coti llegando a un pueblo mágico con papel picado — "Llega" |
 | `coti-sprites-explorador-calido-sheet.png` | Referencia | Estados de producto |
 | `concepts/` | Archivo | Exploraciones descartadas o alternativas |
 

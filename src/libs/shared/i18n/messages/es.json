@@ -820,5 +820,155 @@
   },
   "dataTable": {
     "perPageSuffix": "por página"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Ahorro para viajes",
+      "subtitle": "Dinos a dónde quieres ir y cuánto puedes apartar. Coti te dice en cuánto tiempo llegas — y te acompaña hasta lograrlo.",
+      "ctaPrimary": "Empieza tu plan",
+      "ctaSecondary": "Ya tengo cuenta",
+      "ctaDashboard": "Ir a mi cajita",
+      "note": "Coti proyecta, no reserva: no busca vuelos, no cotiza hoteles, no procesa pagos.",
+      "titleLead": "Proyecta tu viaje.",
+      "titleAccent": "Ahorra con Coti.",
+      "stats": {
+        "destinations": "destinos curados",
+        "steps": "pasos hasta tu cajita",
+        "bookings": "reservas — sólo cuentas"
+      }
+    },
+    "story": {
+      "eyebrow": "Así funciona",
+      "title": "Del sueño a la cajita, y de la cajita al destino",
+      "steps": {
+        "dream": {
+          "title": "Sueña el destino",
+          "text": "Elige a dónde quieres ir y cuándo. Coti te da un rango creíble en pesos, no una cotización exacta."
+        },
+        "save": {
+          "title": "Ahorra en tu cajita",
+          "text": "Define cuánto puedes apartar por quincena. Cada registro suma y el avance se ve, se celebra y se sostiene."
+        },
+        "arrive": {
+          "title": "Llega",
+          "text": "Cuando la cajita alcanza la meta, el viaje deja de ser una idea lejana. Tú decides cómo reservarlo."
+        }
+      }
+    },
+    "projection": {
+      "eyebrow": "Una cuenta clara",
+      "title": "Tu viaje puede costar entre $28,000 y $34,000 MXN.",
+      "text": "Así habla Coti: con rangos, con supuestos a la vista y sin promesas de ahorro garantizado. Ajustemos el plan para llegar.",
+      "cta": "Hacer cuentas con Coti"
+    },
+    "principles": {
+      "project": {
+        "title": "Proyecta, no reserva",
+        "text": "Rangos creíbles; sin vuelos, hoteles ni pagos."
+      },
+      "value": {
+        "title": "Valor antes que datos",
+        "text": "Conoces un estimado antes de compartir tus finanzas."
+      },
+      "company": {
+        "title": "Acompañamiento visible",
+        "text": "Progreso e hitos que sostienen el hábito por meses."
+      }
+    },
+    "product": {
+      "eyebrow": "El producto",
+      "title": "Del destino a la cajita en ocho pasos",
+      "text": "Sin formularios eternos ni promesas. Eliges a dónde, cómo viajas y qué quieres hacer; Coti proyecta el rango, tú fijas el ritmo y la cajita hace el resto.",
+      "steps": {
+        "define": "Define tu viaje",
+        "style": "Tu estilo de viaje",
+        "attractions": "Tus atracciones",
+        "projection": "Tu proyección",
+        "plan": "Tu plan de ahorro",
+        "start": "Tu punto de partida",
+        "activate": "Activa tu ahorro",
+        "box": "Mi cajita de ahorro"
+      },
+      "captions": {
+        "plan": "Paso 5 · Tu plan de ahorro",
+        "box": "Paso 8 · Mi cajita de ahorro",
+        "projection": "Paso 4 · Tu proyección"
+      }
+    },
+    "preview": {
+      "projection": {
+        "step": "Paso 4 de 8",
+        "lead": "Este viaje te puede costar entre",
+        "details": "Detalles de viaje",
+        "items": {
+          "flights": "Vuelos (2 pax)",
+          "lodging": "Hospedaje (9 noches)",
+          "food": "Comida y bebida",
+          "attractions": "Atracciones"
+        },
+        "note": "Rango estimado por temporada y estilo. Coti proyecta, no reserva.",
+        "cta": "Crear mi plan de ahorro"
+      },
+      "plan": {
+        "step": "Paso 5 de 8",
+        "title": "Define tu meta de ahorro",
+        "subtitle": "Tú pones el ritmo. Coti hace las cuentas.",
+        "goalLabel": "Tu meta de ahorro",
+        "goals": {
+          "minimum": {
+            "title": "Mínimo",
+            "hint": "Lo indispensable"
+          },
+          "comfortable": {
+            "title": "Cómodo",
+            "hint": "Con margen para imprevistos"
+          },
+          "unlimited": {
+            "title": "Sin límites",
+            "hint": "Todo lo que quieres hacer"
+          }
+        },
+        "frequencyLabel": "¿Con qué frecuencia aportas?",
+        "weekly": "Semanal",
+        "biweekly": "Quincenal",
+        "monthly": "Mensual",
+        "amountLabel": "¿Cuánto puedes destinar al mes?",
+        "perMonth": "MXN / mes",
+        "okTitle": "✓ Sí llegas",
+        "okText": "Con $3,200 al mes juntas tu meta en 18 meses — justo antes de marzo de 2028."
+      },
+      "box": {
+        "greeting": "Hola, Paola",
+        "trip": "Tokio · marzo 2028",
+        "savedLabel": "Llevas ahorrado",
+        "of": "de",
+        "celebrate": "🎉 ¡Vas 40%! Ya pasaste el primer hito.",
+        "remaining": "te faltan",
+        "monthsValue": "12 meses",
+        "monthsLabel": "para la meta",
+        "entriesValue": "6 aportes",
+        "entriesLabel": "registrados",
+        "entries": "Tus aportes",
+        "next": "Próximo aporte",
+        "nextDate": "1 de marzo",
+        "register": "Registrar"
+      }
+    },
+    "voice": {
+      "eyebrow": "Así habla Coti",
+      "title": "Como un amigo que ya viajó y te dice «sí se puede, vamos a hacer cuentas»",
+      "yes": {
+        "tag": "Sí",
+        "quote": "Tu viaje puede costar entre $28,000 y $34,000 MXN. Ajustemos el plan para llegar."
+      },
+      "no": {
+        "tag": "No",
+        "quote": "¡Viaja barato garantizado!"
+      }
+    },
+    "closing": {
+      "title": "Conocer el mundo no tiene edad mínima. Tiene plan.",
+      "text": "Abre tu cajita hoy. Coti hace las cuentas y te acompaña hasta el día del viaje."
+    }
   }
 }

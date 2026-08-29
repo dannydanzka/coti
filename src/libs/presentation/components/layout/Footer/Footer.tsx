@@ -3,7 +3,7 @@
  *
  * Site footer with navigation links and social media icons.
  * Shows different links based on authentication state.
- * Design: Neubrutalismo suave with Montserrat font.
+ * Design: Coti — ver assets/branding/README.md.
  *
  * Uses useAuth (AuthContext) as SINGLE SOURCE OF TRUTH for auth state.
  */
@@ -12,8 +12,15 @@
 
 import { useTranslation } from 'react-i18next';
 
+import {
+  BRAND_ASSETS,
+  BRAND_UI_TEXT,
+  FOOTER_LINKS,
+  FOOTER_LINKS_AUTHENTICATED,
+  FOOTER_UI_TEXT,
+  SOCIAL_LINKS,
+} from '@constants';
 import { FacebookIcon, InstagramIcon, TiktokIcon, YoutubeIcon } from '@components/icons';
-import { FOOTER_LINKS, FOOTER_LINKS_AUTHENTICATED, FOOTER_UI_TEXT, SOCIAL_LINKS } from '@constants';
 import { useAuth, useLayoutBgColor } from '@hooks';
 
 import type { FooterProps } from './Footer.interfaces';
@@ -28,6 +35,7 @@ import {
   FooterLinksContainer,
   FooterLogo,
   FooterSection,
+  FooterTagline,
   FooterTitle,
   SocialIcon,
   SocialLinks,
@@ -43,7 +51,8 @@ export const Footer = ({ bgColor }: FooterProps) => {
 
   const renderBrandSection = () => (
     <FooterBrandSection>
-      <FooterLogo>{FOOTER_UI_TEXT.BRAND_NAME}</FooterLogo>
+      <FooterLogo alt={BRAND_UI_TEXT.LOGO_ALT} src={BRAND_ASSETS.LOGO} />
+      <FooterTagline>{BRAND_UI_TEXT.TAGLINE}</FooterTagline>
       <SocialLinks>
         <SocialIcon
           aria-label={t('footer.facebook')}

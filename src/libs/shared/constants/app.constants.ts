@@ -70,3 +70,29 @@ export const APP_METADATA = {
   PROFILE_EDIT_TITLE: 'Editar Perfil - Coti',
   TITLE: 'Coti — Proyecta tu viaje. Ahorra con Coti.',
 } as const;
+
+/**
+ * Brand assets served from `public/brand/`.
+ * Source of truth: `assets/branding/` (see `public/brand/README.md`).
+ */
+export const BRAND_ASSETS = {
+  APP_ICON: '/brand/app-icon.png',
+  HERO: '/brand/hero-atardecer.jpg',
+  LOGO: '/brand/logo.png',
+  LOGO_HORIZONTAL: '/brand/logo-horizontal.png',
+  MASCOT: '/brand/mascot.png',
+  SCENES: {
+    AHORRAR: '/brand/scenes/ahorrar.jpg',
+    CAJITA: '/brand/scenes/cajita.png',
+    LLEGAR: '/brand/scenes/llegar.jpg',
+    PIRAMIDE: '/brand/scenes/piramide.png',
+    PUEBLO: '/brand/scenes/pueblo.png',
+    SONAR: '/brand/scenes/sonar.jpg',
+  },
+} as const;
+
+export const BRAND_UI_TEXT = {
+  LOGO_ALT: 'Coti',
+  MASCOT_ALT: 'Coti, el coatí viajero, leyendo un mapa',
+  TAGLINE: 'Proyecta tu viaje. Ahorra con Coti.',
+} as const;

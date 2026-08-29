@@ -1,8 +1,7 @@
 /**
  * Footer Styled Components
  *
- * Design: Neubrutalismo suave with Montserrat font.
- * Yellow background (#FFEBB5) for landing pages.
+ * Design: Coti — fondo arena claro, texto café, acentos verde bosque.
  */
 
 'use client';
@@ -44,11 +43,18 @@ export const FooterBrandSection = styled.div`
   }
 `;
 
-export const FooterLogo = styled.span`
-  color: ${brandColor.landingBlueDark};
-  font-family: ${typography.family.display};
-  font-size: ${typography.size.lg};
-  font-weight: ${typography.weight.semibold};
+export const FooterLogo = styled.img`
+  display: block;
+  height: auto;
+  width: 112px;
+`;
+
+export const FooterTagline = styled.p`
+  color: ${brandColor.landingTextGray};
+  font-family: ${typography.family.body};
+  font-size: ${typography.size.sm};
+  margin: 0;
+  max-width: 240px;
 `;
 
 export const SocialLinks = styled.div`

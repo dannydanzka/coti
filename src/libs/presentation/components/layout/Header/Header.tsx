@@ -2,7 +2,7 @@
  * Header Component
  *
  * Main navigation header with different variants for public, authenticated, and admin users.
- * Design: Neubrutalismo suave with Montserrat font.
+ * Design: Coti — cálido e ilustrado (ver assets/branding/README.md).
  * Logo centered with navigation items on each side.
  */
 
@@ -15,6 +15,8 @@ import { useTranslation } from 'react-i18next';
 
 import {
   AUTHENTICATED_ROUTES,
+  BRAND_ASSETS,
+  BRAND_UI_TEXT,
   HEADER_ROUTES,
   HOME_NAV_ITEMS,
   NAVBAR_UI_TEXT,
@@ -22,7 +24,6 @@ import {
 } from '@constants';
 import { Button } from '@dannydanzka/sovereignty-ui';
 import { useAuth, useLayoutBgColor } from '@hooks';
-import LogoSvg from '@assets/branding/Logo.svg';
 
 import type { HeaderProps } from './Header.interfaces';
 import { MeetButton } from '../../common/MeetButton';
@@ -35,6 +36,7 @@ import {
   HeaderContent,
   HomeNav,
   LogoContainer,
+  LogoImage,
   MeetCtaSlot,
   MeetMenuButton,
   MeetMobileMenu,
@@ -108,7 +110,7 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
     <>
       <NavLeft>{/* Empty left side for balance */}</NavLeft>
       <LogoContainer onClick={handleLogoClick}>
-        <LogoSvg />
+        <LogoImage alt={BRAND_UI_TEXT.LOGO_ALT} src={BRAND_ASSETS.LOGO} />
       </LogoContainer>
       <NavRight>
         <EnrollButton onClick={handleEnrollClick}>
@@ -130,7 +132,7 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
   const renderMeetNav = () => (
     <>
       <LogoContainer onClick={handleLogoClick}>
-        <LogoSvg />
+        <LogoImage alt={BRAND_UI_TEXT.LOGO_ALT} src={BRAND_ASSETS.LOGO} />
       </LogoContainer>
       <HomeNav>
         {HOME_NAV_ITEMS.map((item) => (
@@ -169,7 +171,7 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
   const renderAuthenticatedNav = () => (
     <>
       <LogoContainer onClick={handleAuthLogoClick}>
-        <LogoSvg />
+        <LogoImage alt={BRAND_UI_TEXT.LOGO_ALT} src={BRAND_ASSETS.LOGO} />
       </LogoContainer>
       <NavRight>
         <NavLink href={AUTHENTICATED_ROUTES.DASHBOARD}>{NAVBAR_UI_TEXT.CTA_DASHBOARD}</NavLink>
@@ -199,7 +201,7 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
         <NavLink href={ROUTES.ADMIN.DASHBOARD}>{t('public.nav.dashboard')}</NavLink>
       </NavLeft>
       <LogoContainer onClick={handleAdminLogoClick}>
-        <LogoSvg />
+        <LogoImage alt={BRAND_UI_TEXT.LOGO_ALT} src={BRAND_ASSETS.LOGO} />
       </LogoContainer>
       <NavRight>
         <NavLink href={ROUTES.ADMIN.USERS}>{t('public.nav.users')}</NavLink>

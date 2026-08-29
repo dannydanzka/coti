@@ -17,6 +17,7 @@ export const PublicContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: clip; /* secciones full-bleed (hero de la portada) miden 100vw */
   width: 100%;
 `;
 

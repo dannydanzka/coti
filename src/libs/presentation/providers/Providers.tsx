@@ -12,6 +12,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { usePathname } from 'next/navigation';
 
+import { BRAND_ASSETS, BRAND_UI_TEXT } from '@constants';
 import {
   dequeueNotification,
   selectIsAdmin,
@@ -20,7 +21,6 @@ import {
 } from '@redux';
 import { GlobalStyles } from '@styles';
 import { NotificationToast } from '@dannydanzka/sovereignty-ui';
-import Logo from '@assets/branding/Logo.svg';
 
 import { ErrorProvider } from './ErrorProvider';
 import { I18nProvider } from './I18nProvider';
@@ -34,6 +34,7 @@ import {
 } from '../components/common/NotificationContainer/NotificationContainer.styled';
 import {
   LoadingContainer,
+  LoadingMascot,
   LoadingOverlay,
   LogoWrapper,
 } from '../components/common/GlobalLoading/GlobalLoading.styled';
@@ -59,7 +60,7 @@ const GlobalLoadingOverlay: React.FC = () => {
     <LoadingOverlay $isVisible={isLoading}>
       <LoadingContainer>
         <LogoWrapper>
-          <Logo />
+          <LoadingMascot alt={BRAND_UI_TEXT.MASCOT_ALT} src={BRAND_ASSETS.MASCOT} />
         </LogoWrapper>
       </LoadingContainer>
     </LoadingOverlay>

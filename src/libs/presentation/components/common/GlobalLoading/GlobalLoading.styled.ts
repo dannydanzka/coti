@@ -55,3 +55,10 @@ export const LogoWrapper = styled.div`
     max-width: 100%;
   }
 `;
+
+export const LoadingMascot = styled.img`
+  display: block;
+  height: auto;
+  max-width: 220px;
+  width: 50vw;
+`;

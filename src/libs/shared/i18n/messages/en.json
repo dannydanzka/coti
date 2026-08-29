@@ -820,5 +820,155 @@
   },
   "dataTable": {
     "perPageSuffix": "por página"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Travel savings",
+      "subtitle": "Tell us where you want to go and how much you can set aside. Coti tells you how long it takes — and stays with you until you get there.",
+      "ctaPrimary": "Start your plan",
+      "ctaSecondary": "I already have an account",
+      "ctaDashboard": "Go to my savings box",
+      "note": "Coti projects, it doesn't book: no flight search, no hotel quotes, no payments.",
+      "titleLead": "Project your trip.",
+      "titleAccent": "Save with Coti.",
+      "stats": {
+        "destinations": "curated destinations",
+        "steps": "steps to your savings box",
+        "bookings": "bookings — just the numbers"
+      }
+    },
+    "story": {
+      "eyebrow": "How it works",
+      "title": "From the dream to the savings box, and from the box to the destination",
+      "steps": {
+        "dream": {
+          "title": "Dream the destination",
+          "text": "Pick where and when. Coti gives you a credible range in pesos, not an exact quote."
+        },
+        "save": {
+          "title": "Save in your box",
+          "text": "Set how much you can put aside each payday. Every entry adds up and progress is visible and celebrated."
+        },
+        "arrive": {
+          "title": "Arrive",
+          "text": "When the box reaches the goal, the trip stops being a distant idea. You decide how to book it."
+        }
+      }
+    },
+    "projection": {
+      "eyebrow": "A clear estimate",
+      "title": "Your trip may cost between $28,000 and $34,000 MXN.",
+      "text": "That's how Coti talks: in ranges, with assumptions in plain sight and no guaranteed-savings promises. Let's adjust the plan to get there.",
+      "cta": "Run the numbers with Coti"
+    },
+    "principles": {
+      "project": {
+        "title": "Project, don't book",
+        "text": "Credible ranges; no flights, hotels or payments."
+      },
+      "value": {
+        "title": "Value before data",
+        "text": "You get an estimate before sharing your finances."
+      },
+      "company": {
+        "title": "Visible support",
+        "text": "Progress and milestones that sustain the habit for months."
+      }
+    },
+    "product": {
+      "eyebrow": "The product",
+      "title": "From destination to savings box in eight steps",
+      "text": "No endless forms, no promises. Pick where, how you travel and what you want to do; Coti projects the range, you set the pace and the box does the rest.",
+      "steps": {
+        "define": "Define your trip",
+        "style": "Your travel style",
+        "attractions": "Your attractions",
+        "projection": "Your projection",
+        "plan": "Your savings plan",
+        "start": "Your starting point",
+        "activate": "Activate your savings",
+        "box": "My savings box"
+      },
+      "captions": {
+        "plan": "Step 5 · Your savings plan",
+        "box": "Step 8 · My savings box",
+        "projection": "Step 4 · Your projection"
+      }
+    },
+    "preview": {
+      "projection": {
+        "step": "Step 4 of 8",
+        "lead": "This trip may cost between",
+        "details": "Trip details",
+        "items": {
+          "flights": "Flights (2 pax)",
+          "lodging": "Lodging (9 nights)",
+          "food": "Food & drink",
+          "attractions": "Attractions"
+        },
+        "note": "Estimated range by season and style. Coti projects, it doesn't book.",
+        "cta": "Create my savings plan"
+      },
+      "plan": {
+        "step": "Step 5 of 8",
+        "title": "Set your savings goal",
+        "subtitle": "You set the pace. Coti does the math.",
+        "goalLabel": "Your savings goal",
+        "goals": {
+          "minimum": {
+            "title": "Minimum",
+            "hint": "The essentials"
+          },
+          "comfortable": {
+            "title": "Comfortable",
+            "hint": "With a buffer"
+          },
+          "unlimited": {
+            "title": "No limits",
+            "hint": "Everything you want to do"
+          }
+        },
+        "frequencyLabel": "How often do you contribute?",
+        "weekly": "Weekly",
+        "biweekly": "Biweekly",
+        "monthly": "Monthly",
+        "amountLabel": "How much can you set aside per month?",
+        "perMonth": "MXN / month",
+        "okTitle": "✓ You'll make it",
+        "okText": "At $3,200 a month you reach your goal in 18 months — right before March 2028."
+      },
+      "box": {
+        "greeting": "Hi, Paola",
+        "trip": "Tokyo · March 2028",
+        "savedLabel": "Saved so far",
+        "of": "of",
+        "celebrate": "🎉 You're at 40%! First milestone passed.",
+        "remaining": "to go",
+        "monthsValue": "12 months",
+        "monthsLabel": "to goal",
+        "entriesValue": "6 entries",
+        "entriesLabel": "recorded",
+        "entries": "Your entries",
+        "next": "Next entry",
+        "nextDate": "March 1",
+        "register": "Register"
+      }
+    },
+    "voice": {
+      "eyebrow": "How Coti talks",
+      "title": "Like a friend who already travelled and says “you can do it, let's run the numbers”",
+      "yes": {
+        "tag": "Yes",
+        "quote": "Your trip may cost between $28,000 and $34,000 MXN. Let's adjust the plan to get there."
+      },
+      "no": {
+        "tag": "No",
+        "quote": "Travel cheap, guaranteed!"
+      }
+    },
+    "closing": {
+      "title": "Seeing the world has no minimum age. It has a plan.",
+      "text": "Open your savings box today. Coti does the math and stays with you until departure day."
+    }
   }
 }

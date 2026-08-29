@@ -1,8 +1,7 @@
 /**
  * Header Styled Components
  *
- * Design: Neubrutalismo suave with Montserrat font.
- * Yellow background (#FFEBB5) for landing pages.
+ * Design: Coti — fondo arena claro sobre crema, acentos coral y verde bosque.
  */
 
 'use client';
@@ -16,13 +15,13 @@ export const HeaderContainer = styled.header<{ $bgColor?: string }>`
 
   /* Extra right padding below lg so the hamburger / action cluster never sits
      glued to the screen edge. Desktop reverts to symmetric padding. */
-  padding: ${spacing.xs} ${spacing.lg} ${spacing.xs} ${spacing.xs};
+  padding: ${spacing.sm} ${spacing.lg} ${spacing.sm} ${spacing.sm};
   position: sticky;
   top: 0;
   z-index: 1000;
 
   @media (min-width: ${layout.breakpoint.lg}) {
-    padding: ${spacing.xs} ${spacing.sm};
+    padding: ${spacing.sm} ${spacing.sm};
   }
 `;
 
@@ -44,21 +43,19 @@ export const LogoContainer = styled.div`
   flex-shrink: 0;
   transition: opacity 0.2s ease-in-out;
 
-  svg {
-    height: ${spacing.md};
-    width: auto;
-
-    @media (min-width: ${layout.breakpoint.sm}) {
-      height: ${spacing['3xl']};
-    }
-
-    @media (min-width: ${layout.breakpoint.md}) {
-      height: ${spacing['4xl']};
-    }
-  }
-
   &:hover {
     opacity: 0.8;
+  }
+`;
+
+export const LogoImage = styled.img`
+  display: block;
+  height: ${spacing.xl};
+  object-fit: contain;
+  width: auto;
+
+  @media (min-width: ${layout.breakpoint.md}) {
+    height: ${spacing['2xl']};
   }
 `;
 

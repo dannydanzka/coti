@@ -22,11 +22,7 @@ vi.mock('@hooks', () => ({
   useLayoutBgColor: vi.fn(() => ({ layoutBgColor: null })),
 }));
 
-vi.mock('@assets/branding/Logo.svg', () => ({
-  default: () => <svg data-testid='logo' />,
-}));
-
-import { assertTestId, assertTexts, renderWithProviders } from '@testing';
+import { assertTexts, renderWithProviders, screen } from '@testing';
 import { useAuth } from '@hooks';
 
 import { Header } from './Header';
@@ -48,7 +44,7 @@ describe('Header', () => {
     it('renders logo', () => {
       renderWithProviders(<Header variant='public' />);
 
-      assertTestId('logo');
+      expect(screen.getByAltText('Coti')).toBeInTheDocument();
     });
 
     it('renders nav buttons on non-home pages', () => {

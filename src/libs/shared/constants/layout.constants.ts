@@ -46,7 +46,11 @@ export const NAVBAR_UI_TEXT = {
  * encabezado mínimo; esta navegación más completa se muestra sólo
  * on the home route. Refleja el mock de la portada.
  */
-export const HOME_NAV_ITEMS = [{ href: PUBLIC_ROUTES.HOME, label: 'Inicio' }] as const;
+export const HOME_NAV_ITEMS = [
+  { href: PUBLIC_ROUTES.HOME, label: 'Inicio' },
+  { href: '/#historia', label: 'Cómo funciona' },
+  { href: '/#proyecta', label: 'Proyecta tu viaje' },
+] as const;
 
 export const HEADER_ROUTES = {
   ENROLLMENT: PUBLIC_ROUTES.SIGNUP,

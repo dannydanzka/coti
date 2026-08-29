@@ -4,7 +4,7 @@
  * Next.js 16 App Router compliant layout.
  */
 
-import { Inter, Lato, Montserrat } from 'next/font/google';
+import { Fredoka, Inter, Lato, Montserrat } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
 
 import { APP_METADATA } from '@constants';
@@ -23,6 +23,14 @@ const inter = Inter({
   display: 'swap',
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+/** Rounded display — matches the Coti logotype; referenced by typography.family.rounded. */
+const fredoka = Fredoka({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-rounded',
+  weight: ['500', '600', '700'],
 });
 
 const lato = Lato({
@@ -56,7 +64,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html data-scroll-behavior='smooth' lang='es'>
       <body
-        className={`${montserrat.variable} ${lato.variable} ${inter.variable}`}
+        className={`${montserrat.variable} ${lato.variable} ${inter.variable} ${fredoka.variable}`}
         suppressHydrationWarning
       >
         <Providers>{children}</Providers>
