@@ -6,7 +6,7 @@
 
 | Recurso | Estado |
 |---|---|
-| Repo | `dannydanzka/claude-workshop-wizeline` (público) |
+| Repo | `dannydanzka/coti` (público) — renombrado desde `claude-workshop-wizeline` |
 | Proyecto Vercel | `coti` — team `wizeline-workshop` |
 | Base de datos | Supabase `coti-db` — PostgreSQL 17.6, conexión verificada |
 | Deploy | ⚠️ aún no se ha desplegado nada |
