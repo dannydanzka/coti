@@ -10,7 +10,7 @@
 |---|---|---|
 | [`spec/coti.md`](spec/coti.md) | **Fuente de verdad del alcance**: principio rector, problema, flujo, MVP y lo que queda fuera | antes de proponer o construir cualquier feature |
 | [`decisiones/`](decisiones/index.md) | Decisiones cerradas con su porqué — UI kit, infraestructura | antes de re-abrir una discusión que ya se dio |
-| [`mockups/`](mockups/) | Los 8 pasos del flujo dibujados, móvil y desktop | al construir pantallas del flujo |
+| [`mockups/`](mockups/README.md) | Las 8 pantallas del flujo dibujadas, móvil y escritorio — **y en qué difieren del modelo de datos** | al construir cualquier pantalla del flujo |
 | [`ideas/`](ideas/README.md) | Banco de las 7 ideas propuestas por el equipo (ganó la #4) | contexto histórico del workshop |
 | [`team/`](team/README.md) | Perfiles de las personas del workshop | para saber con quién se cuenta |
 

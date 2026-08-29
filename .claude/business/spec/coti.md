@@ -44,21 +44,29 @@ tono cercano y motivador, nunca financiero-corporativo. Estética minimalista y 
 Idea ganadora del banco: **proyección financiera y ahorro para viajes** (idea #4).
 Se construye el flujo base **más dos injertos** que le dan el momento demostrable.
 
-### Flujo base
+### Flujo base — ocho pasos
 
-1. **Definir viaje** — destino(s) y fechas.
-2. **Quiz de preferencias** — estilo de viaje, con atracciones clasificadas
-   *Must go* / *Would be nice*.
-3. **Configurar detalles** — duración de la estancia y número de personas.
-4. **Ver proyección** — rango estimado de costo total (mínimo–máximo).
-5. **Definir plan de ahorro** — periodo total, frecuencia (semanal / mensual / trimestral),
-   ingreso disponible a destinar.
-6. **Registrar punto de partida** — monto ya ahorrado, si existe.
-7. **Activar "Ahorrar para mi viaje"**.
-8. **Seguimiento** — la persona vuelve a actualizar su **cajita de ahorro** y ver el avance.
+Tal como los dibujó la diseñadora. El detalle de cada pantalla y **las diferencias contra el
+modelo de datos** están en [`../mockups/README.md`](../mockups/README.md); los mockups en sí,
+en `../mockups/coti-flujo.html` (móvil) y `coti-flujo-desktop.html`.
 
-Los ocho pasos están dibujados en `../mockups/coti-flujo.html` (móvil) y
-`coti-flujo-desktop.html`.
+1. **Define tu viaje** — destino, fechas y número de personas, todo en una pantalla.
+2. **Tu estilo de viaje** — ocho etiquetas de selección múltiple (mochilero, foodie,
+   cultura…) que ajustan el rango. *Opcional.*
+3. **Tus atracciones** — buscador y clasificación *Must go* / *Would be nice*.
+   Las "Must go" pesan más en el rango. *Opcional.*
+4. **Tu proyección** — el rango estimado (mínimo–máximo) con su desglose por concepto.
+5. **Tu plan de ahorro** — se elige la meta entre tres niveles (**Mínimo** = piso del rango ·
+   **Cómodo** = punto medio, por defecto · **Sin límites** = techo), la frecuencia
+   (semanal / quincenal / mensual) y el monto por aporte. La pantalla responde en vivo si
+   **sí llegas** a la fecha de salida con ese ritmo.
+6. **Tu punto de partida** — monto ya ahorrado, si existe. Se puede empezar desde cero.
+7. **Activa tu ahorro** — resumen y preferencia de recordatorio (día y canal).
+8. **Mi cajita de ahorro** — la pantalla de retorno: avance, hitos, racha de aportes,
+   historial y el botón de registrar.
+
+El flujo es **reanudable**: se puede guardar y salir en cualquier paso
+(`EstadoViaje.BORRADOR`).
 
 ### Injerto B — "¿a dónde me alcanza?"
 
@@ -71,11 +79,19 @@ ataca de frente la creencia de "esto no es para mí".
 Convertir hábitos cotidianos en tiempo de viaje. Mover un slider recorre la fecha de salida en
 vivo. Es el cierre del pitch.
 
+> ⚠️ **Ninguno de los dos injertos está dibujado.** Los mockups cubren sólo el camino directo
+> —ya sé a dónde voy—. El modelo sí los contempla (`HabitoRecorte` existe para el injerto C).
+> Hay que dibujarlos o decidir que se construyen sin mockup.
+> Ver [`../mockups/README.md`](../mockups/README.md).
+
 ### La cajita de ahorro
 
 Es el momento de mayor valor emocional del producto y merece tiempo de **diseño**, no sólo de
 ingeniería: progreso visual, micro-celebraciones en los hitos (25 / 50 / 75 / 100 %) y un
 mensaje de refuerzo al registrar un aporte.
+
+Al lado del avance van tres cifras que sostienen el hábito: **cuánto falta**, **cuántos meses
+quedan** y la **racha de aportes seguidos**.
 
 ---
 
@@ -113,5 +129,13 @@ Las preguntas abiertas de la fase de concepto ya están resueltas por lo constru
 `AtraccionViaje`, `PlanDeAhorro`, `RegistroDeAhorro`, `HabitoRecorte`.
 
 **El corazón del producto** es `src/libs/domain/projection/` (`proyectarCosto`).
+
+### Lo que falta reconciliar
+
+La base, el seed y la proyección están construidos; las pantallas del flujo **no**. Al
+contrastar los mockups contra el modelo salieron **ocho diferencias** que hay que resolver
+antes de escribirlas —la mayor: el estilo de viaje son ocho etiquetas en el diseño y tres ejes
+de tres niveles en la base—. Están inventariadas, con su costo, en
+[`../mockups/README.md`](../mockups/README.md#dónde-el-mockup-y-el-modelo-no-coinciden).
 
 > El backlog operativo vive en **MeisterTask**, proyecto `Coti` (id `9209433`).

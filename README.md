@@ -27,18 +27,43 @@ Nace de la idea [#4 — Ahorro para viajes](.claude/business/ideas/04-ahorro-via
 
 📄 Especificación completa: [`.claude/business/spec/coti.md`](.claude/business/spec/coti.md)
 
+## El flujo, en ocho pantallas
+
+1. **Define tu viaje** — destino, fechas y con quién vas.
+2. **Tu estilo de viaje** — ocho etiquetas que ajustan el rango. Opcional.
+3. **Tus atracciones** — lo que no te puedes perder y lo que estaría padre.
+4. **Tu proyección** — *"este viaje te puede costar entre $58,400 y $76,900 MXN"*, con desglose.
+5. **Tu plan de ahorro** — eliges meta, frecuencia y monto; Coti te dice si **sí llegas**.
+6. **Tu punto de partida** — lo que ya llevas ahorrado. O empiezas desde cero.
+7. **Activa tu ahorro** — se abre la cajita.
+8. **Mi cajita de ahorro** — avance, hitos y racha, cada mes.
+
+Los mockups de las ocho pantallas —móvil y escritorio, HTML autocontenido— están en
+[`.claude/business/mockups/`](.claude/business/mockups/README.md), con el detalle de cada una.
+
 ## Estado del proyecto
 
-Proyecto en fase de concepto y preparación para workshop. El repositorio reúne la definición del MVP, decisiones de producto, banco de ideas, perfiles del equipo y el sistema visual de Coti. Todavía no contiene una implementación funcional de la aplicación.
+**Aplicación desplegada y funcional** en cuanto a identidad: registro, sesión, roles
+(OWNER · ADMIN · PARTICIPANT), perfil y panel de administración.
+
+El **dominio de viajes** está a medio camino: el modelo de datos y la matemática de proyección
+están construidos y sembrados —18 destinos curados con rangos en MXN, temporadas y
+atracciones—, pero **las pantallas del flujo todavía no existen**. La cajita muestra el estado
+vacío. Los dos injertos que rematan el pitch —"¿a dónde me alcanza?" y los sliders de
+hábitos— siguen pendientes de diseño.
 
 ## Estructura del repositorio
 
 | Carpeta | Contenido |
 |---|---|
-| [`.claude/business/spec/`](.claude/business/spec/) | Especificación técnica de Coti (alcance, flujo de usuario, datos, fases) |
+| [`.claude/business/`](.claude/business/index.md) | Todo el contexto no-código: alcance, decisiones, mockups, ideas y equipo |
+| [`.claude/business/spec/coti.md`](.claude/business/spec/coti.md) | La especificación — fuente de verdad del alcance |
+| [`.claude/business/mockups/`](.claude/business/mockups/README.md) | Las 8 pantallas del flujo, móvil y escritorio |
+| [`.claude/business/decisiones/`](.claude/business/decisiones/index.md) | Decisiones cerradas con su porqué: UI kit e infraestructura |
 | [`.claude/business/ideas/`](.claude/business/ideas/README.md) | Banco de las 7 ideas propuestas por el equipo |
 | [`.claude/business/team/`](.claude/business/team/README.md) | Perfiles de las personas del workshop |
 | [`assets/branding/`](assets/branding/) | Identidad visual, guía de marca, iconografía y sprites de Coti |
+| [`src/`](src/) | La aplicación — Next.js 16, Prisma 7, styled-components |
 
 ## Branding
 

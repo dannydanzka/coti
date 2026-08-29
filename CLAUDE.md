@@ -18,6 +18,7 @@
 | Qué variables de entorno hacen falta | `.env.example` |
 | Qué se construye y qué no — alcance del MVP y los dos injertos | `.claude/business/spec/coti.md` |
 | Por qué algo quedó así (UI kit, infraestructura, riesgos con fecha) | `.claude/business/decisiones/` |
+| Cómo se ven las 8 pantallas del flujo (y qué no cuadra con el modelo) | `.claude/business/mockups/README.md` |
 | Cómo escribir código aquí | `.claude/rules/_global.md` |
 | Marca, mascota, paleta | `README.md` · `assets/branding/` |
 
@@ -135,7 +136,7 @@ Seed: `prisma/seed.ts`.
 | `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se vendorizó el `dist` v0.7.0 y `package.json` lo referencia como `file:vendor/sovereignty-ui`. Con un token válido: volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry`. |
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
 | Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
-| Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. |
+| Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. Los mockups del flujo sí existen, y difieren del modelo en 8 puntos: `.claude/business/mockups/README.md`. |
 | Sin proveedor de correo | Se eliminó Resend. `/forgot-password` sigue generando el token en la base, pero **nadie recibe el enlace**: fuera de producción se escribe en el log del servidor para poder recorrer el flujo. Si se necesita correo real, hay que elegir proveedor y cargar su llave en `.env`. |
 | `src/middleware.ts` | Next 16 lo marca deprecado a favor de `proxy.ts`. Funciona; migrar con `npx @next/codemod@canary middleware-to-proxy .` cuando convenga. |
 | Warnings de eslint | ~28, todos `no-unnecessary-type-assertion` — falsos positivos, ver arriba. |
