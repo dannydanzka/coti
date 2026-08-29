@@ -12,13 +12,14 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { forgotPasswordValidationSchema } from '@validation';
-import { Input, PopButton } from '@dannydanzka/sovereignty-ui';
+import { Input } from '@dannydanzka/sovereignty-ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import type {
   ForgotPasswordFormData,
   ForgotPasswordFormProps,
 } from './ForgotPasswordForm.interfaces';
+import { MeetButton } from '../../common/MeetButton';
 
 import {
   FormActions,
@@ -104,11 +105,11 @@ export const ForgotPasswordForm = ({ onSubmit }: ForgotPasswordFormProps) => {
       </FormFields>
 
       <FormActions>
-        <PopButton disabled={isSubmitting} type='submit' variant='yellow'>
+        <MeetButton disabled={isSubmitting} fullWidth type='submit' variant='primary'>
           {isSubmitting
             ? t('auth.forgotPasswordForm.submitting')
             : t('auth.forgotPasswordForm.submit')}
-        </PopButton>
+        </MeetButton>
       </FormActions>
 
       <FormDivider>

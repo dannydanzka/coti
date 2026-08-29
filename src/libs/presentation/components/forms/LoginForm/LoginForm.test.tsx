@@ -8,7 +8,7 @@
 import {
   assertNoText,
   assertSelector,
-  assertTestId,
+  assertRole,
   assertTexts,
   renderWithProviders,
 } from '@testing';
@@ -23,7 +23,7 @@ describe('LoginForm', () => {
       const { container } = renderWithProviders(<LoginForm onSubmit={mockOnSubmit} />);
 
       assertSelector(container, 'form');
-      assertTestId('pop-button');
+      assertRole('button', { name: 'VAMOS' });
       assertTexts(['¿Olvidaste tu contraseña?', 'Crear una cuenta nueva', '¿No tienes cuenta?']);
     });
   });

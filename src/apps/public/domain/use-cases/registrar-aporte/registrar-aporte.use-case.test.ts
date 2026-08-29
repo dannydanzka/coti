@@ -3,94 +3,75 @@
  */
 
 vi.mock('@repositories', () => ({
-  planDeAhorroRepository: { findByViajeId: vi.fn(), registrarAporte: vi.fn() },
-  viajeRepository: { findActivoByUserId: vi.fn() },
+  viajeRepository: { addRegistro: vi.fn(), findActivoByUserId: vi.fn() },
 }));
 
-import { expectSuccess, MOCK_REQUEST } from '@testing/helpers';
-import { planDeAhorroRepository, viajeRepository } from '@repositories';
+import { expectSuccess } from '@testing/helpers';
+import { viajeRepository } from '@repositories';
 
 import { executeRegistrarAporte } from './registrar-aporte.use-case';
 
 const mockViajeRepo = vi.mocked(viajeRepository);
-const mockPlanRepo = vi.mocked(planDeAhorroRepository);
 
-const params = { monto: 3200, request: MOCK_REQUEST, userId: 'usuario-1' };
+const params = { input: { monto: 3200 }, userId: 'usuario-1' };
 
-const VIAJE_AHORRANDO = { estado: 'AHORRANDO', id: 'viaje-1', userId: 'usuario-1' };
-const PLAN = { id: 'plan-1', viajeId: 'viaje-1' };
-const REGISTRO = {
-  fecha: new Date('2026-09-01'),
-  id: 'registro-1',
-  monto: 3200,
-  nota: null,
-  planId: 'plan-1',
+const VIAJE_CON_PLAN = {
+  estado: 'AHORRANDO',
+  id: 'viaje-1',
+  plan: { id: 'plan-1', viajeId: 'viaje-1' },
+  userId: 'usuario-1',
 };
 
 describe('executeRegistrarAporte', () => {
   beforeEach(() => {
-    mockViajeRepo.findActivoByUserId.mockResolvedValue(VIAJE_AHORRANDO as never);
-    mockPlanRepo.findByViajeId.mockResolvedValue(PLAN as never);
-    mockPlanRepo.registrarAporte.mockResolvedValue(REGISTRO as never);
+    mockViajeRepo.findActivoByUserId.mockResolvedValue(VIAJE_CON_PLAN as never);
+    mockViajeRepo.addRegistro.mockResolvedValue(undefined as never);
   });
 
-  it('registra el aporte en el plan del usuario', async () => {
+  it('registra el aporte en el plan del viaje activo del usuario', async () => {
     const result = expectSuccess(await executeRegistrarAporte(params));
 
-    expect(result.data?.registro.monto).toBe(3200);
-    expect(mockPlanRepo.registrarAporte).toHaveBeenCalledWith({
-      monto: 3200,
-      nota: null,
-      planId: 'plan-1',
-    });
+    expect(mockViajeRepo.addRegistro).toHaveBeenCalledWith('plan-1', params.input);
+    expect(result.data?.viaje.id).toBe('viaje-1');
   });
 
-  it('guarda la nota cuando viene', async () => {
-    await executeRegistrarAporte({ ...params, nota: 'Entró un extra' });
+  it('devuelve el viaje recargado, no el previo al aporte', async () => {
+    const recargado = { ...VIAJE_CON_PLAN, id: 'viaje-1' };
+    mockViajeRepo.findActivoByUserId
+      .mockResolvedValueOnce(VIAJE_CON_PLAN as never)
+      .mockResolvedValueOnce(recargado as never);
 
-    expect(mockPlanRepo.registrarAporte).toHaveBeenCalledWith(
-      expect.objectContaining({ nota: 'Entró un extra' })
-    );
+    await executeRegistrarAporte(params);
+
+    expect(mockViajeRepo.findActivoByUserId).toHaveBeenCalledTimes(2);
   });
 
-  it('rechaza un monto de cero', async () => {
-    const result = await executeRegistrarAporte({ ...params, monto: 0 });
+  it('falla 404 cuando el usuario no tiene viaje activo', async () => {
+    mockViajeRepo.findActivoByUserId.mockResolvedValue(null as never);
+
+    const result = await executeRegistrarAporte(params);
 
     expect(result.success).toBe(false);
-    expect(mockPlanRepo.registrarAporte).not.toHaveBeenCalled();
+    expect(mockViajeRepo.addRegistro).not.toHaveBeenCalled();
   });
 
-  it('rechaza un monto negativo', async () => {
-    const result = await executeRegistrarAporte({ ...params, monto: -100 });
-
-    expect(result.success).toBe(false);
-    expect(mockPlanRepo.registrarAporte).not.toHaveBeenCalled();
-  });
-
-  it('rechaza aportar cuando el viaje sigue en borrador', async () => {
-    mockViajeRepo.findActivoByUserId.mockResolvedValueOnce({
-      ...VIAJE_AHORRANDO,
-      estado: 'BORRADOR',
+  it('falla 404 cuando el viaje activo no tiene plan de ahorro', async () => {
+    mockViajeRepo.findActivoByUserId.mockResolvedValue({
+      ...VIAJE_CON_PLAN,
+      plan: null,
     } as never);
 
     const result = await executeRegistrarAporte(params);
 
     expect(result.success).toBe(false);
-    expect(mockPlanRepo.registrarAporte).not.toHaveBeenCalled();
+    expect(mockViajeRepo.addRegistro).not.toHaveBeenCalled();
   });
 
-  it('rechaza aportar cuando el usuario no tiene viaje', async () => {
-    mockViajeRepo.findActivoByUserId.mockResolvedValueOnce(null);
+  it('mapea un error del repositorio sin propagar la excepción', async () => {
+    mockViajeRepo.findActivoByUserId.mockRejectedValue(new Error('db down'));
 
     const result = await executeRegistrarAporte(params);
 
     expect(result.success).toBe(false);
-  });
-
-  it('resuelve el plan desde la identidad de quien llama, no desde el cuerpo', async () => {
-    await executeRegistrarAporte(params);
-
-    expect(mockViajeRepo.findActivoByUserId).toHaveBeenCalledWith('usuario-1');
-    expect(mockPlanRepo.findByViajeId).toHaveBeenCalledWith('viaje-1');
   });
 });

@@ -3,9 +3,9 @@
  */
 
 import { createElement } from 'react';
-import { PiggyBank, UserRound } from 'lucide-react';
+import { Home, PiggyBank, Plane, UserRound } from 'lucide-react';
 
-import { ROUTES } from '@constants';
+import { AUTHENTICATED_ROUTES, ROUTES } from '@constants';
 
 import type { DrawerNavigationItem } from './AppDrawer.interfaces';
 
@@ -16,12 +16,24 @@ import type { DrawerNavigationItem } from './AppDrawer.interfaces';
 export const DRAWER_NAVIGATION_ITEMS: DrawerNavigationItem[] = [
   {
     href: ROUTES.PUBLIC.DASHBOARD,
-    icon: createElement(PiggyBank, { size: 20 }),
+    icon: createElement(Home, { size: 20 }),
     id: 'dashboard',
-    label: 'Mi cajita',
+    label: 'Inicio',
   },
   {
-    href: `${ROUTES.PUBLIC.DASHBOARD}/profile`,
+    href: AUTHENTICATED_ROUTES.PLANNER,
+    icon: createElement(Plane, { size: 20 }),
+    id: 'planner',
+    label: 'Mi viaje',
+  },
+  {
+    href: AUTHENTICATED_ROUTES.CAJITA,
+    icon: createElement(PiggyBank, { size: 20 }),
+    id: 'cajita',
+    label: 'Cajita de ahorro',
+  },
+  {
+    href: AUTHENTICATED_ROUTES.PROFILE,
     icon: createElement(UserRound, { size: 20 }),
     id: 'profile',
     label: 'Mi perfil',

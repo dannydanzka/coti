@@ -17,16 +17,18 @@ import {
   AuthCardWrapper,
   AuthContent,
   AuthHeader,
+  AuthIllustrationImage,
+  AuthIllustrationPanel,
   AuthPageWrapper,
   AuthSection,
   AuthSubtitle,
   AuthTitle,
   LoginForm,
 } from '@components';
+import { BRAND_ASSETS, ROUTES, USER_ROLES } from '@constants';
 import { getLocalizedError } from '@i18n';
 import { isProjectionOriginRedirect } from '@apps/public/constants';
 import type { LoginFormData } from '@components';
-import { ROUTES, USER_ROLES } from '@constants';
 import { useAuth, useNotifications } from '@hooks';
 
 import type { LoginScreenProps } from './LoginScreen.interfaces';
@@ -95,6 +97,9 @@ export const LoginScreen = ({ redirectTo }: LoginScreenProps) => {
               />
             </AuthCard>
           </AuthCardWrapper>
+          <AuthIllustrationPanel aria-hidden='true'>
+            <AuthIllustrationImage alt='' src={BRAND_ASSETS.AUTH} />
+          </AuthIllustrationPanel>
         </AuthContent>
       </AuthSection>
     </AuthPageWrapper>

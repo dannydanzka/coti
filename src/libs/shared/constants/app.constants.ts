@@ -77,6 +77,7 @@ export const APP_METADATA = {
  */
 export const BRAND_ASSETS = {
   APP_ICON: '/brand/app-icon.png',
+  AUTH: '/brand/auth-camino.jpg',
   HERO: '/brand/hero-atardecer.jpg',
   LOGO: '/brand/logo.png',
   LOGO_HORIZONTAL: '/brand/logo-horizontal.png',

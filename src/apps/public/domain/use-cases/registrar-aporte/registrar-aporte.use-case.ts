@@ -1,15 +1,13 @@
 /**
  * Registrar Aporte Use Case
  *
- * Records one contribution into the participant's savings box.
- *
- * The plan is resolved from the caller's own active trip rather than from a
- * client-supplied id, so a participant can only ever contribute to their own
- * box even if they forge the request body.
+ * Un aporte más a la cajita del viaje activo. La identidad la impone el
+ * middleware; el plan se resuelve desde el viaje del usuario, así que nadie
+ * puede aportar a la cajita de otro.
  */
 
-import { createBusinessLogicError, createNotFoundError, handleUseCaseError } from '@use-case-error';
-import { planDeAhorroRepository, viajeRepository } from '@repositories';
+import { createNotFoundError, handleUseCaseError } from '@use-case-error';
+import { viajeRepository } from '@repositories';
 
 import type {
   RegistrarAporteErrorResponse,
@@ -17,39 +15,23 @@ import type {
   RegistrarAporteResponse,
 } from './registrar-aporte.interfaces';
 
-export const executeRegistrarAporte = async (
-  params: RegistrarAporteParams
-): Promise<RegistrarAporteResponse> => {
+export const executeRegistrarAporte = async ({
+  input,
+  userId,
+}: RegistrarAporteParams): Promise<RegistrarAporteErrorResponse | RegistrarAporteResponse> => {
   try {
-    if (params.monto <= 0) {
-      return createBusinessLogicError<RegistrarAporteErrorResponse>({
-        key: 'errors.travel.aporteInvalido',
-      });
+    const activo = await viajeRepository.findActivoByUserId(userId);
+    if (!activo?.plan) {
+      return createNotFoundError<RegistrarAporteErrorResponse>('Plan de ahorro');
     }
 
-    const viaje = await viajeRepository.findActivoByUserId(params.userId);
-
-    if (viaje?.estado !== 'AHORRANDO') {
-      return createNotFoundError<RegistrarAporteErrorResponse>('Cajita de ahorro', params.userId);
+    await viajeRepository.addRegistro(activo.plan.id, input);
+    const viaje = await viajeRepository.findActivoByUserId(userId);
+    if (!viaje) {
+      return createNotFoundError<RegistrarAporteErrorResponse>('Viaje');
     }
 
-    const plan = await planDeAhorroRepository.findByViajeId(viaje.id);
-
-    if (!plan) {
-      return createNotFoundError<RegistrarAporteErrorResponse>('Plan de ahorro', viaje.id);
-    }
-
-    const registro = await planDeAhorroRepository.registrarAporte({
-      monto: params.monto,
-      nota: params.nota ?? null,
-      planId: plan.id,
-    });
-
-    return {
-      data: { registro },
-      message: 'Aporte registrado correctamente',
-      success: true,
-    };
+    return { data: { viaje }, message: 'Aporte registrado', success: true };
   } catch (error) {
     return handleUseCaseError<RegistrarAporteErrorResponse>(error, 'executeRegistrarAporte');
   }

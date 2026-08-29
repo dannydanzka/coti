@@ -17,13 +17,15 @@ import {
   AuthCardWrapper,
   AuthContent,
   AuthHeader,
+  AuthIllustrationImage,
+  AuthIllustrationPanel,
   AuthPageWrapper,
   AuthSection,
   AuthSubtitle,
   AuthTitle,
   SignupForm,
 } from '@components';
-import { AUTHENTICATED_ROUTES } from '@constants';
+import { AUTHENTICATED_ROUTES, BRAND_ASSETS } from '@constants';
 import { isProjectionOriginRedirect } from '@apps/public/constants';
 import type { SignupFormData } from '@components';
 import { useAuth } from '@hooks';
@@ -70,9 +72,12 @@ export const SignupScreen = ({ redirectTo }: SignupScreenProps = {}) => {
               <AuthSubtitle>{t(subtitleKey)}</AuthSubtitle>
             </AuthHeader>
             <AuthCard>
-              <SignupForm onSubmit={handleSignup} />
+              <SignupForm hideHeader onSubmit={handleSignup} />
             </AuthCard>
           </AuthCardWrapper>
+          <AuthIllustrationPanel aria-hidden='true'>
+            <AuthIllustrationImage alt='' src={BRAND_ASSETS.AUTH} />
+          </AuthIllustrationPanel>
         </AuthContent>
       </AuthSection>
     </AuthPageWrapper>

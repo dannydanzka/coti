@@ -13,11 +13,12 @@ import { useCallback, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Input, PopButton } from '@dannydanzka/sovereignty-ui';
+import { Input } from '@dannydanzka/sovereignty-ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import type { LoginFormData, LoginFormProps } from './LoginForm.interfaces';
 import { loginFormSchema } from './LoginForm.validation';
+import { MeetButton } from '../../common/MeetButton';
 
 import {
   FormActions,
@@ -125,9 +126,9 @@ export const LoginForm = ({
 
   const renderActions = () => (
     <FormActions>
-      <PopButton disabled={isSubmitting} type='submit' variant='yellow'>
+      <MeetButton disabled={isSubmitting} fullWidth type='submit' variant='primary'>
         {isSubmitting ? t('auth.loginForm.submitting') : t('auth.loginForm.submit')}
-      </PopButton>
+      </MeetButton>
       {!hideForgotPassword && (
         <FormLink href='/forgot-password'>{t('auth.forgotPassword')}</FormLink>
       )}

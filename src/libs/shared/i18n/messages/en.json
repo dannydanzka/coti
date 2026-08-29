@@ -376,9 +376,6 @@
       "homeMustBePublished": "Only a published landing with no parent page can be the home",
       "brokenNavTargets": "Some menu links point to nothing",
       "nothingToPublish": "This landing has no visible sections to publish"
-    },
-    "travel": {
-      "aporteInvalido": "The contribution must be greater than zero"
     }
   },
   "common": {
@@ -508,7 +505,11 @@
     "reject": "Rechazar",
     "paymentHistory": "Historial de Pagos",
     "conversationHistory": "Historial de Conversación",
-    "saving": "Guardando..."
+    "saving": "Guardando...",
+    "calendar": {
+      "nextMonth": "Next month",
+      "prevMonth": "Previous month"
+    }
   },
   "auth": {
     "login": "Iniciar Sesión",
@@ -974,14 +975,168 @@
       "text": "Open your savings box today. Coti does the math and stays with you until departure day."
     }
   },
-  "travel": {
-    "validation": {
-      "montoRequerido": "Enter how much you are contributing",
-      "montoInvalido": "That amount is not valid",
-      "montoEntero": "Use whole pesos, no cents",
-      "montoPositivo": "The contribution must be greater than zero",
-      "montoMaximo": "That amount is too high",
-      "notaMaxima": "The note cannot exceed 200 characters"
+  "planner": {
+    "common": {
+      "back": "Back",
+      "continue": "Continue",
+      "saveAndExit": "Save and exit",
+      "skip": "Skip for now",
+      "stepOf": "Step {{step}} of {{total}}"
+    },
+    "define": {
+      "title": "Where do you want to go?",
+      "subtitle": "Destination, dates and who's coming.",
+      "destination": "Destination",
+      "destinationPlaceholder": "Pick a destination",
+      "dates": "Dates",
+      "nights_one": "{{count}} night",
+      "nights_other": "{{count}} nights",
+      "departure": "Departure",
+      "return": "Return",
+      "pickDate": "Pick on the calendar",
+      "people": "People",
+      "you": "You",
+      "companion": "+",
+      "less": "One person less",
+      "more": "One person more",
+      "tipTitle": "Heads up",
+      "tipText": "More people raise the total but lower the lodging cost per person."
+    },
+    "style": {
+      "title": "How do you travel?",
+      "subtitle": "This adjusts your projection range. You can change it anytime.",
+      "label": "Your style · pick what fits you",
+      "options": {
+        "MOCHILERO": "Backpacker",
+        "COMODO": "Comfortable",
+        "BOUTIQUE": "Boutique",
+        "FOODIE": "Foodie",
+        "NATURALEZA": "Nature",
+        "CULTURA": "Culture",
+        "FIESTA": "Party",
+        "RELAX": "Relax"
+      }
+    },
+    "attractions": {
+      "title": "What do you want to do there?",
+      "subtitle": "Mark what you can't miss and what would be nice.",
+      "mustGo": "Must go",
+      "nice": "Nice",
+      "mustGoCount": "{{count}} Must go",
+      "niceCount": "{{count}} Would be nice",
+      "hint": "“Must go” items weigh more in the estimate."
+    },
+    "projection": {
+      "lead": "This trip may cost between",
+      "meta": "MXN · {{people}} people · {{nights}} nights · {{month}}",
+      "details": "Trip details",
+      "disclaimer": "Estimated range by season and travel style, not a quote. Coti projects, it doesn't book.",
+      "cta": "Create my savings plan",
+      "incomplete": "Trip data missing: pick a destination and dates to see your projection."
+    },
+    "plan": {
+      "title": "Set your savings goal",
+      "subtitle": "You set the pace. Coti does the math.",
+      "goalLabel": "Your savings goal",
+      "goals": {
+        "MINIMO": {
+          "title": "Minimum",
+          "hint": "The essentials."
+        },
+        "COMODO": {
+          "title": "Comfortable",
+          "hint": "With a buffer."
+        },
+        "SIN_LIMITES": {
+          "title": "No limits",
+          "hint": "Everything you want."
+        }
+      },
+      "frequencyLabel": "How often do you contribute?",
+      "frequency": {
+        "SEMANAL": "Weekly",
+        "QUINCENAL": "Biweekly",
+        "MENSUAL": "Monthly"
+      },
+      "amountLabel": {
+        "SEMANAL": "How much per week?",
+        "QUINCENAL": "How much per fortnight?",
+        "MENSUAL": "How much per month?"
+      },
+      "amountUnit": {
+        "SEMANAL": "MXN / week",
+        "QUINCENAL": "MXN / fortnight",
+        "MENSUAL": "MXN / month"
+      },
+      "per": {
+        "SEMANAL": "a week",
+        "QUINCENAL": "a fortnight",
+        "MENSUAL": "a month"
+      },
+      "okTitle": "You'll make it",
+      "okText": "At {{amount}} {{frequency}} you reach your goal by {{date}} — before your trip.",
+      "lateTitle": "Not quite there",
+      "lateText": "At {{amount}} {{frequency}} you reach your goal by {{date}}, after your trip. Raise the amount or lower the goal.",
+      "noAmount": "Set an amount to see when you'll get there."
+    },
+    "start": {
+      "title": "Already saved something?",
+      "subtitle": "Everything counts. Even a little.",
+      "toggle": "I already have savings for this trip",
+      "toggleHint": "We count it as your starting point.",
+      "amountLabel": "Starting amount",
+      "goal": "Savings goal",
+      "have": "You have",
+      "missing": "To go",
+      "progress": "You start at {{percent}}% of your goal. Not bad.",
+      "progressZero": "You start from zero. Every entry counts.",
+      "fromZero": "I'm starting from zero"
+    },
+    "activate": {
+      "title": "Done! Your savings box is open",
+      "subtitle": "{{city}} awaits you on {{date}}.",
+      "destination": "Destination",
+      "goal": "Goal",
+      "contribution": "Contribution",
+      "contributionValue": "{{amount}} {{frequency}} · {{periods}} entries",
+      "initial": "You have",
+      "reminder": "Remind me each entry",
+      "reminderHint": "So you don't miss it.",
+      "reminderTo": "We'll email {{email}}.",
+      "cta": "Save for my trip",
+      "saving": "Opening your box…",
+      "editable": "You can change this anytime."
+    }
+  },
+  "cajita": {
+    "greeting": "Hi, {{name}}",
+    "monthsLeft_one": "{{count}} month to {{city}}",
+    "monthsLeft_other": "{{count}} months to {{city}}",
+    "saved": "Saved so far",
+    "of": "of {{amount}} MXN",
+    "milestone": {
+      "25": "25% in! First milestone passed.",
+      "50": "Halfway there! 50%.",
+      "75": "75%! Almost there.",
+      "100": "Goal complete! Pack your bags."
+    },
+    "stats": {
+      "missing": "to go",
+      "months": "months left",
+      "entries": "entries recorded"
+    },
+    "entries": "Your entries",
+    "next": {
+      "label": "Next entry",
+      "register": "Record an entry",
+      "notePlaceholder": "Note (optional)",
+      "cta": "Record",
+      "saving": "Saving…"
+    },
+    "empty": {
+      "title": "You don't have a savings box yet",
+      "text": "Pick a destination, tell us how much you can set aside and we'll tell you how long it takes.",
+      "cta": "Plan my trip"
     }
   }
 }

@@ -3,6 +3,12 @@
  */
 
 export const DASHBOARD_UI_TEXT = {
+  ACTIVE_BOX: {
+    BUTTON: 'Ver mi cajita',
+    MISSING: 'te faltan',
+    OF: 'de',
+    SAVED: 'Llevas',
+  },
   EMPTY_BOX: {
     BUTTON: 'Planear mi viaje',
     HIGHLIGHT: 'Esta herramienta proyecta, no reserva.',

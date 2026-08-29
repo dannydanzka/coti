@@ -1,43 +1,35 @@
 /**
  * Travel Validation Schemas
  *
- * Zod schemas for the trip planning domain, shared by API routes and forms.
- *
- * Convention (same as auth): `*BodySchema` validates an API payload,
- * `*ValidationSchema` backs a react-hook-form. Messages are i18n keys so the
- * form can translate them; the API falls back to them as plain text.
+ * Zod compartido entre las rutas API y el wizard de planeación.
  */
 
 import { z } from 'zod';
 
-/** A contribution has to fit in an Int column and be a real amount of pesos. */
-const MONTO_MAXIMO = 10_000_000;
-const NOTA_MAX_LENGTH = 200;
+const estiloNivelSchema = z.enum(['ECONOMICO', 'MEDIO', 'COMODO']);
+const ritmoSchema = z.enum(['RELAJADO', 'MEDIO', 'INTENSO']);
+const frecuenciaSchema = z.enum(['SEMANAL', 'QUINCENAL', 'MENSUAL', 'TRIMESTRAL']);
+const prioridadSchema = z.enum(['MUST_GO', 'WOULD_BE_NICE']);
 
-export const registrarAporteBodySchema = z.object({
-  monto: z
-    .number({
-      invalid_type_error: 'travel.validation.montoInvalido',
-      required_error: 'travel.validation.montoRequerido',
-    })
-    .int('travel.validation.montoEntero')
-    .positive('travel.validation.montoPositivo')
-    .max(MONTO_MAXIMO, 'travel.validation.montoMaximo'),
-  nota: z
-    .string()
-    .trim()
-    .max(NOTA_MAX_LENGTH, 'travel.validation.notaMaxima')
-    .optional()
-    .nullable(),
+export const createViajeBodySchema = z.object({
+  aportacion: z.number().int().min(1).max(1_000_000),
+  atracciones: z
+    .array(z.object({ atraccionId: z.string().min(1), prioridad: prioridadSchema }))
+    .max(50),
+  destinoId: z.string().min(1),
+  estiloAlojamiento: estiloNivelSchema,
+  estiloComida: estiloNivelSchema,
+  fechaSalida: z.string().datetime({ message: 'La fecha de salida debe ser ISO 8601' }),
+  frecuencia: frecuenciaSchema,
+  meta: z.number().int().min(1).max(10_000_000),
+  montoInicial: z.number().int().min(0).max(10_000_000),
+  noches: z.number().int().min(1).max(90),
+  personas: z.number().int().min(1).max(10),
+  recordatorios: z.boolean(),
+  ritmo: ritmoSchema,
 });
 
-export const registrarAporteValidationSchema = z.object({
-  monto: z
-    .string()
-    .trim()
-    .min(1, 'travel.validation.montoRequerido')
-    .regex(/^\d+$/, 'travel.validation.montoEntero')
-    .refine((valor) => Number(valor) > 0, 'travel.validation.montoPositivo')
-    .refine((valor) => Number(valor) <= MONTO_MAXIMO, 'travel.validation.montoMaximo'),
-  nota: z.string().trim().max(NOTA_MAX_LENGTH, 'travel.validation.notaMaxima').optional(),
+export const registrarAporteBodySchema = z.object({
+  monto: z.number().int().min(1, 'El aporte debe ser mayor a cero').max(10_000_000),
+  nota: z.string().max(120).optional(),
 });

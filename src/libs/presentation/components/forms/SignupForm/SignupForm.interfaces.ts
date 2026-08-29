@@ -14,5 +14,7 @@ export interface SignupFormData {
 }
 
 export interface SignupFormProps {
+  /** Oculta título y subtítulo cuando la pantalla ya los pinta afuera de la tarjeta. */
+  hideHeader?: boolean;
   onSubmit: (data: SignupFormData) => Promise<void>;
 }
