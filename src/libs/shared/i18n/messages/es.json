@@ -376,6 +376,9 @@
       "homeMustBePublished": "Solo una landing publicada y sin página padre puede ser la portada",
       "brokenNavTargets": "Hay enlaces del menú que no apuntan a nada",
       "nothingToPublish": "Esta landing no tiene secciones visibles que publicar"
+    },
+    "travel": {
+      "aporteInvalido": "El aporte debe ser mayor a cero"
     }
   },
   "common": {
@@ -969,6 +972,16 @@
     "closing": {
       "title": "Conocer el mundo no tiene edad mínima. Tiene plan.",
       "text": "Abre tu cajita hoy. Coti hace las cuentas y te acompaña hasta el día del viaje."
+    }
+  },
+  "travel": {
+    "validation": {
+      "montoRequerido": "Escribe cuánto vas a aportar",
+      "montoInvalido": "El monto no es válido",
+      "montoEntero": "Usa pesos completos, sin centavos",
+      "montoPositivo": "El aporte debe ser mayor a cero",
+      "montoMaximo": "Ese monto es demasiado alto",
+      "notaMaxima": "La nota no puede pasar de 200 caracteres"
     }
   }
 }

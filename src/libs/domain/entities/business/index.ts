@@ -7,4 +7,5 @@
  * @context Coti (All Modules)
  */
 
+export * from './travel.entity';
 export * from './user.entity';

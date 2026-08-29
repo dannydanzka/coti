@@ -17,6 +17,10 @@
         "REQUEST_PASSWORD_RESET": "/api/auth/request-password-reset",
         "RESET_PASSWORD": "/api/auth/reset-password"
       },
+      "TRAVEL": {
+        "CAJITA": "/api/travel/cajita",
+        "CAJITA_APORTES": "/api/travel/cajita/aportes"
+      },
       "HEALTH": "/api/health"
     }
   }
