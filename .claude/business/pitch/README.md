@@ -1,125 +1,157 @@
-# El pitch — guion de presentación
+# El pitch
 
-> **Fuente:** [`coti-guion-presentacion.pdf`](coti-guion-presentacion.pdf) · 11 slides ·
-> tono formal-cálido, estilo TED · workshop de Claude Code, Wizeline, agosto 2026
+> Workshop de Claude Code · Wizeline · agosto 2026
 >
-> El PDF trae el guion palabra por palabra y las acotaciones de escena. Este README extrae
-> **lo que el pitch compromete como producto** —y que la spec no tenía escrito— más lo que
-> hoy **no es cierto** y hay que arreglar antes de subir al escenario.
+> | Archivo | Qué es |
+> |---|---|
+> | [`coti-pitch-presentacion.pptx`](coti-pitch-presentacion.pptx) | **El deck** — 11 slides, con notas del orador (versión de ~5 min) |
+> | [`coti-guion-presentacion.pdf`](coti-guion-presentacion.pdf) | **El guion largo** — el mismo arco contado como TED talk, con anécdota de apertura y acotaciones de escena |
+>
+> Son dos guiones distintos del mismo deck: las notas del pptx van al grano; el PDF abre con
+> *«llevo tres años diciendo que este es el año en que por fin voy a Japón»* y cierra con el
+> callback. Si se edita uno, editar el otro.
+>
+> Este README extrae **lo que el pitch compromete como producto** —cosas que la spec no tenía
+> escritas— y, al final, **lo que hoy no se sostiene**. Eso último es lo importante.
 
 ---
 
-## El arco, en una línea por slide
+## El arco
 
-| # | Slide | Qué hace |
+| # | Slide | Qué dice |
 |---|---|---|
-| — | Apertura | Anécdota: *«llevo tres años diciendo que este es el año en que por fin voy a Japón»*. El gancho personal. |
-| 1 | Portada | *«No compite en decirte cuál vuelo es más barato — compite en decirte cuánto necesitas guardar tú.»* |
-| 2 | El problema | *«Conocer el mundo no es para mí. No a esta edad, no con lo que gano.»* → **«No competimos contra un buscador de vuelos. Competimos contra una creencia.»** |
-| 3 | Qué es Coti | Tres cosas: proyecta un rango creíble · arma el plan · te acompaña. Y el principio rector. |
-| 4 | Flujo del usuario | El recorrido contado como historia. Remate: *«decidimos ganarnos la confianza antes de pedir el número de tu cuenta»*. |
-| 5 | Así se ve Coti (1/2) | Definir y proyectar — Tokio, 2 personas, `$58,400–$76,900` desglosado. Slide de credibilidad. |
-| 6 | Así se ve Coti (2/2) | Ahorrar y llegar — $3,200 al mes, 18 meses, la cajita de Paola al 40%. |
-| 7 | La cajita de ahorro | El corazón. *«Ahorrar para un viaje no debería sentirse como pagar el internet. Debería sentirse un poquito como ya estar de vacaciones.»* |
-| 8 | Modelo de negocio | Ver abajo — **contenido nuevo, no estaba en la spec.** |
-| 9 | Fases | Ver abajo — **contenido nuevo.** |
-| 10 | Equipo | Siete personas, siete oficios. |
-| 11 | Cierre | *«Nosotros hacemos las cuentas. Tú pones la meta.»* + callback a Japón. |
+| 1 | Portada | *«Proyecta tu viaje. Ahorra con Coti.»* |
+| 2 | El problema | *«Conocer el mundo no es para mí. No a esta edad, no con lo que gano.»* → **«Nadie le ha puesto un número al viaje que quiere. Sin número no hay meta, y sin meta no hay ahorro.»** |
+| 3 | Qué es Coti | Tres verbos: **Proyecta · Planea · Acompaña**, y el principio rector. |
+| 4 | Flujo del usuario | Cuatro momentos: definir · quiz · ver la proyección · abrir la cajita. *«Valor antes que datos: el rango se ve antes de pedir información financiera.»* |
+| 5 | Así se ve Coti (1/2) | Definir el viaje · Quiz de estilo · Atracciones · La proyección |
+| 6 | Así se ve Coti (2/2) | Plan de ahorro · Punto de partida · Activar el ahorro · La cajita |
+| 7 | La cajita de ahorro | El seguimiento visual sostiene el hábito. Hitos y micro-celebraciones. |
+| 8 | Modelo de negocio | Ver abajo. |
+| 9 | Fases | Ver abajo. |
+| 10 | Equipo | Los siete, con nombre y oficio. |
+| 11 | Cierre | **«El mundo sí es para ti.»** *«Nosotros hacemos las cuentas. Tú pones la meta.»* |
 
----
-
-## Posicionamiento
-
-La línea que ordena todo el pitch y que conviene defender en cualquier decisión de producto:
+### La línea que ordena todo
 
 > **No competimos contra un buscador de vuelos. Competimos contra una creencia.**
 
-De ahí se sigue el rebote a la pregunta obvia: *«Skyscanner vende el vuelo. Nosotros ayudamos
-a que la persona llegue a tener con qué comprarlo. Son dos negocios distintos que, con suerte,
-se dan la mano seis meses antes del viaje.»*
+De ahí el rebote a la pregunta obvia (Skyscanner/Kayak): *«ellos venden el vuelo; nosotros
+ayudamos a que la persona llegue a tener con qué comprarlo. Son dos negocios distintos que, con
+suerte, se dan la mano seis meses antes del viaje.»*
 
 ---
 
 ## Modelo de negocio — tres capas
 
-**Esto no existía en ninguna parte del contexto de negocio hasta ahora.**
+*«Tres capas, sin tocar el dinero del usuario.»* Marcado en el propio deck como
+**hipótesis de monetización a validar con los primeros usuarios** — no como plan cerrado.
 
-| Capa | Qué es |
+| Capa | Qué incluye |
 |---|---|
-| **Gratis** | El viaje completo. Suficiente para lograr una meta de principio a fin. |
-| **Coti Plus** | Suscripción para quien quiere ahorrar para **varios viajes a la vez**. |
-| **Alianzas** | Recomendación de destinos y experiencias de socios. |
+| **Gratis** | Un viaje, completo: proyección, plan de ahorro, cajita y recordatorios. Suficiente para llegar. |
+| **Coti Plus** (suscripción) | Varios viajes a la vez · ajuste por temporada · escenarios comparados · exportar el plan. |
+| **Alianzas** | Destinos y experiencias de socios, **presentados sin reservar ni cobrar dentro de Coti**. |
 
-La frase que mantiene esto compatible con el principio rector, y que hay que decir tal cual:
-**«nunca reservamos ni cobramos dentro de Coti — sólo somos buenos recomendando»**.
+No se cobra desde el día uno a propósito: primero hay que probar que el producto cambia el
+comportamiento de ahorro. *«Si eso funciona, la suscripción se vende prácticamente sola.»*
 
-> ⚠️ Las alianzas son el borde más delgado del producto. Recomendar es proyectar; en el momento
-> en que se agregue un enlace de reserva o una comisión por conversión, Coti dejó de proyectar
-> y empezó a reservar. Si esa capa avanza, merece su propia decisión escrita.
+> ⚠️ Las alianzas son el borde más delgado del producto. Recomendar es proyectar; un enlace de
+> reserva o una comisión por conversión ya no. Si esa capa avanza, va con decisión escrita.
 
 ## Fases
 
 | Fase | Qué |
 |---|---|
-| **1 — hoy** | El MVP del workshop. |
-| **2** | Más destinos + **app móvil**. |
-| **3** | **Ahorro compartido**: viajes en grupo con metas en común. |
+| **1 · agosto 2026** | MVP del workshop: web app con proyección por rangos, plan de ahorro, cajita y recordatorios por correo. |
+| **2** | Base de rangos ampliada por temporada, **varios planes en paralelo** y **app móvil**. |
+| **3** | **Ahorro compartido**: viajes en grupo con metas comunes, y alianzas con marcas de viaje. |
 
-Y el cierre de la slide, dicho sin humor a propósito: *«hay algo que no van a ver en ningún
-cuadro de este roadmap, ni en el uno ni en el tres: reservación, checkout o pagos. No es que
-se nos haya olvidado — es una línea que decidimos no cruzar.»*
+Y el remate, dicho sin humor a propósito: **reservación, checkout y pagos quedan fuera del
+mapa**. No es un olvido — es una línea que se decidió no cruzar.
 
-> El ahorro compartido está en la spec como **fuera de alcance**, lo cual sigue siendo correcto
-> para el MVP; ahora además tiene destino: fase 3. La **app móvil** es nueva del todo.
-
----
-
-## Rebotes preparados para preguntas
+## Rebotes preparados
 
 | Pregunta | Respuesta |
 |---|---|
-| ¿Por qué no compiten con Skyscanner/Kayak? | Ellos venden el vuelo; nosotros ayudamos a tener con qué comprarlo. Dos negocios distintos. |
-| ¿Qué pasa si el usuario deja de ahorrar? | Ahí entran los recordatorios y las micro-celebraciones. *«No resolvemos el dinero de nadie, resolvemos la constancia.»* |
-| ¿Por qué no cobran desde el día uno? | Primero probar que el producto cambia el comportamiento de ahorro. *«Si eso funciona, la suscripción se vende prácticamente sola.»* |
+| ¿Por qué no compiten con Skyscanner/Kayak? | Dos negocios distintos: ellos venden el vuelo, nosotros ayudamos a tener con qué comprarlo. |
+| ¿Qué pasa si el usuario deja de ahorrar? | Recordatorios y micro-celebraciones. *«No resolvemos el dinero de nadie, resolvemos la constancia.»* |
+| ¿Por qué no cobran desde el día uno? | Primero probar que cambia el comportamiento de ahorro. |
 | ¿No es sólo un Excel bonito? | *«Un Excel muy pocas veces te manda un mensaje felicitándote por llegar al 50%.»* |
-| ¿Esto ya funciona o son sólo pantallas? | **Ver la advertencia de abajo — esta respuesta hoy es incorrecta.** |
+| ¿Esto ya funciona o son sólo pantallas? | **Ver abajo — esta respuesta hoy es incorrecta.** |
 
 ---
 
-## Lo que el guion afirma y hoy no se sostiene
+## Lo que el pitch afirma y hoy no se sostiene
 
-Tres afirmaciones del guion chocan con el estado real del repo. En un pitch de tres minutos
-nadie las revisa; en cuanto alguien pide el enlace, sí.
+En tres minutos nadie revisa nada. En cuanto alguien pide el enlace, sí.
 
-### 1. El estado del producto está al revés — *el riesgo real*
+### 1. Los recordatorios por correo — el problema más repetido
 
-El rebote preparado dice: *«Son las pantallas reales del flujo completo, construidas en este
-mismo workshop. Lo que sigue es conectarlas de punta a punta con el backend.»*
+**No hay proveedor de correo.** Resend se eliminó del proyecto; `/forgot-password` genera el
+token pero no envía nada. La spec lo tiene como **fuera de alcance**, decidido.
 
-**Es exactamente al revés.** Lo que está construido es el backend —schema, seed de 18 destinos,
+El deck los vende en cinco lugares:
+
+- Slide 3 — *«te recuerda volver»*
+- Slide 7 — *«recordatorios **por correo**»*
+- Slide 8 — la capa gratis los incluye
+- Slide 9 — fase 1 los da por entregados: *«…cajita y recordatorios por correo»*
+- Notas de la 9 — *«web app, rangos curados, **correo**»*
+
+Es la afirmación más repetida del deck y es la que no existe. Dos salidas: quitar la palabra
+correo de esos cinco lugares —las **micro-celebraciones sí son reales** y sostienen solas el
+rebote sobre el abandono—, o elegir proveedor y cargar la llave. Lo segundo es media tarde de
+trabajo; lo primero, cinco ediciones de texto.
+
+### 2. El estado del producto, al revés — *el riesgo de credibilidad*
+
+El rebote preparado en el PDF dice: *«son las pantallas reales del flujo completo, construidas
+en este mismo workshop; lo que sigue es conectarlas de punta a punta con el backend»*, y la
+slide 5 del guion largo remata *«esto ya no es un boceto — es la app real»*.
+
+**Es exactamente al revés.** Lo construido es el backend —schema, seed de 18 destinos,
 `proyectarCosto`, autenticación, roles, panel de administración— y lo que **no existe** son las
-pantallas del flujo: la cajita muestra el estado vacío. Las ocho pantallas de las slides 5 y 6
-son los mockups de la diseñadora, no la app.
+pantallas del flujo: la cajita muestra el estado vacío. Lo que se proyecta en las slides 5 y 6
+son los mockups de la diseñadora.
 
-La versión honesta y igual de fuerte: *«el motor está construido y corriendo —la base, el
-catálogo de destinos y la matemática de proyección—; el flujo está diseñado a detalle y es lo
-que sigue.»* Dice lo mismo del avance sin afirmar algo que se cae al primer clic.
+Versión honesta y igual de fuerte: *«el motor está construido y corriendo —la base, el catálogo
+de destinos y la matemática de proyección—; el flujo está diseñado a detalle y es lo que
+sigue.»*
 
-### 2. Slide 5 — «esto ya no es un boceto, es la app real»
+El deck en sí no comete el error: sólo dice *«Así se ve Coti»*. La corrección es en el PDF.
 
-Mismo problema, dicho señalando la pantalla. Si se proyectan los mockups, es un boceto de alta
-fidelidad. Si se proyecta la app desplegada, hoy no muestra eso.
+### 3. Coti Plus cobra por algo que ya es gratis
 
-### 3. Los recordatorios se venden como respuesta al abandono
+Plus incluye **«ajuste por temporada»** — pero `TemporadaDestino.multiplicador` ya está en la
+base y `proyectarCosto` lo aplica **para todos**. Ponerlo detrás del muro sería quitarle
+precisión a la capa gratuita, no agregarle valor a la de pago.
 
-El rebote de *«¿qué pasa si el usuario deja de ahorrar?»* se apoya en los recordatorios. Hoy
-**no hay proveedor de correo**: la preferencia se guarda y no se envía nada — decidido, está en
-la spec como fuera de alcance. Las **micro-celebraciones sí** son reales y sostienen la
-respuesta solas.
+De paso: **escenarios comparados** y **exportar el plan** no están especificados en ninguna
+parte. Si Plus va en serio, esos dos necesitan definición.
 
-### Y una ausencia
+### 4. Frecuencias que no coinciden con el diseño
 
-**Ni el injerto B («¿a dónde me alcanza?») ni el C (sliders de hábitos) aparecen en el guion.**
-Tampoco están en los mockups. La spec los define como *el momento demostrable del pitch* — y
-ya van dos entregables seguidos donde no existen. Conviene volverlos a meter o quitarlos de la
-spec, pero no dejarlos a medias.
+La slide 3 ofrece guardar *«por semana, mes o trimestre»*. Los mockups ofrecen
+**semanal · quincenal · mensual**: sin trimestre, y con quincenal, que en México es la
+frecuencia de nómina más común. El enum de la base tiene las cuatro, así que el código aguanta
+cualquiera — pero el deck y el diseño no dicen lo mismo. **Gana el diseño.**
+
+### 5. El flujo son cuatro momentos o son ocho pasos
+
+La slide 4 resume el flujo a **cuatro momentos** y mete el quiz de estilo y las atracciones en
+uno solo. La slide 5 del mismo deck las lista **separadas**, igual que los mockups. La 4 es un
+resumen legítimo, pero el paso 2 mezclado es el flujo viejo, no el que dibujó la diseñadora.
+
+### 6. Multi-viaje: ¿fase 2 o Coti Plus?
+
+La slide 9 pone *«varios planes en paralelo»* en la fase 2 y la 8 pone *«varios viajes a la
+vez»* en Coti Plus. Probablemente ambas —se construye en la fase 2, se monetiza con Plus— pero
+dicho así parece contradicción. Vale una frase que lo aclare.
+
+### Y la ausencia, por tercera vez
+
+**Ni el injerto B («¿a dónde me alcanza?») ni el C (sliders de hábitos) aparecen en el deck.**
+Tampoco en el guion largo, tampoco en los mockups. La spec los define como *el momento
+demostrable del pitch*, y ya van tres entregables seguidos sin ellos. A estas alturas parece
+una decisión que nadie escribió: conviene tomarla explícitamente en un sentido o en el otro.

@@ -60,7 +60,7 @@ hábitos— siguen pendientes de diseño.
 | [`.claude/business/spec/coti.md`](.claude/business/spec/coti.md) | La especificación — fuente de verdad del alcance |
 | [`.claude/business/mockups/`](.claude/business/mockups/README.md) | Las 8 pantallas del flujo, móvil y escritorio |
 | [`.claude/business/decisiones/`](.claude/business/decisiones/index.md) | Decisiones cerradas con su porqué: UI kit e infraestructura |
-| [`.claude/business/pitch/`](.claude/business/pitch/README.md) | Guion de presentación, modelo de negocio y fases |
+| [`.claude/business/pitch/`](.claude/business/pitch/README.md) | Deck y guion de presentación, modelo de negocio y fases |
 | [`.claude/business/ideas/`](.claude/business/ideas/README.md) | Banco de las 7 ideas propuestas por el equipo |
 | [`.claude/business/team/`](.claude/business/team/README.md) | Perfiles de las personas del workshop |
 | [`assets/branding/`](assets/branding/) | Identidad visual, guía de marca, iconografía y sprites de Coti |
@@ -131,7 +131,7 @@ Consulta la [guía profesional de marca](assets/branding/README.md) antes de cre
 Tres capas, y una línea que no se cruza:
 
 - **Gratis** — el viaje completo, de principio a fin.
-- **Coti Plus** — suscripción para ahorrar para varios viajes a la vez.
+- **Coti Plus** — suscripción: varios viajes a la vez, escenarios comparados, exportar el plan.
 - **Alianzas** — recomendación de destinos y experiencias de socios.
 
 Coti **nunca reserva ni cobra dentro del producto**. Reservación, checkout y pagos no aparecen
@@ -141,9 +141,9 @@ en ninguna fase del roadmap: no es un olvido, es una decisión.
 
 | Fase | Qué |
 |---|---|
-| **1 — hoy** | El MVP del workshop |
-| **2** | Más destinos + app móvil |
-| **3** | Ahorro compartido: viajes en grupo con metas en común |
+| **1 · agosto 2026** | El MVP del workshop |
+| **2** | Más destinos, varios planes en paralelo y app móvil |
+| **3** | Ahorro compartido: viajes en grupo con metas comunes |
 
 ## Principios de producto
 

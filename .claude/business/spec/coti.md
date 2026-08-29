@@ -116,11 +116,15 @@ promete.
 
 Definido en el pitch ([`../pitch/README.md`](../pitch/README.md)), tres capas:
 
-| Capa | Qué es |
+| Capa | Qué incluye |
 |---|---|
-| **Gratis** | El viaje completo, de principio a fin. Es el producto. |
-| **Coti Plus** | Suscripción para ahorrar para **varios viajes a la vez**. |
+| **Gratis** | Un viaje completo: proyección, plan de ahorro y cajita. Es el producto. |
+| **Coti Plus** | Varios viajes a la vez · escenarios comparados · exportar el plan. |
 | **Alianzas** | Recomendación de destinos y experiencias de socios. |
+
+Está marcado en el propio deck como **hipótesis a validar con los primeros usuarios**, no como
+plan cerrado. Dos features de Plus —escenarios comparados y exportar el plan— no tienen
+definición todavía.
 
 **Coti nunca reserva ni cobra dentro del producto.** La capa de alianzas es el borde más
 delgado: recomendar es proyectar, pero un enlace de reserva o una comisión por conversión
@@ -129,13 +133,17 @@ cruzarían la línea. Si esa capa avanza, va con decisión escrita en `../decisi
 No se cobra desde el día uno a propósito: primero hay que probar que el producto cambia el
 comportamiento de ahorro.
 
+> El **ajuste por temporada** aparece en el deck como feature de Plus, pero ya está construido
+> y se aplica para todos (`TemporadaDestino.multiplicador` en `proyectarCosto`). Cobrarlo sería
+> quitarle precisión a la capa gratuita. Ver [`../pitch/README.md`](../pitch/README.md).
+
 ## 6. Fases
 
 | Fase | Qué |
 |---|---|
-| **1 — el MVP de este workshop** | Lo descrito en la sección 3. |
-| **2** | Más destinos + **app móvil**. |
-| **3** | **Ahorro compartido** — viajes en grupo con metas en común. |
+| **1 · agosto 2026** | El MVP de este workshop — lo descrito en la sección 3. |
+| **2** | Base de rangos ampliada por temporada · varios planes en paralelo · **app móvil**. |
+| **3** | **Ahorro compartido** — viajes en grupo con metas comunes — y alianzas con marcas de viaje. |
 
 Lo que **no aparece en ninguna fase**: reservación, checkout y pagos. No es un olvido, es la
 línea que el producto decidió no cruzar.

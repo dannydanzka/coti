@@ -158,7 +158,7 @@ y podada, propiedad de este proyecto, que se edita libremente.
 │   ├── spec/coti.md          Fuente de verdad del alcance
 │   ├── decisiones/           Decisiones cerradas: UI kit · infraestructura
 │   ├── mockups/              Los 8 pasos del flujo, móvil y desktop
-│   ├── pitch/                Guion de presentación · modelo de negocio · fases
+│   ├── pitch/                Deck + guion · modelo de negocio · fases
 │   ├── ideas/                Banco de las 7 ideas del equipo (ganó la #4)
 │   └── team/                 Perfiles de las personas del workshop
 ├── rules/_global.md        Reglas transversales + dónde buscar por tipo de archivo
