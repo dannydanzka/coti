@@ -4,8 +4,12 @@
  * Layout de las páginas públicas y autenticadas: Header + contenido + Footer.
  *
  * Usa useAuth (AuthContext) como ÚNICA FUENTE DE VERDAD del estado de sesión.
- * El drawer lateral de navegación se agrega en el workshop, cuando exista
- * navegación autenticada que lo justifique.
+ *
+ * La sesión cambia el header (enlaces de la cuenta en lugar de los públicos),
+ * pero NO el envoltorio del contenido: antes, estando logueado, se metía un
+ * contenedor con relleno que le abría un hueco al hero de ancho completo y
+ * hacía que la portada se viera distinta con y sin sesión. Cada pantalla se
+ * encarga de su propio espaciado.
  */
 
 'use client';
@@ -15,13 +19,7 @@ import { useAuth } from '@hooks';
 
 import type { PublicLayoutProps } from './layout.interfaces';
 
-import {
-  ContentArea,
-  MainContent,
-  MainWrapper,
-  PageContent,
-  PublicContainer,
-} from './layout.styled';
+import { MainContent, MainWrapper, PublicContainer } from './layout.styled';
 
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -32,15 +30,7 @@ const PublicLayout = ({ children }: PublicLayoutProps) => {
     <PublicContainer>
       <MainWrapper>
         {!isLoading && <Header variant={showAuthenticatedUI ? 'authenticated' : 'public'} />}
-        <MainContent $isAuthenticated={showAuthenticatedUI}>
-          {showAuthenticatedUI ? (
-            <ContentArea>
-              <PageContent>{children}</PageContent>
-            </ContentArea>
-          ) : (
-            children
-          )}
-        </MainContent>
+        <MainContent>{children}</MainContent>
         {!isLoading && <Footer />}
       </MainWrapper>
     </PublicContainer>

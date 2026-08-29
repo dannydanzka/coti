@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-import { brandColor, layout, motion, spacing } from '@constants';
+import { layout, motion, spacing } from '@constants';
 
 const DRAWER_WIDTH_EXPANDED = '260px';
 const DRAWER_WIDTH_COLLAPSED = '72px';
@@ -48,9 +48,7 @@ export const MainWrapper = styled.div`
   min-width: 0;
 `;
 
-export const MainContent = styled.main<{ $isAuthenticated?: boolean }>`
-  background-color: ${({ $isAuthenticated }) =>
-    $isAuthenticated ? brandColor.landingBgCream : 'transparent'};
+export const MainContent = styled.main`
   display: flex;
   flex: 1;
   flex-direction: column;

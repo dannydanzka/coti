@@ -62,14 +62,16 @@ export const Eyebrow = styled.span<{ $onDark?: boolean }>`
 export const HeroSection = styled.section`
   /* Full-bleed: rompe el contenedor de 1200px y se pega al header. */
   align-items: center;
-  aspect-ratio: 3 / 2;
+
+  /* 16/9 en vez de 3/2: el 3/2 daba 860px de alto y sobraba aire arriba. */
+  aspect-ratio: 16 / 9;
   display: flex;
   justify-content: center;
   margin: -${spacing['2xl']} calc(50% - 50vw) 0;
-  max-height: 860px;
-  min-height: ${layout.heroMinHeightLg};
+  max-height: 660px;
+  min-height: ${layout.heroMinHeight};
   overflow: hidden;
-  padding: ${spacing['2xl']} 34% ${spacing['7xl']} ${spacing.lg};
+  padding: ${spacing.lg} 34% ${spacing['5xl']} ${spacing.lg};
   position: relative;
   text-align: center;
   width: 100vw;
