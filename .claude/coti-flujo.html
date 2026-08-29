@@ -100,20 +100,18 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
 .slider .fl{left:0;background:var(--forest)}
 .slider .th{position:absolute;top:0;width:26px;height:26px;border-radius:999px;
   background:var(--card);border:4px solid var(--forest);transform:translateX(-13px)}
-.slider.warm .fl{background:var(--terracotta)} .slider.warm .th{border-color:var(--terracotta)}
 
 .toggle{width:50px;height:28px;border-radius:999px;background:var(--forest);padding:3px;
   display:flex;justify-content:flex-end;flex:0 0 auto}
 .toggle i{width:22px;height:22px;border-radius:999px;background:var(--card);display:block}
-.radio{display:flex;align-items:center;gap:12px;padding:12px 14px}
-.radio.on{background:#F1F6EF}
-.radio .o{width:22px;height:22px;border-radius:999px;border:1.5px solid var(--border);
   background:var(--card);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.radio.on .o{border:2px solid var(--forest)}
-.radio.on .o i{width:11px;height:11px;border-radius:999px;background:var(--forest);display:block}
-.radio .t{font-size:14px;font-weight:600} .radio .s{font-size:12px;color:var(--muted-fg);margin-top:2px}
-.radio .v{font-size:15px;font-weight:700;color:var(--muted-fg)} .radio.on .v{color:var(--forest)}
 
+.slider .tick{position:absolute;top:7px;width:2px;height:12px;border-radius:1px;
+  background:#C8B99D;transform:translateX(-1px)}
+.ticks{position:relative;height:30px;margin-top:8px;font-size:10px;line-height:13px}
+.ticks b{position:absolute;top:0;font-weight:700;color:var(--muted-fg);white-space:nowrap;text-align:center}
+.ticks b span{display:block;font-weight:600}
+.ticks b.on{color:var(--forest)}
 .progress{height:10px;border-radius:999px;background:var(--muted);overflow:hidden}
 .progress > i{display:block;height:100%;background:var(--leaf);border-radius:999px}
 
@@ -144,23 +142,18 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
 .note{display:flex;gap:8px;background:var(--muted);border-radius:12px;padding:11px 12px;font-size:12px;line-height:17px;color:var(--brown)}
 
 /* ---------- frasco ---------- */
-.jar{position:relative;width:76px;height:92px}
-.jar .glass{position:absolute;left:5px;top:20px;width:66px;height:72px;border:2.5px solid var(--forest);
   border-radius:16px;background:var(--card);overflow:hidden}
-.jar .fill{position:absolute;left:0;bottom:0;width:100%;height:47%;background:var(--mustard)}
-.jar .lid{position:absolute;left:13px;top:10px;width:50px;height:12px;border-radius:6px;background:var(--forest)}
-.jar .c{position:absolute;width:11px;height:11px;border-radius:999px;background:var(--terracotta)}
+.stamp{width:112px;height:132px;flex:0 0 auto;overflow:visible;
+  --stamp-bg:#F3EEE0;transform:rotate(-4deg)}
+.stamp .dim{filter:grayscale(1);opacity:.3}
+.stamp-sm{width:74px;height:88px;--stamp-bg:var(--forest)}
 .illus{background:#F3EEE0;border-radius:20px;padding:20px;display:flex;flex-direction:column;
   align-items:center;gap:8px;text-align:center}
 .illus .t{font-size:20px;font-weight:700;line-height:26px;color:var(--forest)}
 .illus .s{font-size:14px;line-height:20px;color:var(--brown)}
 
 /* ---------- cajita ---------- */
-.jar2{position:relative;width:64px;height:80px;flex:0 0 auto}
-.jar2 .glass{position:absolute;left:4px;top:18px;width:56px;height:62px;border:2px solid var(--cream);
   border-radius:14px;background:var(--forest-2);overflow:hidden}
-.jar2 .fill{position:absolute;left:0;bottom:0;width:100%;height:40%;background:var(--mustard)}
-.jar2 .lid{position:absolute;left:11px;top:9px;width:42px;height:10px;border-radius:5px;background:var(--sand)}
 .saved .k{font-size:10px;font-weight:600;letter-spacing:.8px;color:var(--forest-fg)}
 .saved .v{font-size:34px;font-weight:700;line-height:40px;color:var(--cream)}
 .saved .of{font-size:13px;color:var(--forest-fg)}
@@ -189,13 +182,14 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
 .p1 .cal .w b.s i,.p1 .cal .w b.e i{width:26px;height:26px;font-size:12px}
 .p1 .note-p{padding:13px}
 /* pantalla 7: densidad compacta para que quepa el bloque de recordatorios */
-.p7 .illus{padding:14px;gap:6px}
-.p7 .jar{width:70px;height:80px}
-.p7 .jar .glass{left:4px;top:16px;width:62px;height:64px}
-.p7 .jar .lid{left:12px;top:6px;width:46px}
+.p7 .stamp{width:112px;height:132px;flex:0 0 auto;overflow:visible;
+  --stamp-bg:#F3EEE0;transform:rotate(-4deg)}
+.stamp .dim{filter:grayscale(1);opacity:.3}
+.stamp-sm{width:74px;height:88px;--stamp-bg:var(--forest)}
+.illus{padding:14px;gap:6px}
 .p7 .illus .t{font-size:19px;line-height:25px}
-.p7 .card{padding:14px}
-.p7 .between{padding:9px 16px}
+.p7 .card{padding:12px}
+.p7 .between{padding:7px 16px}
 .p7 .field{padding:11px 14px}
 .p7 .seg > span{padding:7px 0}
 </style>
@@ -381,25 +375,30 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
         <div class="sub">Tú pones el ritmo. Coti hace las cuentas.</div></div>
 
       <div class="stack" style="gap:8px"><div class="label">TU META DE AHORRO</div>
-        <div class="card flush" style="overflow:hidden">
-          <div class="radio"><span class="o"></span><div class="grow"><div class="t">Mínimo</div><div class="s">Lo indispensable del viaje</div></div><span class="v">$58,400</span></div>
-          <div class="divider"></div>
-          <div class="radio on"><span class="o"><i></i></span><div class="grow"><div class="t">Cómodo</div><div class="s">Con margen para imprevistos</div></div><span class="v">$64,100</span></div>
-          <div class="divider"></div>
-          <div class="radio"><span class="o"></span><div class="grow"><div class="t">Sin límites</div><div class="s">Todo lo que quieres hacer</div></div><span class="v">$76,900</span></div>
+        <div class="card">
+          <div class="row" style="gap:8px;align-items:baseline">
+            <b style="font-size:32px;line-height:38px;color:var(--forest)">$64,100</b>
+            <span style="font-size:13px;font-weight:500;color:var(--muted-fg)">MXN</span></div>
+          <div class="slider" style="margin-top:10px">
+            <span class="tr"></span><span class="fl" style="width:30.8%"></span>
+            <span class="tick" style="left:0%"></span><span class="tick" style="left:30.8%"></span><span class="tick" style="left:100%"></span>
+            <span class="th" style="left:30.8%"></span></div>
+          <div class="ticks">
+            <b style="left:0"><span>Mínimo</span>$58,400</b>
+            <b class="on" style="left:30.8%;transform:translateX(-50%)"><span>Cómodo</span>$64,100</b>
+            <b style="right:0"><span>Sin límites</span>$76,900</b></div>
+          <div class="micro" style="margin-top:26px">Con margen para imprevistos.</div>
         </div></div>
 
       <div class="stack" style="gap:8px"><div class="label">¿CON QUÉ FRECUENCIA APORTAS?</div>
         <div class="seg"><span>Semanal</span><span>Quincenal</span><span class="on">Mensual</span></div></div>
 
-      <div class="stack" style="gap:10px"><div class="label">¿CUÁNTO PUEDES DESTINAR AL MES?</div>
+      <div class="stack" style="gap:8px"><div class="label">¿CUÁNTO PUEDES DESTINAR AL MES?</div>
         <div class="field focus" style="padding:12px 16px">
           <span style="font-size:22px;color:var(--muted-fg)">$</span>
           <b class="grow" style="font-size:26px">3,200</b>
           <span style="font-size:13px;font-weight:500;color:var(--muted-fg)">MXN / mes</span></div>
-        <div>
-          <div class="slider warm"><span class="tr"></span><span class="fl" style="width:36%"></span><span class="th" style="left:36%"></span></div>
-          <div class="between"><span class="micro">$500</span><span class="micro">$8,000</span></div></div></div>
+</div>
 
       <div class="card ok" style="padding:14px">
         <div class="row" style="gap:8px">
@@ -461,10 +460,31 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
     <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
     <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 7 de 8</div><div class="sp"></div></div>
       <div class="track"><i style="width:87.5%"></i></div></div>
-    <div class="body" style="gap:14px">
+    <div class="body" style="gap:12px">
       <div class="illus">
-        <div class="jar"><span class="lid"></span><span class="glass"><span class="fill"></span></span>
-          <span class="c" style="left:17px;top:58px"></span><span class="c" style="left:34px;top:54px"></span><span class="c" style="left:45px;top:62px"></span></div>
+        <svg class="stamp" viewBox="0 0 112 132" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="sc7"><rect x="9" y="9" width="94" height="98"/></clipPath>
+          <g id="tokio7">
+        <rect x="9" y="9" width="94" height="98" fill="#FBF0DC"/>
+        <circle cx="79" cy="33" r="13" fill="var(--mustard)"/>
+        <path d="M20 94 L52 40 L84 94 Z" fill="var(--forest)"/>
+        <path d="M43.5 58 L52 40 L60.5 58 L56 53.5 L52 59 L48 53.5 Z" fill="var(--cream)"/>
+        <path d="M9 93 C25 86, 40 96, 56 91 C72 86, 88 95, 103 90 L103 107 L9 107 Z" fill="var(--leaf)"/>
+        <rect x="24.5" y="60" width="5" height="37" fill="var(--terracotta)"/>
+        <rect x="40.5" y="60" width="5" height="37" fill="var(--terracotta)"/>
+        <rect x="17" y="59" width="36" height="5" rx="1.5" fill="var(--terracotta)"/>
+        <rect x="21" y="70" width="28" height="4" fill="var(--terracotta)"/>
+      </g>
+        </defs>
+        <rect x="0" y="0" width="112" height="132" rx="2" fill="var(--card)"/>
+        <g clip-path="url(#sc7)"><use href="#tokio7"/></g>
+        <rect x="9" y="9" width="94" height="98" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 2.5"/>
+        <g fill="none" stroke="var(--forest)" stroke-width="1.6" opacity=".33"><circle cx="84" cy="27" r="15" stroke-dasharray="3.5 3"/><circle cx="84" cy="27" r="10.5"/></g>
+        <text x="10" y="121" font-family="Inter" font-size="7.5" font-weight="700" fill="var(--brown)" letter-spacing=".4">TOKIO</text>
+        <text x="102" y="121" text-anchor="end" font-family="Inter" font-size="7.5" font-weight="700" fill="var(--forest)">$64,100</text>
+        <g fill="var(--stamp-bg)"><circle cx="8" cy="0" r="3.2"/><circle cx="8" cy="132" r="3.2"/><circle cx="20" cy="0" r="3.2"/><circle cx="20" cy="132" r="3.2"/><circle cx="32" cy="0" r="3.2"/><circle cx="32" cy="132" r="3.2"/><circle cx="44" cy="0" r="3.2"/><circle cx="44" cy="132" r="3.2"/><circle cx="56" cy="0" r="3.2"/><circle cx="56" cy="132" r="3.2"/><circle cx="68" cy="0" r="3.2"/><circle cx="68" cy="132" r="3.2"/><circle cx="80" cy="0" r="3.2"/><circle cx="80" cy="132" r="3.2"/><circle cx="92" cy="0" r="3.2"/><circle cx="92" cy="132" r="3.2"/><circle cx="104" cy="0" r="3.2"/><circle cx="104" cy="132" r="3.2"/><circle cx="0" cy="8" r="3.2"/><circle cx="112" cy="8" r="3.2"/><circle cx="0" cy="20" r="3.2"/><circle cx="112" cy="20" r="3.2"/><circle cx="0" cy="32" r="3.2"/><circle cx="112" cy="32" r="3.2"/><circle cx="0" cy="44" r="3.2"/><circle cx="112" cy="44" r="3.2"/><circle cx="0" cy="56" r="3.2"/><circle cx="112" cy="56" r="3.2"/><circle cx="0" cy="68" r="3.2"/><circle cx="112" cy="68" r="3.2"/><circle cx="0" cy="80" r="3.2"/><circle cx="112" cy="80" r="3.2"/><circle cx="0" cy="92" r="3.2"/><circle cx="112" cy="92" r="3.2"/><circle cx="0" cy="104" r="3.2"/><circle cx="112" cy="104" r="3.2"/><circle cx="0" cy="116" r="3.2"/><circle cx="112" cy="116" r="3.2"/><circle cx="0" cy="128" r="3.2"/><circle cx="112" cy="128" r="3.2"/></g>
+      </svg>
         <div class="t">¡Listo! Tu cajita de ahorro está abierta</div>
         <div class="s">Tokio te espera el 14 de marzo de 2028.</div></div>
 
@@ -480,10 +500,10 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
         <div class="row"><div class="grow"><b style="font-size:14px">Recordarme cada mes</b>
           <div class="micro" style="margin-top:2px">Para que no se te pase el aporte</div></div>
           <span class="toggle"><i></i></span></div>
-        <div class="divider" style="margin:12px 0"></div>
+        <div class="divider" style="margin:10px 0"></div>
         <div class="field"><span class="grow" style="font-size:14px">El día 1 de cada mes</span><span class="chev">⌄</span></div>
-        <div class="seg" style="margin-top:12px"><span class="on">Email</span><span>Push</span></div>
-        <div class="field" style="background:var(--muted);border-color:transparent;margin-top:12px">
+        <div class="seg" style="margin-top:10px"><span class="on">Email</span><span>Push</span></div>
+        <div class="field" style="background:var(--muted);border-color:transparent;margin-top:10px">
           <span style="font-size:14px;color:var(--muted-fg)">✉</span>
           <span class="grow" style="font-size:14px;color:var(--brown)">paola@correo.com</span></div>
       </div>
@@ -510,7 +530,33 @@ p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
 
       <div class="card dark">
         <div class="row" style="gap:16px">
-          <div class="jar2"><span class="lid"></span><span class="glass"><span class="fill"></span></span></div>
+          <svg class="stamp stamp-sm" viewBox="0 0 112 132" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="sc8"><rect x="9" y="9" width="94" height="98"/></clipPath>
+              <clipPath id="rev8"><rect x="9" y="67.8" width="94" height="39.2"/></clipPath>
+              <g id="tokio8">
+        <rect x="9" y="9" width="94" height="98" fill="#FBF0DC"/>
+        <circle cx="79" cy="33" r="13" fill="var(--mustard)"/>
+        <path d="M20 94 L52 40 L84 94 Z" fill="var(--forest)"/>
+        <path d="M43.5 58 L52 40 L60.5 58 L56 53.5 L52 59 L48 53.5 Z" fill="var(--cream)"/>
+        <path d="M9 93 C25 86, 40 96, 56 91 C72 86, 88 95, 103 90 L103 107 L9 107 Z" fill="var(--leaf)"/>
+        <rect x="24.5" y="60" width="5" height="37" fill="var(--terracotta)"/>
+        <rect x="40.5" y="60" width="5" height="37" fill="var(--terracotta)"/>
+        <rect x="17" y="59" width="36" height="5" rx="1.5" fill="var(--terracotta)"/>
+        <rect x="21" y="70" width="28" height="4" fill="var(--terracotta)"/>
+      </g>
+            </defs>
+            <rect x="0" y="0" width="112" height="132" rx="2" fill="var(--card)"/>
+            <g clip-path="url(#sc8)">
+              <use href="#tokio8" class="dim"/>
+              <g clip-path="url(#rev8)"><use href="#tokio8"/></g>
+            </g>
+            <rect x="9" y="9" width="94" height="98" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 2.5"/>
+            <g fill="none" stroke="var(--forest)" stroke-width="1.6" opacity=".33"><circle cx="84" cy="27" r="15" stroke-dasharray="3.5 3"/><circle cx="84" cy="27" r="10.5"/></g>
+            <text x="10" y="121" font-family="Inter" font-size="10" font-weight="700" fill="var(--brown)" letter-spacing=".4">TOKIO</text>
+            <text x="102" y="121" text-anchor="end" font-family="Inter" font-size="10" font-weight="700" fill="var(--forest)">40%</text>
+            <g fill="var(--stamp-bg)"><circle cx="8" cy="0" r="3.2"/><circle cx="8" cy="132" r="3.2"/><circle cx="20" cy="0" r="3.2"/><circle cx="20" cy="132" r="3.2"/><circle cx="32" cy="0" r="3.2"/><circle cx="32" cy="132" r="3.2"/><circle cx="44" cy="0" r="3.2"/><circle cx="44" cy="132" r="3.2"/><circle cx="56" cy="0" r="3.2"/><circle cx="56" cy="132" r="3.2"/><circle cx="68" cy="0" r="3.2"/><circle cx="68" cy="132" r="3.2"/><circle cx="80" cy="0" r="3.2"/><circle cx="80" cy="132" r="3.2"/><circle cx="92" cy="0" r="3.2"/><circle cx="92" cy="132" r="3.2"/><circle cx="104" cy="0" r="3.2"/><circle cx="104" cy="132" r="3.2"/><circle cx="0" cy="8" r="3.2"/><circle cx="112" cy="8" r="3.2"/><circle cx="0" cy="20" r="3.2"/><circle cx="112" cy="20" r="3.2"/><circle cx="0" cy="32" r="3.2"/><circle cx="112" cy="32" r="3.2"/><circle cx="0" cy="44" r="3.2"/><circle cx="112" cy="44" r="3.2"/><circle cx="0" cy="56" r="3.2"/><circle cx="112" cy="56" r="3.2"/><circle cx="0" cy="68" r="3.2"/><circle cx="112" cy="68" r="3.2"/><circle cx="0" cy="80" r="3.2"/><circle cx="112" cy="80" r="3.2"/><circle cx="0" cy="92" r="3.2"/><circle cx="112" cy="92" r="3.2"/><circle cx="0" cy="104" r="3.2"/><circle cx="112" cy="104" r="3.2"/><circle cx="0" cy="116" r="3.2"/><circle cx="112" cy="116" r="3.2"/><circle cx="0" cy="128" r="3.2"/><circle cx="112" cy="128" r="3.2"/></g>
+          </svg>
           <div class="grow saved"><div class="k">LLEVAS AHORRADO</div><div class="v">$25,700</div><div class="of">de $64,100 MXN</div></div></div>
         <div class="mtrack"><i style="width:40%"></i></div>
         <div class="miles"><b>✓ 25%</b><span>50%</span><span>75%</span><span>100%</span></div>
