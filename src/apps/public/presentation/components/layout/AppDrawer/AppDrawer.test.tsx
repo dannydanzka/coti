@@ -52,7 +52,7 @@ describe('AppDrawer', () => {
   it('lista sólo las rutas que existen', () => {
     renderWithProviders(<AppDrawer {...defaultProps} />);
 
-    assertTexts(['Mi cajita', 'Mi perfil']);
+    assertTexts(['Inicio', 'Mi viaje', 'Cajita de ahorro', 'Mi perfil']);
   });
 
   it('el avatar alterna el colapso', async () => {

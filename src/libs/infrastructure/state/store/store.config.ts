@@ -11,7 +11,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { authSlice, globalSlice, usersSlice } from '../slices';
+import { authSlice, globalSlice, travelSlice, usersSlice } from '../slices';
 
 /**
  * Global slice persist config - exclude transient UI state
@@ -28,6 +28,7 @@ const globalPersistConfig = {
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
   global: persistReducer(globalPersistConfig, globalSlice.reducer),
+  travel: travelSlice.reducer,
   users: usersSlice.reducer,
 });
 

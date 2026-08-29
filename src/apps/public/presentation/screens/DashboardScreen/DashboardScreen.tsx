@@ -14,12 +14,14 @@ import { PiggyBank } from 'lucide-react';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { AUTHENTICATED_ROUTES } from '@constants';
+import { formatoMXN } from '@domain';
 import { PageWrapper, ScreenContainer } from '@components';
-import { ROUTES } from '@constants';
 import { useAuth } from '@hooks';
+import { useCajita } from '@apps/public/hooks';
 
-import type { DashboardScreenProps } from './DashboardScreen.interfaces';
 import { DASHBOARD_UI_TEXT } from './DashboardScreen.constants';
+import type { DashboardScreenProps } from './DashboardScreen.interfaces';
 
 import {
   ContentWrapper,
@@ -43,9 +45,17 @@ export const DashboardScreen = ({ className }: DashboardScreenProps) => {
   const { user } = useAuth();
   const router = useRouter();
 
+  const { isLoaded, metrics, viaje } = useCajita();
+
   const handlePlanTrip = useCallback(() => {
-    router.push(ROUTES.PUBLIC.HOME);
+    router.push(AUTHENTICATED_ROUTES.PLANNER);
   }, [router]);
+
+  const handleOpenBox = useCallback(() => {
+    router.push(AUTHENTICATED_ROUTES.CAJITA);
+  }, [router]);
+
+  const hasBox = Boolean(viaje?.plan && metrics);
 
   return (
     <PageWrapper>
@@ -60,19 +70,42 @@ export const DashboardScreen = ({ className }: DashboardScreenProps) => {
 
           <StatsSection>
             <SectionTitle>{DASHBOARD_UI_TEXT.SAVINGS.TITLE}</SectionTitle>
-            <ExploreCTACard>
-              <ExploreCTAIcon>
-                <PiggyBank size={32} />
-              </ExploreCTAIcon>
-              <ExploreCTAContent>
-                <ExploreCTATitle>{DASHBOARD_UI_TEXT.EMPTY_BOX.TITLE}</ExploreCTATitle>
-                <ExploreCTAText>{DASHBOARD_UI_TEXT.EMPTY_BOX.SUBTITLE}</ExploreCTAText>
-                <ExploreCTAHighlight>{DASHBOARD_UI_TEXT.EMPTY_BOX.HIGHLIGHT}</ExploreCTAHighlight>
-                <ExploreCTAButton onClick={handlePlanTrip} type='button'>
-                  {DASHBOARD_UI_TEXT.EMPTY_BOX.BUTTON}
-                </ExploreCTAButton>
-              </ExploreCTAContent>
-            </ExploreCTACard>
+            {isLoaded && hasBox && viaje && metrics ? (
+              <ExploreCTACard>
+                <ExploreCTAIcon>
+                  <PiggyBank size={32} />
+                </ExploreCTAIcon>
+                <ExploreCTAContent>
+                  <ExploreCTATitle>
+                    {viaje.destino.emoji} {viaje.destino.ciudad} · {metrics.porcentaje}%
+                  </ExploreCTATitle>
+                  <ExploreCTAText>
+                    {DASHBOARD_UI_TEXT.ACTIVE_BOX.SAVED} {formatoMXN(metrics.ahorrado)}{' '}
+                    {DASHBOARD_UI_TEXT.ACTIVE_BOX.OF} {formatoMXN(metrics.meta)}
+                  </ExploreCTAText>
+                  <ExploreCTAHighlight>
+                    {formatoMXN(metrics.faltante)} {DASHBOARD_UI_TEXT.ACTIVE_BOX.MISSING}
+                  </ExploreCTAHighlight>
+                  <ExploreCTAButton type='button' onClick={handleOpenBox}>
+                    {DASHBOARD_UI_TEXT.ACTIVE_BOX.BUTTON}
+                  </ExploreCTAButton>
+                </ExploreCTAContent>
+              </ExploreCTACard>
+            ) : (
+              <ExploreCTACard>
+                <ExploreCTAIcon>
+                  <PiggyBank size={32} />
+                </ExploreCTAIcon>
+                <ExploreCTAContent>
+                  <ExploreCTATitle>{DASHBOARD_UI_TEXT.EMPTY_BOX.TITLE}</ExploreCTATitle>
+                  <ExploreCTAText>{DASHBOARD_UI_TEXT.EMPTY_BOX.SUBTITLE}</ExploreCTAText>
+                  <ExploreCTAHighlight>{DASHBOARD_UI_TEXT.EMPTY_BOX.HIGHLIGHT}</ExploreCTAHighlight>
+                  <ExploreCTAButton type='button' onClick={handlePlanTrip}>
+                    {DASHBOARD_UI_TEXT.EMPTY_BOX.BUTTON}
+                  </ExploreCTAButton>
+                </ExploreCTAContent>
+              </ExploreCTACard>
+            )}
           </StatsSection>
         </ContentWrapper>
       </ScreenContainer>

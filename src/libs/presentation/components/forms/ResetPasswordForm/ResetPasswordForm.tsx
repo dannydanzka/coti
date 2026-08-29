@@ -11,10 +11,11 @@ import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Input, PopButton } from '@dannydanzka/sovereignty-ui';
+import { Input } from '@dannydanzka/sovereignty-ui';
 import { resetPasswordValidationSchema } from '@validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { MeetButton } from '../../common/MeetButton';
 import type { ResetPasswordFormData, ResetPasswordFormProps } from './ResetPasswordForm.interfaces';
 
 import {
@@ -114,11 +115,11 @@ export const ResetPasswordForm = ({ onSubmit }: ResetPasswordFormProps) => {
       </FormFields>
 
       <FormActions>
-        <PopButton disabled={isSubmitting} type='submit' variant='yellow'>
+        <MeetButton disabled={isSubmitting} fullWidth type='submit' variant='primary'>
           {isSubmitting
             ? t('auth.resetPasswordForm.submitting')
             : t('auth.resetPasswordForm.submit')}
-        </PopButton>
+        </MeetButton>
       </FormActions>
     </FormContainer>
   );

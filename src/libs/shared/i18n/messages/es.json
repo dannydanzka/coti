@@ -970,5 +970,169 @@
       "title": "Conocer el mundo no tiene edad mínima. Tiene plan.",
       "text": "Abre tu cajita hoy. Coti hace las cuentas y te acompaña hasta el día del viaje."
     }
+  },
+  "planner": {
+    "common": {
+      "back": "Atrás",
+      "continue": "Continuar",
+      "saveAndExit": "Guardar y salir",
+      "skip": "Saltar por ahora",
+      "stepOf": "Paso {{step}} de {{total}}"
+    },
+    "define": {
+      "title": "¿A dónde quieres ir?",
+      "subtitle": "Destino, fechas y con quién vas.",
+      "destination": "Destino",
+      "destinationPlaceholder": "Elige un destino del catálogo",
+      "dates": "Fechas",
+      "nights_one": "{{count}} noche",
+      "nights_other": "{{count}} noches",
+      "departure": "Salida",
+      "return": "Regreso",
+      "pickDate": "Elige en el calendario",
+      "people": "Personas",
+      "you": "Tú",
+      "companion": "+",
+      "less": "Una persona menos",
+      "more": "Una persona más",
+      "tipTitle": "Ojo con esto",
+      "tipText": "Más personas suben el total, pero bajan el costo por persona en hospedaje."
+    },
+    "style": {
+      "title": "¿Cómo viajas tú?",
+      "subtitle": "Esto ajusta el rango de tu proyección. Puedes cambiarlo cuando quieras.",
+      "label": "Tu estilo · elige las que vayan contigo",
+      "options": {
+        "MOCHILERO": "Mochilero",
+        "COMODO": "Cómodo",
+        "BOUTIQUE": "Boutique",
+        "FOODIE": "Foodie",
+        "NATURALEZA": "Naturaleza",
+        "CULTURA": "Cultura",
+        "FIESTA": "Fiesta",
+        "RELAX": "Relax"
+      }
+    },
+    "attractions": {
+      "title": "¿Qué quieres hacer allá?",
+      "subtitle": "Marca lo que no te puedes perder y lo que estaría padre.",
+      "mustGo": "Must go",
+      "nice": "Nice",
+      "mustGoCount": "{{count}} Must go",
+      "niceCount": "{{count}} Would be nice",
+      "hint": "Las “Must go” pesan más en el rango estimado."
+    },
+    "projection": {
+      "lead": "Este viaje te puede costar entre",
+      "meta": "MXN · {{people}} personas · {{nights}} noches · {{month}}",
+      "details": "Detalles de viaje",
+      "disclaimer": "Es un rango estimado por temporada y estilo de viaje, no una cotización. Coti proyecta, no reserva.",
+      "cta": "Crear mi plan de ahorro",
+      "incomplete": "Faltan datos del viaje: elige destino y fechas para ver tu proyección."
+    },
+    "plan": {
+      "title": "Define tu meta de ahorro",
+      "subtitle": "Tú pones el ritmo. Coti hace las cuentas.",
+      "goalLabel": "Tu meta de ahorro",
+      "goals": {
+        "MINIMO": {
+          "title": "Mínimo",
+          "hint": "Lo indispensable del viaje."
+        },
+        "COMODO": {
+          "title": "Cómodo",
+          "hint": "Con margen para imprevistos."
+        },
+        "SIN_LIMITES": {
+          "title": "Sin límites",
+          "hint": "Todo lo que quieres hacer."
+        }
+      },
+      "frequencyLabel": "¿Con qué frecuencia aportas?",
+      "frequency": {
+        "SEMANAL": "Semanal",
+        "QUINCENAL": "Quincenal",
+        "MENSUAL": "Mensual"
+      },
+      "amountLabel": {
+        "SEMANAL": "¿Cuánto puedes destinar a la semana?",
+        "QUINCENAL": "¿Cuánto puedes destinar por quincena?",
+        "MENSUAL": "¿Cuánto puedes destinar al mes?"
+      },
+      "amountUnit": {
+        "SEMANAL": "MXN / semana",
+        "QUINCENAL": "MXN / quincena",
+        "MENSUAL": "MXN / mes"
+      },
+      "per": {
+        "SEMANAL": "a la semana",
+        "QUINCENAL": "por quincena",
+        "MENSUAL": "al mes"
+      },
+      "okTitle": "Sí llegas",
+      "okText": "Con {{amount}} {{frequency}} juntas tu meta el {{date}} — antes de tu viaje.",
+      "lateTitle": "Así no alcanzas",
+      "lateText": "Con {{amount}} {{frequency}} juntas tu meta hasta el {{date}}, después de tu viaje. Sube la aportación o baja la meta.",
+      "noAmount": "Pon una aportación para ver cuándo llegas."
+    },
+    "start": {
+      "title": "¿Ya llevas algo ahorrado?",
+      "subtitle": "Todo suma. Aunque sea poquito.",
+      "toggle": "Ya tengo un ahorro para este viaje",
+      "toggleHint": "Lo contamos como punto de partida de tu cajita.",
+      "amountLabel": "Monto inicial",
+      "goal": "Meta de ahorro",
+      "have": "Ya tienes",
+      "missing": "Te faltan",
+      "progress": "Arrancas con {{percent}}% de tu meta. Nada mal.",
+      "progressZero": "Arrancas desde cero. Cada aporte cuenta.",
+      "fromZero": "Empiezo desde cero"
+    },
+    "activate": {
+      "title": "¡Listo! Tu cajita de ahorro está abierta",
+      "subtitle": "{{city}} te espera el {{date}}.",
+      "destination": "Destino",
+      "goal": "Meta",
+      "contribution": "Aportación",
+      "contributionValue": "{{amount}} {{frequency}} · {{periods}} aportes",
+      "initial": "Ya tienes",
+      "reminder": "Recordarme cada aporte",
+      "reminderHint": "Para que no se te pase.",
+      "reminderTo": "Te escribimos a {{email}}.",
+      "cta": "Ahorrar para mi viaje",
+      "saving": "Abriendo tu cajita…",
+      "editable": "Puedes cambiar esto cuando quieras."
+    }
+  },
+  "cajita": {
+    "greeting": "Hola, {{name}}",
+    "monthsLeft_one": "Te falta {{count}} mes para {{city}}",
+    "monthsLeft_other": "Te faltan {{count}} meses para {{city}}",
+    "saved": "Llevas ahorrado",
+    "of": "de {{amount}} MXN",
+    "milestone": {
+      "25": "¡Vas 25%! Ya pasaste el primer hito.",
+      "50": "¡Mitad del camino! Vas 50%.",
+      "75": "¡Vas 75%! Ya casi.",
+      "100": "¡Meta completa! A hacer maletas."
+    },
+    "stats": {
+      "missing": "te faltan",
+      "months": "meses restantes",
+      "entries": "aportes registrados"
+    },
+    "entries": "Tus aportes",
+    "next": {
+      "label": "Próximo aporte",
+      "register": "Registrar aporte",
+      "notePlaceholder": "Nota (opcional)",
+      "cta": "Registrar",
+      "saving": "Guardando…"
+    },
+    "empty": {
+      "title": "Todavía no tienes una cajita de ahorro",
+      "text": "Elige un destino, dinos cuánto puedes apartar y te decimos en cuánto tiempo llegas.",
+      "cta": "Planear mi viaje"
+    }
   }
 }

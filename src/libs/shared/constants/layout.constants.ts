@@ -25,15 +25,17 @@ export const PUBLIC_ROUTES = {
 } as const;
 
 export const AUTHENTICATED_ROUTES = {
+  CAJITA: '/dashboard/cajita',
   DASHBOARD: '/dashboard',
+  PLANNER: '/dashboard/planear',
   PROFILE: '/dashboard/profile',
 } as const;
 
 export const NAVBAR_UI_TEXT = {
   CTA_DASHBOARD: 'Mi cajita',
-  CTA_PROFILE: 'Mi perfil',
   CTA_ENROLL: 'Crear cuenta',
   CTA_MEMBERS: 'Entrar',
+  CTA_PROFILE: 'Mi perfil',
   CTA_RESERVE: 'Planear mi viaje',
   LOGO_TEXT: 'COTI',
   MOBILE_MENU_TOGGLE: 'Toggle navigation menu',

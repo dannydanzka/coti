@@ -12,11 +12,12 @@ import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Input, PopButton } from '@dannydanzka/sovereignty-ui';
+import { Input } from '@dannydanzka/sovereignty-ui';
 import type { RegisterFormData } from '@validation';
 import { registerValidationSchema } from '@validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { MeetButton } from '../../common/MeetButton';
 import type { SignupFormProps } from './SignupForm.interfaces';
 
 import {
@@ -31,7 +32,7 @@ import {
   FormTitle,
 } from '../LoginForm/LoginForm.styled';
 
-export const SignupForm = ({ onSubmit }: SignupFormProps) => {
+export const SignupForm = ({ hideHeader = false, onSubmit }: SignupFormProps) => {
   const { t } = useTranslation();
   const [generalError, setGeneralError] = useState<string | null>(null);
 
@@ -176,15 +177,19 @@ export const SignupForm = ({ onSubmit }: SignupFormProps) => {
 
   return (
     <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
-      <FormTitle>{t('auth.signupForm.title')}</FormTitle>
-      <FormDescription>{t('auth.signupForm.subtitle')}</FormDescription>
+      {!hideHeader && (
+        <>
+          <FormTitle>{t('auth.signupForm.title')}</FormTitle>
+          <FormDescription>{t('auth.signupForm.subtitle')}</FormDescription>
+        </>
+      )}
       {generalError && <FormError>{generalError}</FormError>}
       {renderFormFields()}
 
       <FormActions>
-        <PopButton disabled={isSubmitting} type='submit' variant='yellow'>
+        <MeetButton disabled={isSubmitting} fullWidth type='submit' variant='primary'>
           {isSubmitting ? t('auth.signupForm.submitting') : t('auth.signupForm.submit')}
-        </PopButton>
+        </MeetButton>
       </FormActions>
 
       <FormDivider>
