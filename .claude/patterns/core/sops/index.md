@@ -82,6 +82,7 @@ These are the exhaustive originals. The trilogy orchestrators above are the day-
 |-----|---------|
 | [supabase-project-setup.md](supabase-project-setup.md) | Configure new Supabase project: database, storage, credentials, Prisma connection |
 | [vercel-project-setup.md](vercel-project-setup.md) | Configure Vercel project: deployment, env vars, domains, cron jobs |
+| [meistertask-sync.md](meistertask-sync.md) | Connect a MeisterTask board via REST API; pull tasks, write completion back, keep a 1:1 local mirror |
 
 ### Security & Governance
 
