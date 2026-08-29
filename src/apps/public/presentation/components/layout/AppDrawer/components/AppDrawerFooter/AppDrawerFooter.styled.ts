@@ -15,7 +15,10 @@ export const SidebarFooter = styled.div<{ $isCollapsed: boolean }>`
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  padding: ${spacing.md} ${({ $isCollapsed }) => ($isCollapsed ? spacing.xs : spacing.sm)};
+
+  /* Aire abajo: pegado a la esquina, cualquier widget flotante se le encima. */
+  padding: ${spacing.md} ${({ $isCollapsed }) => ($isCollapsed ? spacing.xs : spacing.sm)}
+    ${spacing.xl};
 `;
 
 export const LogoutButton = styled.button<{ $isCollapsed: boolean }>`
