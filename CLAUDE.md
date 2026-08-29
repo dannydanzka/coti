@@ -62,7 +62,7 @@ intente `/admin` es devuelto a `/login`; la API responde `403`.
 npm run dev          # Dev server (Next.js 16, Turbopack)
 npm run build        # prisma generate + next build
 npm run type-check   # tsc --noEmit
-npm test             # vitest run — 1614 tests
+npm test             # vitest run — 1596 tests
 npm run test:watch   # vitest en watch
 npm run lint         # lint:tsx + lint:css + type-check
 npm run lint:tsx     # eslint (41 reglas custom en scripts/eslint-rules/)
