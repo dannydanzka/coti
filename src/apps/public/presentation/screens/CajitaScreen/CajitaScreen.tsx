@@ -173,7 +173,7 @@ export const CajitaScreen = () => {
                 {metrics.hito && (
                   <Celebrate>
                     <PartyPopper size={18} />
-                    {t(`cajita.milestone.${metrics.hito}`)}
+                    {t(`cajita.milestone.${metrics.hito}`, { percent: metrics.porcentaje })}
                   </Celebrate>
                 )}
               </ProgressCard>

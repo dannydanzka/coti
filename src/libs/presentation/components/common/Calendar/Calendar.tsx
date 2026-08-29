@@ -9,8 +9,8 @@
  * Selection rules: first click sets the start (and clears the end); a click on
  * or before the start restarts the range; a later click closes it.
  *
- * Weekday initials and the month label come from Intl with the active i18n
- * language, so the es mockup's L M M J V S D header needs no hardcoded copy.
+ * Weekday initials are the first letter of Intl's long weekday name — in es
+ * that yields the mockup's L M M J V S D (narrow would give X for miércoles).
  */
 
 'use client';
@@ -59,7 +59,8 @@ export const Calendar = ({ minDate, onRangeChange, rangeValue }: CalendarProps) 
       Array.from({ length: DAYS_IN_WEEK }, (_, index) => {
         const day = new Date(REFERENCE_MONDAY);
         day.setDate(day.getDate() + index);
-        return day.toLocaleDateString(i18n.language, { weekday: 'narrow' });
+        const name = day.toLocaleDateString(i18n.language, { weekday: 'long' });
+        return name.charAt(0).toUpperCase();
       }),
     [i18n.language]
   );

@@ -1115,9 +1115,9 @@
     "saved": "Llevas ahorrado",
     "of": "de {{amount}} MXN",
     "milestone": {
-      "25": "¡Vas 25%! Ya pasaste el primer hito.",
-      "50": "¡Mitad del camino! Vas 50%.",
-      "75": "¡Vas 75%! Ya casi.",
+      "25": "¡Vas {{percent}}%! Ya pasaste el primer hito.",
+      "50": "¡Mitad del camino! Vas {{percent}}%.",
+      "75": "¡Vas {{percent}}%! Ya casi.",
       "100": "¡Meta completa! A hacer maletas."
     },
     "stats": {

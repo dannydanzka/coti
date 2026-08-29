@@ -1115,10 +1115,10 @@
     "saved": "Saved so far",
     "of": "of {{amount}} MXN",
     "milestone": {
-      "25": "25% in! First milestone passed.",
-      "50": "Halfway there! 50%.",
-      "75": "75%! Almost there.",
-      "100": "Goal complete! Pack your bags."
+      "25": "You're at {{percent}}%! First milestone down.",
+      "50": "Halfway there! You're at {{percent}}%.",
+      "75": "You're at {{percent}}%! Almost there.",
+      "100": "Goal complete! Time to pack."
     },
     "stats": {
       "missing": "to go",
