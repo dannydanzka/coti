@@ -47,7 +47,7 @@ workshop varias personas entran desde la misma red, se van a bloquear entre ella
 |---|---|---|---|
 | `owner@coti.mx` | `Owner1234!` | OWNER | `/admin` y `/dashboard` |
 | `admin@coti.mx` | `Admin1234!` | ADMIN | `/admin` y `/dashboard` |
-| `demo@alcanza.mx` | `Demo1234!` | PARTICIPANT | `/dashboard` |
+| `demo@coti.mx` | `Demo1234!` | PARTICIPANT | `/dashboard` |
 
 Un solo `/login` para las tres: el rol decide a dónde cae.
 

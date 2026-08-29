@@ -27,7 +27,7 @@ export const USER_COLUMNS: ColumnConfig<UserItem, UserSortField>[] = [
  * sostienen la demo del workshop. El servidor tiene sus propias guardas (rol
  * OWNER, auto-borrado); esta lista sólo esconde los botones.
  */
-export const PROTECTED_USER_EMAILS = ['owner@coti.mx', 'admin@coti.mx', 'demo@alcanza.mx'];
+export const PROTECTED_USER_EMAILS = ['owner@coti.mx', 'admin@coti.mx', 'demo@coti.mx'];
 
 export const INITIAL_CONFIRM_MODAL: ConfirmModalData = {
   confirmText: 'Confirmar',

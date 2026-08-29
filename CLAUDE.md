@@ -28,7 +28,7 @@
 |---|---|---|
 | `owner@coti.mx` / `Owner1234!` | OWNER | `/admin` y `/dashboard` |
 | `admin@coti.mx` / `Admin1234!` | ADMIN | `/admin` y `/dashboard` |
-| `demo@alcanza.mx` / `Demo1234!` | PARTICIPANT | `/dashboard` (con historial de ahorro) |
+| `demo@coti.mx` / `Demo1234!` | PARTICIPANT | `/dashboard` (con historial de ahorro) |
 
 Un solo `/login` para todos: el rol decide a dónde cae. Un participante que
 intente `/admin` es devuelto a `/login`; la API responde `403`.

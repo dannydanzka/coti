@@ -55,7 +55,7 @@ model User {
 
   role UserRole @default(PARTICIPANT)
 
-  /// La cuenta de demostración del seed se identifica por email (demo@alcanza.mx):
+  /// La cuenta de demostración del seed se identifica por email (demo@coti.mx):
   /// sembrarla no requiere una columna extra en el modelo de identidad.
 
   // Soft delete

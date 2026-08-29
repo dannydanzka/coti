@@ -95,7 +95,7 @@ async function main() {
   // ─── Cuenta demo con historial, para poder mostrar la cajita en el pitch ───
   const demo = await prisma.user.create({
     data: {
-      email: 'demo@alcanza.mx',
+      email: 'demo@coti.mx',
       firstName: 'Cuenta',
       lastName: 'Demo',
       passwordHash: await hash('Demo1234!'),
