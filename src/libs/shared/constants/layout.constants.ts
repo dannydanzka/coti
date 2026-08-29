@@ -26,9 +26,6 @@ export const PUBLIC_ROUTES = {
 
 export const AUTHENTICATED_ROUTES = {
   DASHBOARD: '/dashboard',
-  EVENTS: '/dashboard/events',
-  ORDERS: '/dashboard/orders',
-  PAYMENTS: '/dashboard/payments',
   PROFILE: '/dashboard/profile',
 } as const;
 
