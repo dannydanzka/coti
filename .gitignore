@@ -261,5 +261,10 @@ dev-data/
 # Deps del paquete vendorizado (npm las instala in-place)
 vendor/**/node_modules
 
+# El dist vendorizado SÍ se versiona: es el artefacto que consume el proyecto.
+# Sin esto, la regla global `dist/` lo excluye y el clon queda sin el módulo.
+!vendor/**/dist/
+!vendor/**/dist/**
+
 # Prisma client generado (se recrea con postinstall)
 /src/generated
