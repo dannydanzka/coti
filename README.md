@@ -1,11 +1,11 @@
 # Coti
 
 <p align="center">
-  <img src="assets/branding/coti-logo.png" alt="Coti" width="360">
+  <img src="assets/branding/coti-logo-transparent.png" alt="Coti" width="360">
 </p>
 
 <p align="center">
-  <img src="assets/branding/coti-mascot.png" alt="Coti, el coatí viajero, leyendo un mapa" width="260">
+  <img src="assets/branding/coti-mascot-transparent.png" alt="Coti, el coatí viajero, leyendo un mapa" width="260">
 </p>
 
 <h3 align="center">Proyecta tu viaje. Ahorra con Coti.</h3>
@@ -57,7 +57,7 @@ Las tres escenas cuentan el ciclo del producto: **soñar el destino → ahorrar 
 ### Logotipo e ícono
 
 <p align="center">
-  <img src="assets/branding/coti-logo.png" alt="Logotipo Coti" height="110">
+  <img src="assets/branding/coti-logo-transparent.png" alt="Logotipo Coti" height="110">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="assets/branding/coti-app-icon.png" alt="Ícono de app Coti" height="110">
 </p>
@@ -87,8 +87,10 @@ Cálido, ilustrado y mexicano sin caer en cliché: pirámides, cactus, pueblos c
 |---|---|
 | `coti-brand-sheet.png` | Hoja de marca completa (1536×1024) |
 | `coti-logo.png` | Logotipo horizontal |
+| `coti-logo-transparent.png` | Logotipo horizontal con alfa para README y fondos variables |
 | `coti-app-icon.png` | Ícono de app |
 | `coti-mascot.png` | Mascota principal con mapa |
+| `coti-mascot-transparent.png` | Mascota principal con alfa |
 | `coti-scene-*.png` | Escenas ilustrativas (pirámide, cajita, pueblo) |
 | `coti-branding-explorador-calido.png` | Dirección visual oficial completa |
 | `coti-logo-horizontal-mascota.png` | Lockup horizontal con mascota |

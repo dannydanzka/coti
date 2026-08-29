@@ -24,7 +24,7 @@ Coti acompaña; no regaña ni promete resultados financieros. Puede celebrar ava
 
 El logotipo integra la cola anillada en la **C** y un pin coral como señal de destino. La versión horizontal con mascota se recomienda para encabezados, presentaciones y páginas de bienvenida.
 
-![Logo horizontal de Coti](coti-logo-horizontal-mascota.png)
+![Logo transparente de Coti](coti-logo-transparent.png)
 
 Reglas básicas:
 
@@ -82,10 +82,12 @@ El archivo actual es una hoja de referencia rasterizada. Antes de incorporarlo c
 | `coti-brand-sheet.png` | Oficial | Resumen original de la identidad |
 | `coti-branding-explorador-calido.png` | Oficial | Dirección visual ampliada |
 | `coti-logo.png` | Oficial | Logotipo compacto |
+| `coti-logo-transparent.png` | Oficial | Logotipo compacto con alfa para documentación |
 | `coti-logo-horizontal-mascota.png` | Oficial | Lockup horizontal |
 | `coti-app-icon.png` | Oficial | Ícono compacto original |
 | `coti-app-icon-v2.png` | Candidato | Ícono móvil refinado |
 | `coti-mascot.png` | Oficial | Mascota principal |
+| `coti-mascot-transparent.png` | Oficial | Mascota principal con alfa |
 | `coti-scene-*.png` | Oficial | Escenas narrativas |
 | `coti-sprites-explorador-calido-sheet.png` | Referencia | Estados de producto |
 | `concepts/` | Archivo | Exploraciones descartadas o alternativas |
