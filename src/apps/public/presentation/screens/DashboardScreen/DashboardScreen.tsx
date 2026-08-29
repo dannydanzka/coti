@@ -3,33 +3,35 @@
  *
  * Portada del usuario autenticado: saludo y estado de su cajita de ahorro.
  *
- * Hoy muestra el estado vacío porque todavía no existen los endpoints del
- * dominio de viajes (`Viaje`, `PlanDeAhorro`, `RegistroDeAhorro` ya están en el
- * esquema). Al construirlos, el estado vacío se reemplaza por el avance real.
+ * Cuando hay un viaje en AHORRANDO muestra el avance real; si no, conserva el
+ * estado vacío con su llamada a planear. Toda la aritmética llega resuelta
+ * desde `GET /api/travel/cajita`.
  */
 
 'use client';
 
-import { PiggyBank } from 'lucide-react';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { PageWrapper, ScreenContainer } from '@components';
 import { ROUTES } from '@constants';
-import { useAuth } from '@hooks';
-
-import type { DashboardScreenProps } from './DashboardScreen.interfaces';
-import { DASHBOARD_UI_TEXT } from './DashboardScreen.constants';
+import { useAuth, useCajita } from '@hooks';
 
 import {
+  CajitaAportes,
+  CajitaEmptyState,
+  CajitaHero,
+  CajitaProximoAporte,
+  CajitaStats,
+  RegistrarAporteModal,
+} from './components';
+import { DASHBOARD_UI_TEXT } from './DashboardScreen.constants';
+import type { DashboardScreenProps } from './DashboardScreen.interfaces';
+import { obtenerDestino } from './DashboardScreen.helpers';
+
+import {
+  CajitaGrid,
   ContentWrapper,
-  ExploreCTAButton,
-  ExploreCTACard,
-  ExploreCTAContent,
-  ExploreCTAHighlight,
-  ExploreCTAIcon,
-  ExploreCTAText,
-  ExploreCTATitle,
   SectionTitle,
   StatsSection,
   WelcomeSection,
@@ -42,10 +44,30 @@ export const DashboardScreen = ({ className }: DashboardScreenProps) => {
 
   const { user } = useAuth();
   const router = useRouter();
+  const { aporteEnCurso, borradorId, cajita, registrarAporte } = useCajita();
+  const [modalAbierto, setModalAbierto] = useState(false);
 
   const handlePlanTrip = useCallback(() => {
     router.push(ROUTES.PUBLIC.HOME);
   }, [router]);
+
+  const handleAbrirModal = useCallback(() => setModalAbierto(true), []);
+  const handleCerrarModal = useCallback(() => setModalAbierto(false), []);
+
+  const handleRegistrar = useCallback(
+    async (monto: number, nota?: string) => {
+      const resultado = await registrarAporte(monto, nota);
+
+      if (resultado.success) {
+        setModalAbierto(false);
+      }
+    },
+    [registrarAporte]
+  );
+
+  const subtitulo = cajita
+    ? `${DASHBOARD_UI_TEXT.WELCOME.SUBTITLE_WITH_TRIP} ${obtenerDestino(cajita)}.`
+    : DASHBOARD_UI_TEXT.WELCOME.SUBTITLE;
 
   return (
     <PageWrapper>
@@ -55,27 +77,41 @@ export const DashboardScreen = ({ className }: DashboardScreenProps) => {
             <WelcomeTitle>
               {DASHBOARD_UI_TEXT.WELCOME.GREETING}, {user?.firstName ?? ''}!
             </WelcomeTitle>
-            <WelcomeSubtitle>{DASHBOARD_UI_TEXT.WELCOME.SUBTITLE}</WelcomeSubtitle>
+            <WelcomeSubtitle>{subtitulo}</WelcomeSubtitle>
           </WelcomeSection>
 
           <StatsSection>
             <SectionTitle>{DASHBOARD_UI_TEXT.SAVINGS.TITLE}</SectionTitle>
-            <ExploreCTACard>
-              <ExploreCTAIcon>
-                <PiggyBank size={32} />
-              </ExploreCTAIcon>
-              <ExploreCTAContent>
-                <ExploreCTATitle>{DASHBOARD_UI_TEXT.EMPTY_BOX.TITLE}</ExploreCTATitle>
-                <ExploreCTAText>{DASHBOARD_UI_TEXT.EMPTY_BOX.SUBTITLE}</ExploreCTAText>
-                <ExploreCTAHighlight>{DASHBOARD_UI_TEXT.EMPTY_BOX.HIGHLIGHT}</ExploreCTAHighlight>
-                <ExploreCTAButton onClick={handlePlanTrip} type='button'>
-                  {DASHBOARD_UI_TEXT.EMPTY_BOX.BUTTON}
-                </ExploreCTAButton>
-              </ExploreCTAContent>
-            </ExploreCTACard>
+
+            {cajita ? (
+              <>
+                <CajitaGrid>
+                  <CajitaHero cajita={cajita} />
+                  <CajitaProximoAporte
+                    cajita={cajita}
+                    registrando={aporteEnCurso}
+                    onRegistrar={handleAbrirModal}
+                  />
+                </CajitaGrid>
+                <CajitaStats cajita={cajita} />
+                <CajitaAportes cajita={cajita} />
+              </>
+            ) : (
+              <CajitaEmptyState borradorId={borradorId} onPlanear={handlePlanTrip} />
+            )}
           </StatsSection>
         </ContentWrapper>
       </ScreenContainer>
+
+      {cajita && (
+        <RegistrarAporteModal
+          isOpen={modalAbierto}
+          registrando={aporteEnCurso}
+          sugerido={cajita.plan.aportacion}
+          onClose={handleCerrarModal}
+          onSubmit={handleRegistrar}
+        />
+      )}
     </PageWrapper>
   );
 };

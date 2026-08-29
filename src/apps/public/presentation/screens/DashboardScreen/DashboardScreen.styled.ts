@@ -170,3 +170,231 @@ export const ExploreCTAButton = styled.button`
     transform: translateY(-2px);
   }
 `;
+
+/* ---------- Cajita de ahorro (pantalla 8) ---------- */
+
+export const CajitaGrid = styled.section`
+  display: grid;
+  gap: ${spacing.sm};
+  grid-template-columns: 2fr 1fr;
+
+  @media (width <= 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const HeroCard = styled.article`
+  align-items: center;
+  background: ${brandColor.cotiForest};
+  border-radius: ${shape.xl};
+  color: ${color.white};
+  display: flex;
+  gap: ${spacing.sm};
+  padding: ${spacing.md};
+
+  @media (width <= 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+export const HeroStamp = styled.figure`
+  align-items: center;
+  background: ${brandColor.cotiCream};
+  border-radius: ${shape.md};
+  display: flex;
+  flex: 0 0 auto;
+  font-size: ${typography.size['5xl']};
+  height: 108px;
+  justify-content: center;
+  transform: rotate(-4deg);
+  width: ${spacing['7xl']};
+`;
+
+export const HeroBody = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
+export const HeroLabel = styled.p`
+  color: ${brandColor.landingBlueLight};
+  font-size: ${typography.size.xs};
+  font-weight: ${typography.weight.semibold};
+  letter-spacing: ${typography.tracking.wide};
+  margin-bottom: 0;
+  text-transform: uppercase;
+`;
+
+export const HeroAmount = styled.p`
+  color: ${color.white};
+  font-size: ${typography.size['5xl']};
+  font-weight: ${typography.weight.bold};
+  line-height: ${typography.leading.tight};
+  margin-bottom: 0;
+`;
+
+export const HeroGoal = styled.p`
+  color: ${brandColor.landingBlueLight};
+  font-size: ${typography.size.sm};
+  margin-bottom: 0;
+`;
+
+export const HeroTrack = styled.div`
+  background: ${brandColor.bgPricingHeader};
+  border-radius: ${shape.full};
+  height: ${spacing.xs};
+  margin-top: ${spacing.sm};
+  overflow: hidden;
+`;
+
+export const HeroTrackFill = styled.i<{ $porcentaje: number }>`
+  background: ${brandColor.cotiMustard};
+  border-radius: ${shape.full};
+  display: block;
+  height: 100%;
+  transition: width 0.4s ease-out;
+  width: ${({ $porcentaje }) => `${Math.min(100, Math.max(0, $porcentaje))}%`};
+`;
+
+export const HeroMilestones = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: ${spacing.xs};
+`;
+
+export const HeroMilestone = styled.li<{ $alcanzado: boolean }>`
+  align-items: center;
+  color: ${({ $alcanzado }) => ($alcanzado ? brandColor.cotiMustard : brandColor.landingBlueLight)};
+  display: flex;
+  font-size: ${typography.size.xs};
+  font-weight: ${({ $alcanzado }) =>
+    $alcanzado ? typography.weight.bold : typography.weight.medium};
+  gap: ${spacing.micro};
+`;
+
+export const SideCard = styled.aside`
+  background: ${color.surface};
+  border: 1px solid ${color.border};
+  border-radius: ${shape.xl};
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xs};
+  padding: ${spacing.md};
+`;
+
+export const SideLabel = styled.p`
+  color: ${color.textSecondary};
+  font-size: ${typography.size.sm};
+  margin-bottom: 0;
+`;
+
+export const SideDate = styled.p`
+  color: ${color.textPrimary};
+  font-size: ${typography.size.xl};
+  font-weight: ${typography.weight.bold};
+  margin-bottom: 0;
+`;
+
+export const SideAmount = styled.p`
+  color: ${brandColor.cotiCoral};
+  font-size: ${typography.size['2xl']};
+  font-weight: ${typography.weight.bold};
+  margin-bottom: 0;
+`;
+
+export const MilestoneBanner = styled.p`
+  background: ${brandColor.alertBg};
+  border-radius: ${shape.md};
+  color: ${brandColor.cotiBrown};
+  font-size: ${typography.size.sm};
+  font-weight: ${typography.weight.semibold};
+  margin-bottom: 0;
+  padding: ${spacing.xs};
+`;
+
+export const StatsRow = styled.section`
+  display: grid;
+  gap: ${spacing.sm};
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: ${spacing.sm};
+
+  @media (width <= 700px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const StatCard = styled.article`
+  background: ${color.surface};
+  border: 1px solid ${color.border};
+  border-radius: ${shape.lg};
+  padding: ${spacing.sm};
+`;
+
+export const StatValue = styled.p`
+  color: ${brandColor.cotiForest};
+  font-size: ${typography.size['2xl']};
+  font-weight: ${typography.weight.bold};
+  margin-bottom: 0;
+`;
+
+export const StatLabel = styled.p`
+  color: ${color.textSecondary};
+  font-size: ${typography.size.sm};
+  margin-bottom: 0;
+`;
+
+export const AportesCard = styled.section`
+  background: ${color.surface};
+  border: 1px solid ${color.border};
+  border-radius: ${shape.xl};
+  margin-top: ${spacing.sm};
+  padding: ${spacing.md};
+`;
+
+export const AportesTitle = styled.h3`
+  color: ${color.textSecondary};
+  font-size: ${typography.size.xs};
+  font-weight: ${typography.weight.semibold};
+  letter-spacing: ${typography.tracking.wide};
+  margin-bottom: ${spacing.sm};
+  text-transform: uppercase;
+`;
+
+export const AportesChart = styled.ul`
+  align-items: flex-end;
+  display: flex;
+  gap: ${spacing.xs};
+  height: 120px;
+  list-style: none;
+`;
+
+export const AporteColumn = styled.li`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: ${spacing.micro};
+  height: 100%;
+  justify-content: flex-end;
+  max-width: 120px;
+`;
+
+export const AporteBar = styled.i<{ $altura: number; $ultimo: boolean }>`
+  background: ${({ $ultimo }) => ($ultimo ? brandColor.cotiCoral : brandColor.landingBgSkyBlue)};
+  border-radius: ${shape.sm};
+  display: block;
+  height: ${({ $altura }) => `${Math.max(6, $altura)}%`};
+  width: 100%;
+`;
+
+export const AporteLabel = styled.span`
+  color: ${color.textSecondary};
+  font-size: ${typography.size.xs};
+  text-align: center;
+`;
+
+export const AportesEmpty = styled.p`
+  color: ${color.textSecondary};
+  font-size: ${typography.size.sm};
+  margin-bottom: 0;
+`;

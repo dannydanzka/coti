@@ -6,4 +6,5 @@
  */
 export * from './auth';
 export * from './global';
+export * from './travel';
 export * from './users';
