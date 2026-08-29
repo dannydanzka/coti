@@ -4,7 +4,7 @@
  * Type definitions for password reset request operations.
  *
  * @pattern Clean Architecture - Use Case Layer
- * @context DearAdry (Auth - Password Reset)
+ * @context Coti (Auth - Password Reset)
  */
 
 export interface RequestPasswordResetParams {

@@ -71,7 +71,7 @@ describe('ReduxProvider', () => {
   it('handles Spanish content in Redux state', () => {
     const SpanishComponent = () => {
       const mockUser = {
-        email: 'maria.garcia@dearadry.com',
+        email: 'maria.garcia@coti.mx',
         name: 'María García López',
       };
 
@@ -89,7 +89,7 @@ describe('ReduxProvider', () => {
     );
 
     expect(screen.getByTestId('spanish-content')).toHaveTextContent(
-      'Usuario: María García López - maria.garcia@dearadry.com'
+      'Usuario: María García López - maria.garcia@coti.mx'
     );
   });
 

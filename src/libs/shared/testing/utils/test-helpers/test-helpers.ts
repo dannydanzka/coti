@@ -1,7 +1,7 @@
 /**
  * Test Helpers - Utilities for testing
  *
- * Adapted to DearAdry patterns: Spanish locale, prop-controlled modals,
+ * Adapted to Coti patterns: Spanish locale, prop-controlled modals,
  * react-hook-form, styled-components.
  */
 import type { Mock } from 'vitest';

@@ -62,11 +62,11 @@ export const FEATURE_FLAGS = {
 /**
  * Bypass account for features behind a flag.
  */
-export const DEV_USER_EMAIL = 'dearadrydev@gmail.com';
+export const DEV_USER_EMAIL = 'dev@coti.mx';
 
 export const APP_METADATA = {
   DESCRIPTION:
-    'Plataforma de retos y eventos que promueve el bienestar físico y emocional a través de experiencias compartidas en familia',
-  PROFILE_EDIT_TITLE: 'Editar Perfil - DearAdry',
-  TITLE: 'DearAdry - Retos de Bienestar en Familia',
+    'Proyecta cuánto necesitas ahorrar para tu próximo viaje y dale seguimiento a tu avance en la cajita de ahorro',
+  PROFILE_EDIT_TITLE: 'Editar Perfil - Coti',
+  TITLE: 'Coti — Proyecta tu viaje. Ahorra con Coti.',
 } as const;

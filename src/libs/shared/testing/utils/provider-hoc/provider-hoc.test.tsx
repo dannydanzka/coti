@@ -23,7 +23,7 @@ vi.mock('@store', () => ({
 }));
 
 const TestComponent = ({ testId = 'test-component' }: { testId?: string }) => (
-  <div data-testid={testId}>Contenido DearAdry</div>
+  <div data-testid={testId}>Contenido Coti</div>
 );
 
 const AppProvider = ({ children }: { children: ReactNode }) => (
@@ -32,14 +32,14 @@ const AppProvider = ({ children }: { children: ReactNode }) => (
 
 describe('Provider HOC Utilities', () => {
   describe('withReduxProvider', () => {
-    it('should create Redux wrapper for DearAdry state', () => {
+    it('should create Redux wrapper for Coti state', () => {
       const enrollmentState = { enrollments: { 'maría-garcía': 'rally-emocional-2025' } };
       const ReduxWrapper = withReduxProvider(enrollmentState);
 
       render(<TestComponent />, { wrapper: ReduxWrapper });
 
       expect(screen.getByTestId('test-component')).toBeInTheDocument();
-      expect(screen.getByTestId('test-component')).toHaveTextContent('Contenido DearAdry');
+      expect(screen.getByTestId('test-component')).toHaveTextContent('Contenido Coti');
       expect(ReduxWrapper.displayName).toBe('withReduxProvider(Component)');
     });
 
@@ -55,7 +55,7 @@ describe('Provider HOC Utilities', () => {
   });
 
   describe('withProviders', () => {
-    it('should create multi-provider wrapper for DearAdry', () => {
+    it('should create multi-provider wrapper for Coti', () => {
       const participantState = { participants: ['Ana López', 'Carlos Rodríguez'] };
       const MultiWrapper = withProviders({
         customProviders: [AppProvider],
@@ -91,7 +91,7 @@ describe('Provider HOC Utilities', () => {
   });
 
   describe('createTestStore', () => {
-    it('should handle DearAdry state objects', () => {
+    it('should handle Coti state objects', () => {
       const appState = {
         auth: { user: { name: 'Sofía Herrera', role: 'admin' } },
         challenges: { types: ['physical', 'emotional', 'family'] },
@@ -107,7 +107,7 @@ describe('Provider HOC Utilities', () => {
   });
 
   describe('composeHOCs', () => {
-    it('should compose HOCs for DearAdry context', () => {
+    it('should compose HOCs for Coti context', () => {
       const authHOC = (Component: React.ComponentType<any>) => (props: any) => (
         <div data-testid='auth-hoc'>
           <Component {...props} />
@@ -122,11 +122,11 @@ describe('Provider HOC Utilities', () => {
 
       const ComposedComponent = composeHOCs([authHOC, challengeHOC])(TestComponent);
 
-      render(<ComposedComponent testId='composed-dearadry' />);
+      render(<ComposedComponent testId='composed-coti' />);
 
       expect(screen.getByTestId('auth-hoc')).toBeInTheDocument();
       expect(screen.getByTestId('challenge-hoc')).toBeInTheDocument();
-      expect(screen.getByTestId('composed-dearadry')).toBeInTheDocument();
+      expect(screen.getByTestId('composed-coti')).toBeInTheDocument();
     });
   });
 });

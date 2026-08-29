@@ -23,7 +23,8 @@ import {
   AuthTitle,
   SignupForm,
 } from '@components';
-import { isMeetOriginRedirect } from '@apps/public/constants';
+import { AUTHENTICATED_ROUTES } from '@constants';
+import { isProjectionOriginRedirect } from '@apps/public/constants';
 import type { SignupFormData } from '@components';
 import { useAuth } from '@hooks';
 
@@ -34,8 +35,8 @@ export const SignupScreen = ({ redirectTo }: SignupScreenProps = {}) => {
   const router = useRouter();
   const { signup } = useAuth();
 
-  const subtitleKey = isMeetOriginRedirect(redirectTo)
-    ? 'auth.signupForm.subtitleMeet'
+  const subtitleKey = isProjectionOriginRedirect(redirectTo)
+    ? 'auth.signupForm.subtitleProjection'
     : 'auth.signupForm.subtitle';
 
   const handleSignup = useCallback(
@@ -47,12 +48,13 @@ export const SignupScreen = ({ redirectTo }: SignupScreenProps = {}) => {
         password: data.password,
       });
 
+      /**
+       * El endpoint de signup ya deja la cookie de sesión: la cuenta queda
+       * activa sin verificación por correo. Por eso vamos directo a la cajita
+       * de ahorro (o al destino que traía el `?redirect=`).
+       */
       if (result.success) {
-        sessionStorage.setItem('signupSuccess', 'true');
-        const successUrl = redirectTo
-          ? `/registro-exitoso?redirect=${encodeURIComponent(redirectTo)}`
-          : '/registro-exitoso';
-        router.push(successUrl);
+        router.push(redirectTo ?? AUTHENTICATED_ROUTES.DASHBOARD);
       }
     },
     [redirectTo, router, signup]

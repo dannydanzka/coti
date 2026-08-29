@@ -2,7 +2,7 @@
  * GlobalLoading Component
  * Global loading overlay connected to Redux global state
  *
- * Displays DearAdry logo with heartbeat animation when loading.
+ * Displays Coti logo with heartbeat animation when loading.
  * Uses Redux instead of Context API for state management.
  *
  */

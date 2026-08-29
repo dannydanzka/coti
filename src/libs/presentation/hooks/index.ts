@@ -5,6 +5,7 @@
  *
  */
 export * from './useAuth';
+export * from './useDashboardMetrics';
 export * from './useDataTable';
 export * from './useLayoutBgColor';
 export * from './useLoading';

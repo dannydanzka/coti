@@ -1,6 +1,6 @@
 vi.mock('@hooks', () => ({
   useAuth: vi.fn().mockReturnValue({
-    user: { email: 'admin@dearadry.com', id: 'user-1', role: 'owner' },
+    user: { email: 'admin@coti.mx', id: 'user-1', role: 'owner' },
   }),
   useDataTable: vi.fn().mockReturnValue({
     currentPage: 1,
@@ -29,7 +29,7 @@ vi.mock('@constants', () => ({
 }));
 
 vi.mock('../UserManagerScreen.constants', () => ({
-  PROTECTED_USER_EMAILS: ['protected@dearadry.com'],
+  PROTECTED_USER_EMAILS: ['protected@coti.mx'],
 }));
 
 vi.mock('./useUserConfirmModal', () => ({
@@ -131,25 +131,25 @@ describe('useUserManager', () => {
   it('canEditUser bloquea protected email excepto self/owner', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canEditUser('u-other', 'admin', 'protected@dearadry.com')).toBe(true);
+    expect(result.current.canEditUser('u-other', 'admin', 'protected@coti.mx')).toBe(true);
   });
 
   it('canToggleUserStatus bloquea auto-toggle', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canToggleUserStatus('user-1', 'admin')).toBe(false);
+    expect(result.current.canToggleUserStatus('user-1', 'admin', true)).toBe(false);
   });
 
   it('canToggleUserStatus bloquea owner', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canToggleUserStatus('u-other', 'owner')).toBe(false);
+    expect(result.current.canToggleUserStatus('u-other', 'owner', true)).toBe(false);
   });
 
   it('canToggleUserStatus bloquea protected email', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canToggleUserStatus('u-other', 'admin', 'protected@dearadry.com')).toBe(
+    expect(result.current.canToggleUserStatus('u-other', 'admin', true, 'protected@coti.mx')).toBe(
       false
     );
   });
@@ -157,13 +157,19 @@ describe('useUserManager', () => {
   it('canDeleteUser bloquea auto-delete', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canDeleteUser('user-1', 'admin')).toBe(false);
+    expect(result.current.canDeleteUser('user-1', 'admin', true)).toBe(false);
   });
 
   it('canDeleteUser bloquea owner', () => {
     const { result } = renderHook(() => useUserManager());
 
-    expect(result.current.canDeleteUser('u-other', 'owner')).toBe(false);
+    expect(result.current.canDeleteUser('u-other', 'owner', true)).toBe(false);
+  });
+
+  it('canToggleUserStatus deja reactivar a un admin ya inactivo', () => {
+    const { result } = renderHook(() => useUserManager());
+
+    expect(result.current.canToggleUserStatus('u-other', 'admin', false)).toBe(true);
   });
 
   it('createEditHandler retorna función', () => {

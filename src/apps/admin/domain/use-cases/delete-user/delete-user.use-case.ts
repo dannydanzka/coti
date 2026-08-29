@@ -6,7 +6,7 @@
  */
 
 import {
-  createAuthorizationError,
+  createForbiddenError,
   createNotFoundError,
   handleUseCaseError,
   UseCaseErrorResponse,
@@ -54,7 +54,12 @@ const validateUserBusinessRules = (
     };
   }
 
-  if (targetUser.role === USER_ROLES.ADMIN && currentUser.role !== USER_ROLES.ADMIN) {
+  /**
+   * Sólo el OWNER puede borrar a un administrador. La versión anterior exigía
+   * `currentUser.role === ADMIN` y acto seguido prohibía borrar admins a
+   * cualquiera, así que ningún administrador podía eliminarse jamás.
+   */
+  if (targetUser.role === USER_ROLES.ADMIN && currentUser.role !== USER_ROLES.OWNER) {
     return {
       error: 'errors.user.adminDeleteForbidden',
       status: HTTP_STATUS.FORBIDDEN,
@@ -62,37 +67,15 @@ const validateUserBusinessRules = (
     };
   }
 
-  if (targetUser.role === USER_ROLES.ADMIN) {
+  if (targetUser.role === USER_ROLES.OWNER) {
     return {
-      error: 'errors.user.adminDeleteProtected',
+      error: 'errors.user.ownerDeleteProtected',
       status: HTTP_STATUS.FORBIDDEN,
       valid: false,
     };
   }
 
   return { valid: true };
-};
-
-/**
- * Checks if user has dependencies that prevent deletion
- */
-const checkUserDependencies = async (user: {
-  id: string;
-  role: string;
-  firstName: string;
-  lastName: string;
-}): Promise<{ canDelete: boolean; reason?: string }> => {
-  const hasActiveParticipants = user.role === USER_ROLES.ADMIN && user.id.includes('admin');
-  const fullName = `${user.firstName} ${user.lastName}`.trim() || 'Sin nombre';
-
-  if (hasActiveParticipants) {
-    return {
-      canDelete: false,
-      reason: `No se puede eliminar el usuario "${fullName}" porque tiene participantes activos asignados. Transfiere o elimina los participantes primero.`,
-    };
-  }
-
-  return { canDelete: true };
 };
 
 /**
@@ -118,18 +101,16 @@ export const executeDeleteUser = async (
 
     const businessValidation = validateUserBusinessRules(authResult.user, existingUser, params.id);
     if (!businessValidation.valid) {
-      return createAuthorizationError<DeleteUserErrorResponse>({
+      return createForbiddenError<DeleteUserErrorResponse>({
         key: businessValidation.error ?? 'errors.generic.forbidden',
       });
     }
 
-    const dependencyCheck = await checkUserDependencies(existingUser);
-    if (!dependencyCheck.canDelete) {
-      return createAuthorizationError<DeleteUserErrorResponse>(
-        dependencyCheck.reason ?? 'No se puede eliminar el usuario'
-      );
-    }
-
+    /**
+     * No hace falta comprobar dependencias: todo lo que cuelga de un usuario
+     * (`Viaje`, `PlanDeAhorro` y sus hijos) está declarado `onDelete: Cascade`
+     * en el esquema, así que Postgres se encarga.
+     */
     await userRepository.delete(params.id);
 
     const fullName = `${existingUser.firstName} ${existingUser.lastName}`.trim() || 'Sin nombre';

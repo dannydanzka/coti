@@ -2,7 +2,7 @@
  * Auth Domain Use Cases
  *
  * Centralized exports for all authentication use case interfaces.
- * Following DearAdry centralized import philosophy.
+ * Following Coti centralized import philosophy.
  */
 
 export * from './get-current-user';

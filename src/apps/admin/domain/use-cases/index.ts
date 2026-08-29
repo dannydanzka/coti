@@ -4,7 +4,7 @@
  * Centralized exports for all admin domain use cases.
  * Admin context: Platform-level management and administration.
  *
- * DearAdry modules: Event management and Challenge management for wellness events.
+ * Coti modules: Event management and Challenge management for wellness events.
  *
  * @context admin
  */

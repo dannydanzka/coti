@@ -25,7 +25,7 @@ import { Footer } from './Footer';
 describe('Footer', () => {
   it('renders brand name', () => {
     renderWithProviders(<Footer />);
-    assertTextCount(/DearAdry/);
+    assertTextCount(/Coti/);
   });
 
   it('renders footer element', () => {

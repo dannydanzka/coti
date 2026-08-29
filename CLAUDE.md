@@ -21,6 +21,17 @@
 | Cómo escribir código aquí | `.claude/rules/_global.md` |
 | Marca, mascota, paleta | `README.md` · `assets/branding/` |
 
+### Cuentas del seed
+
+| Cuenta | Rol | Entra a |
+|---|---|---|
+| `owner@coti.mx` / `Owner1234!` | OWNER | `/admin` y `/dashboard` |
+| `admin@coti.mx` / `Admin1234!` | ADMIN | `/admin` y `/dashboard` |
+| `demo@alcanza.mx` / `Demo1234!` | PARTICIPANT | `/dashboard` (con historial de ahorro) |
+
+Un solo `/login` para todos: el rol decide a dónde cae. Un participante que
+intente `/admin` es devuelto a `/login`; la API responde `403`.
+
 > El backlog operativo vive en **MeisterTask**, proyecto `Coti`. `.claude/plans/` es sólo para
 > lo que no cabe en una tarjeta.
 
@@ -45,14 +56,15 @@
 npm run dev          # Dev server (Next.js 16, Turbopack)
 npm run build        # prisma generate + next build
 npm run type-check   # tsc --noEmit
-npm test             # vitest run — 1555 tests
+npm test             # vitest run — 1600 tests
 npm run test:watch   # vitest en watch
 npm run lint         # lint:tsx + lint:css + type-check
 npm run lint:tsx     # eslint (41 reglas custom en scripts/eslint-rules/)
 npm run lint:css     # stylelint sobre **/*.styled.{ts,tsx}
 npm run audit:dead   # knip — código muerto
-npm run db:push      # aplica prisma/schema.prisma a Supabase
-npm run db:seed      # siembra destinos + cuenta demo (demo@alcanza.mx / Demo1234!)
+npx prisma migrate dev   # crea y aplica migraciones (prisma/migrations/)
+npx prisma migrate deploy # aplica migraciones pendientes (CI / producción)
+npm run db:seed      # siembra 18 destinos + 3 cuentas (ver abajo)
 npm run db:studio    # Prisma Studio
 ```
 
@@ -82,15 +94,16 @@ Pattern: `.claude/patterns/frontend/nextjs/api-routes.md`.
 
 ```
 src/
-├── app/                    Next.js App Router — 17 rutas
+├── app/                    Next.js App Router
 │   ├── (public)/           home · login · signup · forgot-password · reset-password
-│   ├── (admin)/admin/      panel admin → users
-│   └── api/                auth/* · admin/users/*
+│   ├── (authenticated)/    dashboard · dashboard/profile · dashboard/profile/edit
+│   ├── (admin)/admin/      panel admin · admin/users
+│   └── api/                auth/* · admin/users/* · public/profile
 ├── apps/                   contextos de negocio
 │   ├── auth/domain/        use cases: login · signup · logout · me ·
 │   │                       request-password-reset · reset-password
 │   ├── admin/              gestión de usuarios (RBAC: OWNER · ADMIN · PARTICIPANT)
-│   └── public/             screens públicas
+│   └── public/             screens públicas + use case update-profile
 ├── data/
 │   └── destinos.ts         catálogo curado — 18 destinos con rangos en MXN
 └── libs/                   núcleo compartido
@@ -121,7 +134,8 @@ Seed: `prisma/seed.ts`.
 |---|---|
 | `vendor/sovereignty-ui` | El design system se publica en GitHub Packages, pero el token de lectura de esta máquina está vencido (401). Se vendorizó el `dist` v0.7.0 y `package.json` lo referencia como `file:vendor/sovereignty-ui`. Con un token válido: volver a `"^0.7.0"` + `.npmrc` con `@dannydanzka:registry`. |
 | Nombre del paquete | `package.json` sigue diciendo `travel-savings-app`; la marca es **Coti**. |
-| Sin migraciones | Sólo `db:push`. La primera migración se genera cuando el schema se estabilice. |
+| Foto de perfil | El perfil muestra iniciales o `photoUrl`, pero **no** hay subida de imagen: falta crear el bucket de Storage. |
+| Dominio de viajes sin API | `Destino`, `Viaje`, `PlanDeAhorro`… existen en la base y el seed los llena, pero todavía no hay endpoints ni pantallas. El dashboard muestra el estado vacío. |
 | `src/middleware.ts` | Next 16 lo marca deprecado a favor de `proxy.ts`. Funciona; migrar con `npx @next/codemod@canary middleware-to-proxy .` cuando convenga. |
 | Warnings de eslint | ~28, todos `no-unnecessary-type-assertion` — falsos positivos, ver arriba. |
 | Trial de Vercel | El team `wizeline-workshop` está en Pro con trial que vence el **12-sep-2026**. Ver `.claude/status/index.md`. |
@@ -173,3 +187,13 @@ organizaciones (Atlassian/Jira/Confluence, publicación del design system, inges
 | `scripts/eslint-rules/` | Las 41 reglas custom que hacen cumplir la arquitectura |
 | `prisma/` | `prisma/schema.prisma` + `prisma/seed.ts` (destinos + cuenta demo con historial) |
 | `vendor/sovereignty-ui/` | Design system vendorizado (ver Deudas conocidas) |
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

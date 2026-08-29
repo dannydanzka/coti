@@ -2,7 +2,7 @@
  * Public Navigation Constants
  *
  * Text constants and configuration for public navigation components.
- * DearAdry header and navigation configuration.
+ * Coti header and navigation configuration.
  */
 
 import { PUBLIC_ROUTES } from './public.constants';
@@ -10,7 +10,7 @@ import { PUBLIC_ROUTES } from './public.constants';
 export const NAVBAR_UI_TEXT = {
   CTA_ENROLL: 'Inscripciones',
   CTA_MEMBERS: 'Miembros',
-  LOGO_TEXT: 'DEAR ADRY',
+  LOGO_TEXT: 'COTI',
   MOBILE_MENU_TOGGLE: 'Toggle navigation menu',
 } as const;
 
@@ -33,26 +33,20 @@ export const HEADER_ROUTES = {
 } as const;
 
 /** DOM ids of the home landing's meet sections (scroll targets). */
-export const MEET_SECTION_IDS = {
-  PACKAGES: 'paquetes',
+export const HOME_SECTION_IDS = {
+  PROJECTION: 'proyecta',
   STORY: 'historia',
 } as const;
 
-/** Anchor to the active meet's packages section on the home landing. */
-export const MEET_PACKAGES_ANCHOR = `/#${MEET_SECTION_IDS.PACKAGES}`;
+/** Ancla a la sección de proyección de la portada. */
+export const PROJECTION_ANCHOR = `/#${HOME_SECTION_IDS.PROJECTION}`;
 
 /**
- * sessionStorage key holding a meet checkout interrupted by the auth wall
- * ({ packageId, route, dedicationText }) so it resumes after login/signup.
+ * True cuando un redirect posterior al login apunta al flujo de proyección, para
+ * que las pantallas de autenticación ajusten el copy en vez del genérico.
  */
-export const PENDING_MEET_CHECKOUT_STORAGE_KEY = 'pendingMeetCheckout';
-
-/**
- * True when a post-auth redirect points at the meet (Mango) packages flow, so
- * auth screens can swap in meet-specific copy instead of the generic invite.
- */
-export const isMeetOriginRedirect = (redirect?: string | null): boolean =>
-  Boolean(redirect?.includes(`#${MEET_SECTION_IDS.PACKAGES}`));
+export const isProjectionOriginRedirect = (redirect?: string | null): boolean =>
+  Boolean(redirect?.includes(`#${HOME_SECTION_IDS.PROJECTION}`));
 
 /** Nav item ids shown only to guests (replaced by logout once authenticated). */
 export const AUTH_GUEST_ONLY_NAV_IDS: readonly string[] = ['login', 'signup'];
@@ -75,52 +69,10 @@ export const PUBLIC_NAVIGATION_ITEMS = [
     url: PUBLIC_ROUTES.HOME,
   },
   {
-    id: 'meet',
+    id: 'projection',
     isActive: true,
     order: 2,
-    title: 'Mango',
-    url: MEET_PACKAGES_ANCHOR,
-  },
-  {
-    id: 'books',
-    isActive: true,
-    order: 3,
-    title: 'Libros',
-    url: PUBLIC_ROUTES.BOOKS,
-  },
-  {
-    id: 'rally',
-    isActive: true,
-    order: 4,
-    title: 'Rally',
-    url: PUBLIC_ROUTES.RALLY,
-  },
-  {
-    id: 'about',
-    isActive: true,
-    order: 5,
-    title: 'Sobre Dear Adry',
-    url: PUBLIC_ROUTES.ABOUT,
-  },
-  {
-    id: 'contact',
-    isActive: true,
-    order: 6,
-    title: 'Contacto',
-    url: PUBLIC_ROUTES.CONTACT,
-  },
-  {
-    id: 'signup',
-    isActive: true,
-    order: 7,
-    title: 'Registro',
-    url: PUBLIC_ROUTES.SIGNUP,
-  },
-  {
-    id: 'login',
-    isActive: true,
-    order: 8,
-    title: 'Login',
-    url: PUBLIC_ROUTES.LOGIN,
+    title: 'Proyecta tu viaje',
+    url: PROJECTION_ANCHOR,
   },
 ] as const;

@@ -17,8 +17,8 @@ import {
   AUTHENTICATED_ROUTES,
   HEADER_ROUTES,
   HOME_NAV_ITEMS,
-  MANGO_PACKAGES_ANCHOR,
   NAVBAR_UI_TEXT,
+  ROUTES,
 } from '@constants';
 import { Button } from '@dannydanzka/sovereignty-ui';
 import { useAuth, useLayoutBgColor } from '@hooks';
@@ -85,11 +85,15 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
     router.push(HEADER_ROUTES.ENROLLMENT);
   }, [router]);
 
+  /**
+   * La portada todavía no tiene el flujo de proyección: el CTA principal lleva
+   * a crear cuenta, que es la puerta real al producto.
+   */
   const handleReserveClick = useCallback(() => {
-    router.push(MANGO_PACKAGES_ANCHOR);
+    router.push(HEADER_ROUTES.ENROLLMENT);
   }, [router]);
 
-  /** Mango landing members entry: dashboard for signed-in users, login for guests. */
+  /** Entrada de miembros desde la portada: dashboard for signed-in users, login for guests. */
   const handleMeetMembersClick = useCallback(() => {
     router.push(isAuthenticated ? AUTHENTICATED_ROUTES.DASHBOARD : HEADER_ROUTES.LOGIN);
   }, [isAuthenticated, router]);
@@ -164,15 +168,21 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
 
   const renderAuthenticatedNav = () => (
     <>
-      <NavLeft>
-        <MenuButton aria-label={t('common.openMenu')} type='button' onClick={onMenuClick}>
-          <Menu />
-        </MenuButton>
-      </NavLeft>
       <LogoContainer onClick={handleAuthLogoClick}>
         <LogoSvg />
       </LogoContainer>
-      <NavRight />
+      <NavRight>
+        <NavLink href={AUTHENTICATED_ROUTES.DASHBOARD}>{NAVBAR_UI_TEXT.CTA_DASHBOARD}</NavLink>
+        <NavLink href={AUTHENTICATED_ROUTES.PROFILE}>{NAVBAR_UI_TEXT.CTA_PROFILE}</NavLink>
+        <UserMenu>
+          <UserInfo>
+            <UserName>{`${user?.firstName ?? ''} ${user?.lastName ?? ''}`.trim()}</UserName>
+          </UserInfo>
+          <Button size='small' variant='outline' onClick={handleLogout}>
+            {t('auth.logout')}
+          </Button>
+        </UserMenu>
+      </NavRight>
     </>
   );
 
@@ -186,15 +196,13 @@ export const Header = ({ bgColor, onMenuClick, variant = 'public' }: HeaderProps
         <MenuButton aria-label={t('common.openMenu')} type='button' onClick={onMenuClick}>
           <Menu />
         </MenuButton>
-        <NavLink href='/admin'>{t('public.nav.dashboard')}</NavLink>
-        <NavLink href='/admin/kits'>{t('public.nav.kits')}</NavLink>
+        <NavLink href={ROUTES.ADMIN.DASHBOARD}>{t('public.nav.dashboard')}</NavLink>
       </NavLeft>
       <LogoContainer onClick={handleAdminLogoClick}>
         <LogoSvg />
       </LogoContainer>
       <NavRight>
-        <NavLink href='/admin/events'>{t('public.nav.events')}</NavLink>
-        <NavLink href='/admin/evidences'>{t('public.nav.evidences')}</NavLink>
+        <NavLink href={ROUTES.ADMIN.USERS}>{t('public.nav.users')}</NavLink>
         <UserMenu>
           <UserInfo>
             <UserName>

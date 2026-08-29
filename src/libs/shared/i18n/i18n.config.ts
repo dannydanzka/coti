@@ -1,7 +1,7 @@
 /**
  * i18n Configuration
  *
- * Centralized i18next configuration for DearAdry platform.
+ * Centralized i18next configuration for Coti platform.
  * Uses react-i18next for cross-platform compatibility (Next.js + React Native).
  *
  * Default language: Spanish (es)

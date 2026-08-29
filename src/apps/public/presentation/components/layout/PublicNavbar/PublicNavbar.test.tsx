@@ -23,7 +23,7 @@ const defaultProps = {
       url: '#',
     },
   ],
-  logo: { alt: 'DearAdry', src: '/logo.png' },
+  logo: { alt: 'Coti', src: '/logo.png' },
 };
 
 describe('PublicNavbar', () => {
@@ -39,6 +39,6 @@ describe('PublicNavbar', () => {
 
   it('renders logo', () => {
     renderWithProviders(<PublicNavbar {...defaultProps} />);
-    expect(screen.getByAltText('DearAdry')).toBeInTheDocument();
+    expect(screen.getByAltText('Coti')).toBeInTheDocument();
   });
 });

@@ -3,7 +3,7 @@
  *
  * Structure:
  * - admin/     Admin-only components
- * - business/  DearAdry-specific components (EventCard, KitCard, etc.)
+ * - business/  proyecto components (EventCard, KitCard, etc.)
  * - common/    Agnostic components (Button, Modal, MediaCard, etc.)
  * - forms/     Form components (LoginForm, FormTextField, etc.)
  * - icons/     Icon components

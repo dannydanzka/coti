@@ -90,25 +90,30 @@ export const useUserManager = (): UseUserManagerReturn => {
     [currentUser?.id, isOwner, protectedUserIds]
   );
 
+  /**
+   * `adminCount` sólo cuenta administradores ACTIVOS, así que la guarda del
+   * último admin debe aplicarse únicamente sobre un admin activo: sobre uno ya
+   * inactivo dejaría la fila bloqueada para siempre — sin reactivar ni borrar.
+   */
   const canToggleUserStatus = useCallback(
-    (userId: string, userRole: UserRole, userEmail?: string): boolean => {
+    (userId: string, userRole: UserRole, userIsActive: boolean, userEmail?: string): boolean => {
       if (userId === currentUser?.id) return false;
       if (userRole === USER_ROLES.OWNER) return false;
       if (userEmail && PROTECTED_USER_EMAILS.includes(userEmail)) return false;
       if (protectedUserIds.has(userId)) return false;
-      if (userRole === USER_ROLES.ADMIN && adminCount <= 1) return false;
+      if (userRole === USER_ROLES.ADMIN && userIsActive && adminCount <= 1) return false;
       return true;
     },
     [currentUser?.id, protectedUserIds, adminCount]
   );
 
   const canDeleteUser = useCallback(
-    (userId: string, userRole: UserRole, userEmail?: string): boolean => {
+    (userId: string, userRole: UserRole, userIsActive: boolean, userEmail?: string): boolean => {
       if (userId === currentUser?.id) return false;
       if (userRole === USER_ROLES.OWNER) return false;
       if (userEmail && PROTECTED_USER_EMAILS.includes(userEmail)) return false;
       if (protectedUserIds.has(userId)) return false;
-      if (userRole === USER_ROLES.ADMIN && adminCount <= 1) return false;
+      if (userRole === USER_ROLES.ADMIN && userIsActive && adminCount <= 1) return false;
       return true;
     },
     [currentUser?.id, protectedUserIds, adminCount]

@@ -29,7 +29,7 @@ import { useAuth } from '@hooks';
 import { AdminDrawer } from './AdminDrawer';
 
 const mockUser = {
-  email: 'maria@dearadry.com',
+  email: 'maria@coti.mx',
   firstName: 'María',
   id: '1',
   lastName: 'González',
@@ -68,7 +68,7 @@ describe('AdminDrawer', () => {
   describe('Open State', () => {
     it('renders user info', () => {
       renderWithProviders(<AdminDrawer isOpen onClose={mockOnClose} />);
-      assertTexts(['María González', 'maria@dearadry.com', 'MG', 'Administrador', 'Cerrar Sesión']);
+      assertTexts(['María González', 'maria@coti.mx', 'MG', 'Administrador', 'Cerrar Sesión']);
     });
 
     it('renders role badge for owner', () => {

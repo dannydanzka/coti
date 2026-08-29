@@ -16,7 +16,7 @@ export const authMockStates = {
       createdAt: '2024-01-15T00:00:00.000Z',
       deletedAt: null,
       deletedBy: null,
-      email: 'admin@dearadry.com',
+      email: 'admin@coti.mx',
       firstName: 'María',
       id: 'user_admin_1',
       isActive: true,

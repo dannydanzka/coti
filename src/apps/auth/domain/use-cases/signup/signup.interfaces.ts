@@ -2,7 +2,7 @@
  * Signup Use Case Interfaces
  *
  * Interface contracts for SignupUseCase input/output.
- * DearAdry: No email verification - immediate account access.
+ * Coti: No email verification - immediate account access.
  *
  */
 

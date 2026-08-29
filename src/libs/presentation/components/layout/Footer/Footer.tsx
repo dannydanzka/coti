@@ -19,10 +19,7 @@ import { useAuth, useLayoutBgColor } from '@hooks';
 import type { FooterProps } from './Footer.interfaces';
 
 import {
-  AttributionLink,
-  AttributionText,
   Copyright,
-  FooterAttribution,
   FooterBottom,
   FooterBrandSection,
   FooterContainer,
@@ -32,7 +29,6 @@ import {
   FooterLogo,
   FooterSection,
   FooterTitle,
-  LineBreak,
   SocialIcon,
   SocialLinks,
 } from './Footer.styled';
@@ -85,44 +81,26 @@ export const Footer = ({ bgColor }: FooterProps) => {
     </FooterBrandSection>
   );
 
+  /** Una sección sin enlaces no se pinta: evita encabezados huérfanos. */
   const renderLinksSection = (
     title: string,
     links: ReadonlyArray<{ href: string; label: string }>
-  ) => (
-    <FooterSection>
-      <FooterTitle>{title}</FooterTitle>
-      {links.map((link) => (
-        <FooterLink href={link.href} key={link.href}>
-          {link.label}
-        </FooterLink>
-      ))}
-    </FooterSection>
-  );
-
-  const renderAttribution = () => (
-    <FooterAttribution>
-      {t('footer.developedBy')}{' '}
-      <AttributionLink href={t('footer.developerUrl')} rel='noopener noreferrer' target='_blank'>
-        {t('footer.developer')}
-      </AttributionLink>
-      <LineBreak />
-      <AttributionLink
-        href='https://www.linkedin.com/in/roberto-ramirez/'
-        rel='noopener noreferrer'
-        target='_blank'
-      >
-        {t('footer.authorName')}
-      </AttributionLink>
-      <LineBreak />
-      <AttributionText>{t('footer.authorTitle')}</AttributionText>
-    </FooterAttribution>
-  );
+  ) =>
+    links.length === 0 ? null : (
+      <FooterSection>
+        <FooterTitle>{title}</FooterTitle>
+        {links.map((link) => (
+          <FooterLink href={link.href} key={link.href}>
+            {link.label}
+          </FooterLink>
+        ))}
+      </FooterSection>
+    );
 
   const renderFooterBottom = () => (
     <FooterBottom>
       <FooterSection>
         <Copyright>{FOOTER_UI_TEXT.COPYRIGHT}</Copyright>
-        {renderAttribution()}
       </FooterSection>
     </FooterBottom>
   );

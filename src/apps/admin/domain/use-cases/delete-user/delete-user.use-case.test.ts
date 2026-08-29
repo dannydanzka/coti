@@ -12,6 +12,7 @@ import {
   itRejectsMissingId,
   itRejectsNotFound,
   itRejectsUnauthorized,
+  MOCK_OWNER,
   MOCK_REQUEST,
   mockAuthSuccess,
 } from '@testing/helpers';
@@ -51,16 +52,38 @@ describe('executeDeleteUser', () => {
     );
   });
 
-  it('prevents admin deletion', async () => {
+  it('prevents an admin from deleting another admin', async () => {
     mockUserRepo.findById.mockResolvedValueOnce({
       ...mockTargetUser,
       id: 'admin-456',
       role: USER_ROLES.ADMIN,
     } as never);
-    expectFailure(
-      await executeDeleteUser({ id: 'admin-456', request: MOCK_REQUEST }),
-      'administrador'
-    );
+    const result = await executeDeleteUser({ id: 'admin-456', request: MOCK_REQUEST });
+    expectFailure(result, 'administrador');
+    expect(result.status).toBe(403);
+  });
+
+  it('lets the owner delete an admin', async () => {
+    mockAuthSuccess(MOCK_OWNER);
+    mockUserRepo.findById.mockResolvedValueOnce({
+      ...mockTargetUser,
+      id: 'admin-456',
+      role: USER_ROLES.ADMIN,
+    } as never);
+    expectSuccess(await executeDeleteUser({ id: 'admin-456', request: MOCK_REQUEST }));
+    expect(mockUserRepo.delete).toHaveBeenCalledWith('admin-456');
+  });
+
+  it('protects the owner account from deletion', async () => {
+    mockAuthSuccess(MOCK_OWNER);
+    mockUserRepo.findById.mockResolvedValueOnce({
+      ...mockTargetUser,
+      id: 'owner-456',
+      role: USER_ROLES.OWNER,
+    } as never);
+    const result = await executeDeleteUser({ id: 'owner-456', request: MOCK_REQUEST });
+    expectFailure(result);
+    expect(result.status).toBe(403);
   });
 
   itRejectsUnauthorized(executeDeleteUser, params);

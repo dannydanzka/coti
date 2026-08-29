@@ -19,8 +19,7 @@ export const DropZone = styled.label<{ $isDragging?: boolean; $hasImage?: boolea
   align-items: center;
   background: ${({ $hasImage }) => ($hasImage ? 'transparent' : brandColor.landingBgYellow)};
   border: 2px dashed
-    ${({ $isDragging }) =>
-      $isDragging ? brandColor.landingPinkVibrant : brandColor.landingBlueDark};
+    ${({ $isDragging }) => ($isDragging ? brandColor.cotiCoral : brandColor.landingBlueDark)};
   border-radius: ${shape.full};
   cursor: pointer;
   display: flex;
@@ -32,7 +31,7 @@ export const DropZone = styled.label<{ $isDragging?: boolean; $hasImage?: boolea
   width: 120px;
 
   &:hover {
-    border-color: ${brandColor.landingPinkVibrant};
+    border-color: ${brandColor.cotiCoral};
   }
 `;
 

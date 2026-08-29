@@ -20,7 +20,7 @@ vi.mock('@helpers/http/handleRequest/handleRequest', () => ({
 describe('AuthService', () => {
   describe('login', () => {
     const mockCredentials = {
-      email: 'admin@dearadry.com',
+      email: 'admin@coti.mx',
       password: 'password123',
     };
 
@@ -38,7 +38,7 @@ describe('AuthService', () => {
       token: 'mock-jwt-token',
       user: {
         createdAt: new Date(),
-        email: 'admin@dearadry.com',
+        email: 'admin@coti.mx',
         id: 'user-123',
         isActive: true,
         isVerified: true,
@@ -156,7 +156,7 @@ describe('AuthService', () => {
 
   describe('me', () => {
     const mockUserData = {
-      email: 'admin@dearadry.com',
+      email: 'admin@coti.mx',
       id: 'user-123',
       isActive: true,
       isVerified: true,

@@ -21,14 +21,14 @@ import {
 } from './auth.selectors';
 
 const mockSpanishUser = {
-  email: 'maria.garcia@dearadry.com',
+  email: 'maria.garcia@coti.mx',
   id: 'user-maria',
   name: 'María García López',
   role: 'participant' as const,
 };
 
 const mockSpanishAdmin = {
-  email: 'ricardo.admin@dearadry.com',
+  email: 'ricardo.admin@coti.mx',
   id: 'admin-ricardo',
   name: 'Ricardo Administrador Pérez',
   role: 'admin' as const,
@@ -90,7 +90,7 @@ describe('Auth Selectors', () => {
       });
 
       expect(selectCurrentUser(userState)).toEqual(mockSpanishUser);
-      expect(selectUserEmail(userState)).toBe('maria.garcia@dearadry.com');
+      expect(selectUserEmail(userState)).toBe('maria.garcia@coti.mx');
       expect(selectUserRole(userState)).toBe('participant');
       expect(selectCurrentUser(createMockRootState(authMockStates.initial))).toBeNull();
     });

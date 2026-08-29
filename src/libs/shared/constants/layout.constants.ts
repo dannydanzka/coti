@@ -33,32 +33,23 @@ export const AUTHENTICATED_ROUTES = {
 } as const;
 
 export const NAVBAR_UI_TEXT = {
-  CTA_DASHBOARD: 'Mi cuenta',
-  CTA_ENROLL: 'Inscripciones',
-  CTA_MEMBERS: 'Miembros',
-  CTA_RESERVE: 'Apartar mi ejemplar',
-  LOGO_TEXT: 'DEAR ADRY',
+  CTA_DASHBOARD: 'Mi cajita',
+  CTA_PROFILE: 'Mi perfil',
+  CTA_ENROLL: 'Crear cuenta',
+  CTA_MEMBERS: 'Entrar',
+  CTA_RESERVE: 'Planear mi viaje',
+  LOGO_TEXT: 'COTI',
   MOBILE_MENU_TOGGLE: 'Toggle navigation menu',
   SEARCH_BUTTON_LABEL: 'Buscar',
   SEARCH_PLACEHOLDER: 'Buscar...',
 } as const;
 
-/** Anchor to the active meet's packages section on the home landing (id="paquetes"). */
-export const MANGO_PACKAGES_ANCHOR = `${PUBLIC_ROUTES.HOME}#paquetes`;
-
 /**
- * Home-only header navigation (Mango meet landing). Other public pages keep the
- * minimal Rally header (Inscripciones / Miembros); this richer nav renders only
- * on the home route. Mirrors the Mango landing mock.
+ * Navegación del header sólo en la portada. Other public pages keep the
+ * encabezado mínimo; esta navegación más completa se muestra sólo
+ * on the home route. Refleja el mock de la portada.
  */
-export const HOME_NAV_ITEMS = [
-  { href: PUBLIC_ROUTES.HOME, label: 'Inicio' },
-  { href: MANGO_PACKAGES_ANCHOR, label: 'Mango' },
-  { href: PUBLIC_ROUTES.BOOKS, label: 'Libros' },
-  { href: PUBLIC_ROUTES.RALLY, label: 'Rally' },
-  { href: PUBLIC_ROUTES.ABOUT, label: 'Sobre Dear Adry' },
-  { href: PUBLIC_ROUTES.CONTACT, label: 'Contacto' },
-] as const;
+export const HOME_NAV_ITEMS = [{ href: PUBLIC_ROUTES.HOME, label: 'Inicio' }] as const;
 
 export const HEADER_ROUTES = {
   ENROLLMENT: PUBLIC_ROUTES.SIGNUP,
@@ -67,59 +58,30 @@ export const HEADER_ROUTES = {
 } as const;
 
 export const FOOTER_LINKS = {
-  ABOUT: [
-    { href: PUBLIC_ROUTES.HOME, label: 'Inicio' },
-    { href: PUBLIC_ROUTES.BOOKS, label: 'Libros' },
-    { href: PUBLIC_ROUTES.RALLY, label: 'Rally' },
-    { href: PUBLIC_ROUTES.ABOUT, label: 'Sobre Dear Adry' },
-    { href: PUBLIC_ROUTES.GALLERY, label: 'Galería' },
-    { href: PUBLIC_ROUTES.SPONSORS, label: 'Nuestros Aliados' },
-  ],
-  LEGAL: [
-    { href: PUBLIC_ROUTES.TERMS, label: 'Términos y Condiciones' },
-    { href: PUBLIC_ROUTES.PRIVACY, label: 'Aviso de Privacidad' },
-    { href: PUBLIC_ROUTES.COOKIES, label: 'Política de Cookies' },
-  ],
-  SUPPORT: [
-    { href: PUBLIC_ROUTES.CONTACT, label: 'Contacto' },
-    { href: PUBLIC_ROUTES.FAQ, label: 'Preguntas Frecuentes' },
-  ],
+  ABOUT: [{ href: PUBLIC_ROUTES.HOME, label: 'Inicio' }],
+  LEGAL: [],
+  SUPPORT: [],
 } as const;
 
 export const FOOTER_LINKS_AUTHENTICATED = {
-  ABOUT: [
-    { href: AUTHENTICATED_ROUTES.DASHBOARD, label: 'Mi Dashboard' },
-    { href: AUTHENTICATED_ROUTES.EVENTS, label: 'Mis Eventos' },
-    { href: PUBLIC_ROUTES.SPONSORS, label: 'Nuestros Aliados' },
-  ],
-  ACCOUNT: [
-    { href: AUTHENTICATED_ROUTES.PROFILE, label: 'Mi Perfil' },
-    { href: AUTHENTICATED_ROUTES.ORDERS, label: 'Mis Reuniones' },
-    { href: AUTHENTICATED_ROUTES.PAYMENTS, label: 'Mis Pagos' },
-  ],
-  LEGAL: [
-    { href: PUBLIC_ROUTES.TERMS, label: 'Términos y Condiciones' },
-    { href: PUBLIC_ROUTES.PRIVACY, label: 'Aviso de Privacidad' },
-    { href: PUBLIC_ROUTES.COOKIES, label: 'Política de Cookies' },
-  ],
-  SUPPORT: [
-    { href: PUBLIC_ROUTES.CONTACT, label: 'Contacto' },
-    { href: PUBLIC_ROUTES.FAQ, label: 'Preguntas Frecuentes' },
-  ],
+  ABOUT: [{ href: AUTHENTICATED_ROUTES.DASHBOARD, label: 'Mi Dashboard' }],
+  ACCOUNT: [{ href: AUTHENTICATED_ROUTES.PROFILE, label: 'Mi Perfil' }],
+  LEGAL: [],
+  SUPPORT: [],
 } as const;
 
 export const SOCIAL_LINKS = {
-  EMAIL: 'mailto:dearadry@gmail.com',
-  FACEBOOK: 'https://facebook.com/dear.adry',
-  INSTAGRAM: 'https://instagram.com/dear.adry',
-  LINKEDIN: 'https://linkedin.com/company/dear.adry',
-  TIKTOK: 'https://tiktok.com/@dear.adry',
-  YOUTUBE: 'https://youtube.com/@dear.adry',
+  EMAIL: 'mailto:hola@coti.mx',
+  FACEBOOK: 'https://facebook.com/coti.mx',
+  INSTAGRAM: 'https://instagram.com/coti.mx',
+  LINKEDIN: 'https://linkedin.com/company/coti',
+  TIKTOK: 'https://tiktok.com/@coti.mx',
+  YOUTUBE: 'https://youtube.com/@coti',
 } as const;
 
 export const FOOTER_UI_TEXT = {
-  BRAND_NAME: 'DearAdry',
-  COPYRIGHT: '© 2026 DearAdry. Todos los derechos reservados.',
+  BRAND_NAME: 'Coti',
+  COPYRIGHT: '© 2026 Coti. Todos los derechos reservados.',
   SECTION_ABOUT: 'Acerca de',
   SECTION_ACCOUNT: 'Mi Cuenta',
   SECTION_LEGAL: 'Legal',

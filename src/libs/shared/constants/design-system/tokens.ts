@@ -139,7 +139,7 @@ export const color = {
 /**
  * Brand Color Tokens
  *
- * Business-specific colors for DearAdry project.
+ * Business-specific colors for Coti project.
  * Includes: landing page, categories, FAQ, alerts, pricing, etc.
  */
 export const brandColor = {
@@ -171,7 +171,7 @@ export const brandColor = {
   faqPagos: '#4CAF50',
   faqPagosBg: '#E8F5E9',
   landingBgCream: '#FFF3E0',
-  landingBgCreamMango: '#FEF0D5',
+  landingBgCreamAlt: '#FEF0D5',
   landingBgCreamWarm: '#F9EAD2',
   landingBgSage: '#DCE3CA',
   landingBgSand: '#EAD7B0',
@@ -189,6 +189,17 @@ export const brandColor = {
   landingTextGray: '#4A5568',
   landingYellowIntense: '#FFF176',
   signupSuccessBg: '#E8F5E9',
+
+  /**
+   * Paleta de marca de Coti — fuente de verdad: `assets/branding/README.md`.
+   * Úsala para todo lo nuevo; el resto de este bloque es paleta heredada.
+   */
+  cotiBrown: '#503A1C',
+  cotiCoral: '#E15D3B',
+  cotiCream: '#FEFBF3',
+  cotiForest: '#305233',
+  cotiMustard: '#E39B38',
+  cotiSand: '#DDB16F',
 } as const;
 
 export const typography = {

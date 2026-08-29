@@ -1,7 +1,7 @@
 /**
  * Forms - Barrel Export
  *
- * Reusable form components for DearAdry.
+ * Reusable form components for Coti.
  */
 
 export * from './FormSelectField';

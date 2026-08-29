@@ -2,7 +2,7 @@
  * Signup Use Case Tests
  *
  * Essential tests for participant self-registration.
- * DearAdry Model: No email verification, immediate account access.
+ * Coti Model: No email verification, immediate account access.
  * Spanish locale and comprehensive validation.
  */
 

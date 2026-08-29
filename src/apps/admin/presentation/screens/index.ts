@@ -5,3 +5,4 @@
  */
 
 export * from './UserManagerScreen';
+export * from './AdminDashboardScreen';

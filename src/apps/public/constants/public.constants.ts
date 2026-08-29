@@ -2,7 +2,7 @@
  * Public Page Constants
  *
  * Text constants and configuration for public page content.
- * Routes and navigation for DearAdry public pages.
+ * Routes and navigation for Coti public pages.
  */
 
 import { brandColor } from '@constants';
@@ -35,48 +35,20 @@ export const AUTHENTICATED_ROUTES = {
 } as const;
 
 export const FOOTER_LINKS = {
-  ABOUT: [
-    { href: PUBLIC_ROUTES.HOME, label: 'Inicio' },
-    { href: PUBLIC_ROUTES.BOOKS, label: 'Libros' },
-    { href: PUBLIC_ROUTES.RALLY, label: 'Rally' },
-    { href: PUBLIC_ROUTES.ABOUT, label: 'Sobre Dear Adry' },
-    { href: PUBLIC_ROUTES.GALLERY, label: 'Galería' },
-    { href: PUBLIC_ROUTES.SPONSORS, label: 'Nuestros Aliados' },
-  ],
-  LEGAL: [
-    { href: PUBLIC_ROUTES.TERMS, label: 'Términos y Condiciones' },
-    { href: PUBLIC_ROUTES.PRIVACY, label: 'Aviso de Privacidad' },
-    { href: PUBLIC_ROUTES.COOKIES, label: 'Política de Cookies' },
-  ],
-  SUPPORT: [
-    { href: PUBLIC_ROUTES.CONTACT, label: 'Contacto' },
-    { href: PUBLIC_ROUTES.FAQ, label: 'Preguntas Frecuentes' },
-  ],
+  ABOUT: [{ href: PUBLIC_ROUTES.HOME, label: 'Inicio' }],
+  LEGAL: [],
+  SUPPORT: [],
 } as const;
 
 export const FOOTER_LINKS_AUTHENTICATED = {
-  ABOUT: [
-    { href: AUTHENTICATED_ROUTES.DASHBOARD, label: 'Mi Dashboard' },
-    { href: AUTHENTICATED_ROUTES.EVENTS, label: 'Mis Eventos' },
-  ],
-  ACCOUNT: [
-    { href: AUTHENTICATED_ROUTES.PROFILE, label: 'Mi Perfil' },
-    { href: AUTHENTICATED_ROUTES.PAYMENTS, label: 'Mis Pagos' },
-    { href: PUBLIC_ROUTES.SPONSORS, label: 'Nuestros Aliados' },
-  ],
-  LEGAL: [
-    { href: PUBLIC_ROUTES.TERMS, label: 'Términos y Condiciones' },
-    { href: PUBLIC_ROUTES.PRIVACY, label: 'Aviso de Privacidad' },
-    { href: PUBLIC_ROUTES.COOKIES, label: 'Política de Cookies' },
-  ],
-  SUPPORT: [
-    { href: PUBLIC_ROUTES.CONTACT, label: 'Contacto' },
-    { href: PUBLIC_ROUTES.FAQ, label: 'Preguntas Frecuentes' },
-  ],
+  ABOUT: [{ href: AUTHENTICATED_ROUTES.DASHBOARD, label: 'Mi Dashboard' }],
+  ACCOUNT: [{ href: AUTHENTICATED_ROUTES.PROFILE, label: 'Mi Perfil' }],
+  LEGAL: [],
+  SUPPORT: [],
 } as const;
 
 export const SOCIAL_LINKS = {
-  EMAIL: 'mailto:dearadry@gmail.com',
+  EMAIL: 'mailto:hola@coti.mx',
   FACEBOOK: 'https://facebook.com/dear.adry',
   INSTAGRAM: 'https://instagram.com/dear.adry',
   LINKEDIN: 'https://linkedin.com/company/dear.adry',
@@ -85,8 +57,8 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const FOOTER_UI_TEXT = {
-  BRAND_NAME: 'DearAdry',
-  COPYRIGHT: '© 2026 DearAdry. Todos los derechos reservados.',
+  BRAND_NAME: 'Coti',
+  COPYRIGHT: '© 2026 Coti. Todos los derechos reservados.',
   SECTION_ABOUT: 'Acerca de',
   SECTION_ACCOUNT: 'Mi Cuenta',
   SECTION_LEGAL: 'Legal',

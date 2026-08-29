@@ -21,8 +21,8 @@ describe('MeetButton', () => {
   });
 
   it('renders the outline variant label', () => {
-    render(<MeetButton variant='outline'>Comprar · Pack Dear Adry</MeetButton>);
+    render(<MeetButton variant='outline'>Comprar · Paquete</MeetButton>);
 
-    assertText('Comprar · Pack Dear Adry');
+    assertText('Comprar · Paquete');
   });
 });

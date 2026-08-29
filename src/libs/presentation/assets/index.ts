@@ -1,5 +1,5 @@
 /**
- * Assets - DearAdry platform
+ * Assets - Coti platform
  *
  * Image assets should be imported directly from their paths:
  * import Logo from '@assets/branding/Logo.svg';

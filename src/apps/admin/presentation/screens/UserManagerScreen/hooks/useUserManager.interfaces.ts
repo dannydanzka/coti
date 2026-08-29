@@ -85,8 +85,18 @@ export interface UseUserManagerReturn {
   handleModalContentClick: (event: React.MouseEvent) => void;
 
   canEditUser: (userId: string, userRole: UserRole, userEmail?: string) => boolean;
-  canToggleUserStatus: (userId: string, userRole: UserRole, userEmail?: string) => boolean;
-  canDeleteUser: (userId: string, userRole: UserRole, userEmail?: string) => boolean;
+  canToggleUserStatus: (
+    userId: string,
+    userRole: UserRole,
+    userIsActive: boolean,
+    userEmail?: string
+  ) => boolean;
+  canDeleteUser: (
+    userId: string,
+    userRole: UserRole,
+    userIsActive: boolean,
+    userEmail?: string
+  ) => boolean;
   getUserRoleLabel: (role: UserRole) => string;
 
   createEditHandler: (user: UserItem) => () => void;

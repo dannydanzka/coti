@@ -2,7 +2,7 @@
  * Authentication Middleware Interfaces
  *
  * Type definitions for authentication middleware.
- * DearAdry: Challenge & Events vertical
+ * Coti: Challenge & Events vertical
  */
 
 export interface JWTPayload {

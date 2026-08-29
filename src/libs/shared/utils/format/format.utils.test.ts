@@ -33,7 +33,7 @@ describe('FormatUtils', () => {
   });
 
   describe('formatUserRole', () => {
-    it('should format DearAdry user roles with Spanish mapping', () => {
+    it('should format Coti user roles with Spanish mapping', () => {
       expect(formatUserRole('owner')).toBe('Propietario');
       expect(formatUserRole('admin')).toBe('Administrador');
       expect(formatUserRole('participant')).toBe('Participante');

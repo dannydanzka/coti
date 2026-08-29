@@ -35,7 +35,7 @@ export const DropZone = styled.div<DropZoneProps>`
   border: 2px dashed
     ${({ $hasError, $isDragActive }) => {
       if ($hasError) return color.error;
-      if ($isDragActive) return brandColor.landingPinkVibrant;
+      if ($isDragActive) return brandColor.cotiCoral;
       return color.neutral300;
     }};
   border-radius: ${({ $variant }) => ($variant === 'avatar' ? shape.full : shape.lg)};
@@ -72,7 +72,7 @@ export const DropZone = styled.div<DropZoneProps>`
     border-color: ${({ $disabled, $hasError }) => {
       if ($disabled) return color.neutral300;
       if ($hasError) return color.error;
-      return brandColor.landingPinkVibrant;
+      return brandColor.cotiCoral;
     }};
   }
 `;
@@ -86,7 +86,7 @@ export const UploadIcon = styled.div<{ $variant: FileUploaderVariant }>`
   background: ${color.white};
   border-radius: ${shape.full};
   box-shadow: ${elevation.sm};
-  color: ${brandColor.landingPinkVibrant};
+  color: ${brandColor.cotiCoral};
   display: flex;
   height: ${({ $variant }) => ($variant === 'avatar' ? '40px' : '56px')};
   justify-content: center;
@@ -115,7 +115,7 @@ export const UploadHint = styled.span`
 `;
 
 export const HighlightText = styled.span`
-  color: ${brandColor.landingPinkVibrant};
+  color: ${brandColor.cotiCoral};
   font-weight: ${typography.weight.semibold};
 `;
 
@@ -248,14 +248,14 @@ export const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
   border: 3px solid ${color.neutral200};
   border-radius: ${shape.full};
-  border-top-color: ${brandColor.landingPinkVibrant};
+  border-top-color: ${brandColor.cotiCoral};
   height: ${spacing.lg};
   width: ${spacing.lg};
 `;
 
 export const ProgressText = styled.span`
   animation: ${pulse} 1.5s ease-in-out infinite;
-  color: ${brandColor.landingPinkVibrant};
+  color: ${brandColor.cotiCoral};
   font-family: ${typography.family.body};
   font-size: ${typography.size.sm};
   font-weight: ${typography.weight.medium};
@@ -270,7 +270,7 @@ export const ProgressBar = styled.div`
 `;
 
 export const ProgressFill = styled.div<{ $progress: number }>`
-  background: ${brandColor.landingPinkVibrant};
+  background: ${brandColor.cotiCoral};
   border-radius: ${shape.full};
   height: 100%;
   transition: width 0.3s ease-in-out;

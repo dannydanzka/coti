@@ -2,7 +2,7 @@
  * ESLint Custom Rule: No English in Mock Errors
  *
  * Detects English error messages inside `new Error('...')` in test files.
- * All test data must use the project locale (Spanish for DearAdry).
+ * All test data must use the project locale (Spanish for Coti).
  *
  * The `essential-testing` rule already catches English names and emails.
  * This rule specifically targets error message strings passed to `new Error()`,

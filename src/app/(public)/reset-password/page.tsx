@@ -13,7 +13,7 @@ import { ResetPasswordScreen } from '@apps/public/presentation/screens/ResetPass
 
 const ResetPasswordContent = () => {
   useEffect(() => {
-    document.title = 'Restablecer Contraseña | DearAdry';
+    document.title = 'Restablecer Contraseña | Coti';
   }, []);
 
   return <ResetPasswordScreen />;

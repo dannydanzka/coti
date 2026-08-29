@@ -61,7 +61,7 @@ export const logout = (): string => {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_preferences');
 
-    localStorage.removeItem('persist:dearadry_root');
+    localStorage.removeItem('persist:coti_root');
 
     document.cookie = 'auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   } catch (error) {

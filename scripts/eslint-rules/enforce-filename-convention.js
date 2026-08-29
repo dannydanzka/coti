@@ -31,7 +31,7 @@
  *
  * ESLINT VERSION: requires ESLint 9+ (uses context.filename property API).
  *
- * @version 2.0.0 (dearadry-adapted)
+ * @version 2.0.0 (adaptado)
  * @reviewed 2026-06-19
  */
 

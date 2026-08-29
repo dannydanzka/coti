@@ -115,7 +115,7 @@ describe('Redux Store Configuration', () => {
     it('configures persistence with correct blacklist', () => {
       const mockPersistConfig = {
         blacklist: ['admin', 'auth', 'users'],
-        key: 'dearadry_root',
+        key: 'coti_root',
         whitelist: ['global'],
       };
 
@@ -127,7 +127,7 @@ describe('Redux Store Configuration', () => {
     it('configures persistence with correct whitelist', () => {
       const mockPersistConfig = {
         blacklist: ['admin', 'auth', 'users'],
-        key: 'dearadry_root',
+        key: 'coti_root',
         whitelist: ['global'],
       };
 
@@ -138,11 +138,11 @@ describe('Redux Store Configuration', () => {
     it('uses correct storage key', () => {
       const mockPersistConfig = {
         blacklist: ['admin', 'auth', 'users'],
-        key: 'dearadry_root',
+        key: 'coti_root',
         whitelist: ['global'],
       };
 
-      expect(mockPersistConfig.key).toBe('dearadry_root');
+      expect(mockPersistConfig.key).toBe('coti_root');
     });
   });
 

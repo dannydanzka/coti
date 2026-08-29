@@ -2,7 +2,7 @@
  * Authentication Signup API - Thin Controller
  *
  * RESTful endpoint for participant self-registration.
- * DearAdry Model: No email verification, immediate account access.
+ * Coti Model: No email verification, immediate account access.
  *
  * Route: /api/auth/signup
  */

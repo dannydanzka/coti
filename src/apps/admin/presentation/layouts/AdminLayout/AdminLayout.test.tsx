@@ -40,7 +40,7 @@ import { useAuth } from '@hooks';
 import { AdminLayout } from './AdminLayout';
 
 const mockAdminUser = {
-  email: 'maria@dearadry.com',
+  email: 'maria@coti.mx',
   firstName: 'María',
   id: '1',
   lastName: 'González',

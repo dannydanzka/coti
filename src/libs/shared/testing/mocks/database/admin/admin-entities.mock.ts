@@ -2,7 +2,7 @@
  * Admin Entities Mocks
  *
  * Mock data for admin-specific entities with Spanish data.
- * Updated for DearAdry - removed voting system fields.
+ * Updated for Coti - removed voting system fields.
  */
 
 import type { ActivityType } from '@domain-types';
@@ -84,7 +84,7 @@ export const mockAdminUserEntity: UserEntity = {
   createdAt: new Date('2024-01-15T00:00:00Z'),
   deletedAt: null,
   deletedBy: null,
-  email: 'maria.rodriguez@dearadry.com',
+  email: 'maria.rodriguez@coti.mx',
   firstName: 'María',
   id: 'admin-user-maria-rodriguez-789',
   isActive: true,
@@ -104,7 +104,7 @@ export const mockAdminUserEntity: UserEntity = {
 
 export const mockUserManager: UserEntity = {
   ...mockAdminUserEntity,
-  email: 'carlos.garcia@dearadry.com',
+  email: 'carlos.garcia@coti.mx',
   firstName: 'Carlos',
   id: 'admin-user-carlos-garcia-654',
   lastName: 'García Ruiz',

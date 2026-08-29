@@ -24,7 +24,7 @@ import {
   LoginForm,
 } from '@components';
 import { getLocalizedError } from '@i18n';
-import { isMeetOriginRedirect } from '@apps/public/constants';
+import { isProjectionOriginRedirect } from '@apps/public/constants';
 import type { LoginFormData } from '@components';
 import { ROUTES, USER_ROLES } from '@constants';
 import { useAuth, useNotifications } from '@hooks';
@@ -69,8 +69,10 @@ export const LoginScreen = ({ redirectTo }: LoginScreenProps) => {
     return null;
   }
 
-  const isMeetOrigin = isMeetOriginRedirect(redirectTo);
-  const subtitleKey = isMeetOrigin ? 'auth.loginForm.subtitleMeet' : 'auth.loginForm.subtitle';
+  const isProjectionOrigin = isProjectionOriginRedirect(redirectTo);
+  const subtitleKey = isProjectionOrigin
+    ? 'auth.loginForm.subtitleProjection'
+    : 'auth.loginForm.subtitle';
   const signupHref = redirectTo
     ? `${ROUTES.PUBLIC.SIGNUP}?redirect=${encodeURIComponent(redirectTo)}`
     : ROUTES.PUBLIC.SIGNUP;

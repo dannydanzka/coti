@@ -134,32 +134,3 @@ export const Copyright = styled.p`
   margin: 0;
   text-align: center;
 `;
-
-export const FooterAttribution = styled.div`
-  color: ${brandColor.landingTextGray};
-  font-family: ${typography.family.body};
-  font-size: ${typography.size.xs};
-  margin-top: ${spacing.xs};
-  text-align: center;
-`;
-
-export const AttributionLink = styled.a`
-  color: ${brandColor.landingBlueDark};
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    color: ${brandColor.landingBlueLight};
-  }
-`;
-
-export const AttributionText = styled.small`
-  display: block;
-  font-size: ${typography.size.xs};
-  margin-top: ${spacing.micro};
-  opacity: 0.8;
-`;
-
-export const LineBreak = styled.br`
-  display: block;
-`;

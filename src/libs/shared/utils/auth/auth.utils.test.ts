@@ -50,7 +50,7 @@ describe('Auth Utils', () => {
       const result = logout();
       expect(localStorage.removeItem).toHaveBeenCalledWith('auth_token');
       expect(localStorage.removeItem).toHaveBeenCalledWith('user_preferences');
-      expect(localStorage.removeItem).toHaveBeenCalledWith('persist:dearadry_root');
+      expect(localStorage.removeItem).toHaveBeenCalledWith('persist:coti_root');
       expect(result).toBe('/iniciar-sesion');
     });
   });

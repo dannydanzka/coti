@@ -102,10 +102,10 @@ describe('Test Helpers', () => {
 
   describe('user.typeInField', () => {
     it('types value into labeled field', async () => {
-      const result = await user.typeInField('Email', 'maria@dearadry.com');
+      const result = await user.typeInField('Email', 'maria@coti.mx');
       expect(screen.getByLabelText).toHaveBeenCalledWith(/Email/i);
       expect(mockUserInstance.clear).toHaveBeenCalledWith(mockInput);
-      expect(mockUserInstance.type).toHaveBeenCalledWith(mockInput, 'maria@dearadry.com');
+      expect(mockUserInstance.type).toHaveBeenCalledWith(mockInput, 'maria@coti.mx');
       expect(result).toBe(mockInput);
     });
   });

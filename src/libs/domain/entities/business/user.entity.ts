@@ -1,5 +1,5 @@
 /**
- * User Entity - DearAdry Platform
+ * User Entity - Coti Platform
  *
  * SINGLE SOURCE OF TRUTH based on Prisma schema.
  * NO email verification (immediate access after signup).
@@ -7,7 +7,7 @@
  * 3 roles: owner (1), admin (N), participant (unlimited).
  *
  * @pattern Clean Architecture - Domain Entity
- * @context DearAdry (User Management)
+ * @context Coti (User Management)
  * @prisma model User
  */
 

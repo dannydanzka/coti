@@ -1,6 +1,6 @@
 /**
  * Next.js Route Protection Middleware
- * DearAdry Platform
+ * Coti Platform
  *
  * Protects admin and authenticated routes with role-based authentication.
  * Redirects authenticated users from auth pages to their portal.
@@ -117,14 +117,14 @@ async function protectAdminRoute(request: NextRequest): Promise<NextResponse> {
   if (!token) {
     return pathname.startsWith('/api/')
       ? NextResponse.json({ error: 'No autorizado', success: false }, { status: 401 })
-      : redirectToLogin(request, '/admin/login');
+      : redirectToLogin(request, '/login');
   }
 
   const jwtSecret = process.env['JWT_SECRET'];
   if (!jwtSecret) {
     return pathname.startsWith('/api/')
       ? NextResponse.json({ error: 'No autorizado', success: false }, { status: 401 })
-      : redirectToLogin(request, '/admin/login', true);
+      : redirectToLogin(request, '/login', true);
   }
 
   const decoded = await verifyToken(token, jwtSecret);
@@ -132,13 +132,13 @@ async function protectAdminRoute(request: NextRequest): Promise<NextResponse> {
   if (!decoded?.userId) {
     return pathname.startsWith('/api/')
       ? NextResponse.json({ error: 'Token expirado o inválido', success: false }, { status: 401 })
-      : redirectToLogin(request, '/admin/login', true);
+      : redirectToLogin(request, '/login', true);
   }
 
   if (!ADMIN_ROLES.includes(decoded.role)) {
     return pathname.startsWith('/api/')
       ? NextResponse.json({ error: 'Permisos insuficientes', success: false }, { status: 403 })
-      : redirectToLogin(request, '/admin/login');
+      : redirectToLogin(request, '/login');
   }
 
   return NextResponse.next();
@@ -178,21 +178,15 @@ export const config = {
   matcher: [
     '/',
     '/login',
-    '/admin/login',
-    '/nosotros',
-    '/como-funciona',
-    '/contact',
-    '/preguntas-frecuentes',
-    '/privacy',
-    '/cookies',
-    '/galeria',
-    '/registro-exitoso',
+    '/signup',
+    '/forgot-password',
+    '/reset-password',
     '/dashboard',
     '/dashboard/:path*',
-    '/payment/:path*',
+    '/profile',
+    '/profile/:path*',
     '/admin',
     '/admin/:path*',
     '/api/admin/:path*',
-    '/api/public/evidence/:path*',
   ],
 };

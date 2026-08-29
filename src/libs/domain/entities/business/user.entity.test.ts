@@ -1,5 +1,5 @@
 /**
- * User Entity - DearAdry Business Tests
+ * User Entity - Coti Business Tests
  *
  * Tests for user entity business functions.
  * Spanish locale test data per project standards.

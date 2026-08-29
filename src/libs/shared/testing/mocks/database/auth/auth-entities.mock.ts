@@ -35,7 +35,7 @@ const createUserEntity = (overrides = {}): UserEntity => ({
   createdAt: new Date('2025-01-10T08:00:00Z'),
   deletedAt: null,
   deletedBy: null,
-  email: 'user@dearadry.com',
+  email: 'user@coti.mx',
   firstName: 'Usuario',
   id: 'user-default',
   isActive: true,
@@ -71,11 +71,11 @@ export const mockUserEntityOwner = createUserEntity({
 
 export const mockUserEntityAdmin = createUserEntity({
   createdAt: new Date('2024-01-15T09:00:00Z'),
-  email: 'admin@dearadry.com',
+  email: 'admin@coti.mx',
   firstName: 'Admin',
   id: 'admin-1-id',
   lastLoginAt: new Date('2025-11-27T14:30:00Z'),
-  lastName: 'DearAdry',
+  lastName: 'Coti',
   passwordHash: '$2b$10$u0oSBAPQ0blC5PKUzxWJC.0iq4/CQlGVUz5msQb/A.KWmWdZXEpFS', // admin123
   role: 'admin',
   updatedAt: new Date('2024-01-15T09:00:00Z'),
@@ -107,7 +107,7 @@ export const mockUserEntityJose = createUserEntity({
 
 export const mockUserEntityInactive = createUserEntity({
   createdAt: new Date('2025-01-05T15:00:00Z'),
-  email: 'carlos.inactivo@dearadry.com',
+  email: 'carlos.inactivo@coti.mx',
   firstName: 'Carlos',
   id: 'user-inactive-999',
   isActive: false,
@@ -118,19 +118,19 @@ export const mockUserEntityInactive = createUserEntity({
   updatedAt: new Date('2025-01-14T16:00:00Z'),
 });
 
-// ==================== DEARADRY DEV TEST USER ====================
+// ==================== COTI DEV TEST USER ====================
 // Full test data: completed event + active event + premium kit
-export const mockUserEntityDearAdryDev = createUserEntity({
+export const mockUserEntityCotiDev = createUserEntity({
   age: 32,
   bio: 'Apasionado del running y el bienestar emocional',
   city: 'Ciudad de México',
   country: 'México',
   createdAt: new Date('2024-08-15T10:00:00Z'),
-  email: 'dearadrydev@gmail.com',
+  email: 'dev@coti.mx',
   firstName: 'Developer',
-  id: 'user-dearadry-dev-001',
+  id: 'user-coti-dev-001',
   lastLoginAt: new Date('2025-12-24T08:00:00Z'),
-  lastName: 'DearAdry',
+  lastName: 'Coti',
   neighborhood: 'Roma Norte',
   passwordHash: '$2b$10$u0oSBAPQ0blC5PKUzxWJC.0iq4/CQlGVUz5msQb/A.KWmWdZXEpFS', // admin123
   phone: '+52 55 1234 5678',
@@ -142,32 +142,32 @@ export const mockUserEntityDearAdryDev = createUserEntity({
 });
 
 export const mockValidCredentials: AuthCredentials = {
-  email: 'ana.martinez@dearadry.com',
+  email: 'ana.martinez@coti.mx',
   password: 'SecurePass123!',
 };
 
 export const mockInvalidCredentials: AuthCredentials = {
-  email: 'invalid@dearadry.com',
+  email: 'invalid@coti.mx',
   password: 'wrongpassword',
 };
 
 export const mockWeakPasswordCredentials: AuthCredentials = {
-  email: 'carlos.garcia@dearadry.com',
+  email: 'carlos.garcia@coti.mx',
   password: '123',
 };
 
 export const mockValidCredentialsAdminDemo: AuthCredentials = {
-  email: 'admin.demo@dearadry.com',
+  email: 'admin.demo@coti.mx',
   password: 'DemoAdminPass123!',
 };
 
 export const mockValidCredentialsManagerDemo: AuthCredentials = {
-  email: 'manager.demo@dearadry.com',
+  email: 'manager.demo@coti.mx',
   password: 'DemoManagerPass123!',
 };
 
 export const mockValidCredentialsManagerGeneral: AuthCredentials = {
-  email: 'carlos.garcia@dearadry.com',
+  email: 'carlos.garcia@coti.mx',
   password: 'ManagerGeneralPass123!',
 };
 
@@ -196,7 +196,7 @@ export const mockAuthTokenAccess: AuthTokenEntity = {
   id: 'token-access-ana-123',
   isRevoked: false,
   issuedAt: new Date('2025-01-15T09:30:00Z'),
-  issuer: 'dearadry.com',
+  issuer: 'coti.mx',
   jwtId: 'jwt-ana-access-123',
   revokedAt: null,
   sessionId: 'session-ana-active',
@@ -213,7 +213,7 @@ export const mockAuthTokenRefresh: AuthTokenEntity = {
   id: 'token-refresh-ana-456',
   isRevoked: false,
   issuedAt: new Date('2025-01-15T09:30:00Z'),
-  issuer: 'dearadry.com',
+  issuer: 'coti.mx',
   jwtId: 'jwt-ana-refresh-456',
   revokedAt: null,
   sessionId: 'session-ana-active',
@@ -230,7 +230,7 @@ export const mockAuthTokenExpired: AuthTokenEntity = {
   id: 'token-expired-789',
   isRevoked: false,
   issuedAt: new Date('2025-01-13T09:30:00Z'),
-  issuer: 'dearadry.com',
+  issuer: 'coti.mx',
   jwtId: 'jwt-expired-789',
   revokedAt: null,
   sessionId: 'session-expired',
@@ -244,7 +244,7 @@ export const mockAuthTokenPayloadAdmin: AuthTokenPayload = {
   aud: 'app-web',
   exp: Math.floor(new Date('2025-01-16T09:30:00Z').getTime() / 1000),
   iat: Math.floor(new Date('2025-01-15T09:30:00Z').getTime() / 1000),
-  iss: 'dearadry.com',
+  iss: 'coti.mx',
   jti: 'jwt-ana-access-123',
   role: 'admin',
   sid: 'session-ana-active',
@@ -256,7 +256,7 @@ export const mockAuthTokenPayloadOwner: AuthTokenPayload = {
   aud: 'app-web',
   exp: Math.floor(new Date('2025-01-16T08:15:00Z').getTime() / 1000),
   iat: Math.floor(new Date('2025-01-15T08:15:00Z').getTime() / 1000),
-  iss: 'dearadry.com',
+  iss: 'coti.mx',
   jti: 'jwt-owner-access-456',
   role: 'owner',
   sid: 'session-owner-active',
@@ -268,7 +268,7 @@ export const mockAuthTokenPayloadExpired: AuthTokenPayload = {
   aud: 'app-web',
   exp: Math.floor(new Date('2025-01-14T09:30:00Z').getTime() / 1000),
   iat: Math.floor(new Date('2025-01-13T09:30:00Z').getTime() / 1000),
-  iss: 'dearadry.com',
+  iss: 'coti.mx',
   jti: 'jwt-expired-789',
   role: 'admin',
   sid: 'session-expired',
@@ -383,7 +383,7 @@ export const mockUserEntitys = [
   mockUserEntityMaria,
   mockUserEntityJose,
   mockUserEntityInactive,
-  mockUserEntityDearAdryDev,
+  mockUserEntityCotiDev,
 ] as const;
 
 export const mockAuthTokens = [
@@ -432,5 +432,5 @@ export const mockSerializableUserEntityMaria = createSerializableUserEntity(mock
 export const mockSerializableUserEntityJose = createSerializableUserEntity(mockUserEntityJose);
 export const mockSerializableUserEntityInactive =
   createSerializableUserEntity(mockUserEntityInactive);
-export const mockSerializableUserEntityDearAdryDev =
-  createSerializableUserEntity(mockUserEntityDearAdryDev);
+export const mockSerializableUserEntityCotiDev =
+  createSerializableUserEntity(mockUserEntityCotiDev);

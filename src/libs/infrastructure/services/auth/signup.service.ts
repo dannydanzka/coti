@@ -2,7 +2,7 @@
  * Signup Service
  *
  * Data access layer for signup operations following Clean Architecture.
- * DearAdry: Challenge & Events vertical
+ * Coti: Challenge & Events vertical
  *
  * @pattern Service Layer - handleRequest wrapper
  */

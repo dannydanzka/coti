@@ -26,7 +26,7 @@ vi.mock('@assets/branding/Logo.svg', () => ({
   default: () => <svg data-testid='logo' />,
 }));
 
-import { assertTestId, assertTexts, renderWithProviders, screen } from '@testing';
+import { assertTestId, assertTexts, renderWithProviders } from '@testing';
 import { useAuth } from '@hooks';
 
 import { Header } from './Header';
@@ -54,28 +54,20 @@ describe('Header', () => {
     it('renders nav buttons on non-home pages', () => {
       renderWithProviders(<Header variant='public' />);
 
-      assertTexts(['Inscripciones', 'Miembros']);
+      assertTexts(['Crear cuenta', 'Entrar']);
     });
   });
 
-  describe('Home (meet landing) Variant', () => {
+  describe('Home Variant', () => {
     beforeEach(() => {
       vi.mocked(useAuth).mockReturnValue({ logout: vi.fn(), user: null } as never);
       mockUsePathname.mockReturnValue('/');
     });
 
-    it('renders the Mango nav with the reserve CTA', () => {
+    it('renders the home nav with the signup CTA', () => {
       renderWithProviders(<Header variant='public' />);
 
-      assertTexts([
-        'Inicio',
-        'Mango',
-        'Libros',
-        'Rally',
-        'Sobre Dear Adry',
-        'Contacto',
-        'Apartar mi ejemplar',
-      ]);
+      assertTexts(['Inicio', 'Entrar', 'Planear mi viaje']);
     });
   });
 
@@ -86,10 +78,10 @@ describe('Header', () => {
       vi.mocked(useAuth).mockReturnValue({ logout: vi.fn(), user: mockUser } as never);
     });
 
-    it('renders menu button', () => {
+    it('renders the authenticated nav', () => {
       renderWithProviders(<Header variant='authenticated' onMenuClick={mockOnMenuClick} />);
 
-      expect(screen.getByLabelText('Abrir menú')).toBeInTheDocument();
+      assertTexts(['Mi cajita', 'Mi perfil', 'María González']);
     });
   });
 
@@ -103,7 +95,7 @@ describe('Header', () => {
     it('renders admin nav links and user info', () => {
       renderWithProviders(<Header variant='admin' onMenuClick={mockOnMenuClick} />);
 
-      assertTexts(['Dashboard', 'Kits', 'Eventos', 'Evidencias', 'María González', 'admin']);
+      assertTexts(['Dashboard', 'Usuarios', 'María González', 'admin']);
     });
   });
 });

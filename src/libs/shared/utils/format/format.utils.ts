@@ -55,7 +55,7 @@ export const formatFileSize = (bytes: number): string => {
 
 /**
  * Formats user role to display label in Spanish
- * DearAdry roles: owner, admin, participant
+ * Coti roles: owner, admin, participant
  */
 export const formatUserRole = (role: string): string => {
   const roleMap: Record<string, string> = {

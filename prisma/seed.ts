@@ -67,15 +67,38 @@ async function main() {
     }
   }
 
-  // ─── Cuenta demo con historial, para poder mostrar la cajita en el pitch ───
-  console.log('› Creando cuenta demo con historial de ahorro…');
+  // ─── Cuentas de acceso: una por rol, para poder entrar a cada área ───
+  console.log('› Creando cuentas de acceso (owner · admin · participante demo)…');
 
+  const hash = (plain: string) => bcrypt.hash(plain, 10);
+
+  await prisma.user.create({
+    data: {
+      email: 'owner@coti.mx',
+      firstName: 'Owner',
+      lastName: 'Coti',
+      passwordHash: await hash('Owner1234!'),
+      role: 'OWNER',
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      email: 'admin@coti.mx',
+      firstName: 'Admin',
+      lastName: 'Coti',
+      passwordHash: await hash('Admin1234!'),
+      role: 'ADMIN',
+    },
+  });
+
+  // ─── Cuenta demo con historial, para poder mostrar la cajita en el pitch ───
   const demo = await prisma.user.create({
     data: {
       email: 'demo@alcanza.mx',
       firstName: 'Cuenta',
       lastName: 'Demo',
-      passwordHash: await bcrypt.hash('Demo1234!', 10),
+      passwordHash: await hash('Demo1234!'),
       role: 'PARTICIPANT',
     },
   });

@@ -23,14 +23,11 @@ export const USER_COLUMNS: ColumnConfig<UserItem, UserSortField>[] = [
 ];
 
 /**
- * System users that should NEVER be deleted or deactivated from UI.
- * Note: Database seed protects 5 users for data preservation, but only these 3 are system-critical.
+ * Cuentas del seed que la UI nunca debe borrar ni desactivar: son las que
+ * sostienen la demo del workshop. El servidor tiene sus propias guardas (rol
+ * OWNER, auto-borrado); esta lista sólo esconde los botones.
  */
-export const PROTECTED_USER_EMAILS = [
-  'dearadry@gmail.com',
-  'danny.danzka21@gmail.com',
-  'dearadrydev@gmail.com',
-];
+export const PROTECTED_USER_EMAILS = ['owner@coti.mx', 'admin@coti.mx', 'demo@alcanza.mx'];
 
 export const INITIAL_CONFIRM_MODAL: ConfirmModalData = {
   confirmText: 'Confirmar',

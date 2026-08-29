@@ -21,7 +21,7 @@ export const MOCK_REQUEST = {} as NextRequest;
 
 /** Default admin user (Spanish locale) */
 export const MOCK_ADMIN = {
-  email: 'admin@dearadry.com',
+  email: 'admin@coti.mx',
   firstName: 'José',
   id: 'admin-1',
   lastName: 'López',
@@ -30,7 +30,7 @@ export const MOCK_ADMIN = {
 
 /** Default owner user (Spanish locale) */
 export const MOCK_OWNER = {
-  email: 'owner@dearadry.com',
+  email: 'owner@coti.mx',
   firstName: 'María',
   id: 'owner-1',
   lastName: 'García',
@@ -39,7 +39,7 @@ export const MOCK_OWNER = {
 
 /** Default participant user (Spanish locale) */
 export const MOCK_PARTICIPANT = {
-  email: 'participante@dearadry.com',
+  email: 'participante@coti.mx',
   firstName: 'Carlos',
   id: 'participant-1',
   lastName: 'Martínez',

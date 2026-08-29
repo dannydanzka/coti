@@ -27,7 +27,7 @@ vi.mock('@hooks/useAuth/useAuth', () => ({
 }));
 
 const mockLoginData = {
-  email: 'maria@dearadry.com',
+  email: 'maria@coti.mx',
   password: 'contraseñaSegura123',
 };
 
@@ -45,7 +45,7 @@ describe('LoginPageContent', () => {
         preloadedState: { auth: initialAuthState },
       });
 
-      assertTexts(['DearAdry', 'Administración Exclusiva']);
+      assertTexts(['Coti', 'Administración Exclusiva']);
       form.assertField('Email');
       form.assertField('Contraseña');
       form.assertButton(/iniciar sesión/i);
@@ -58,8 +58,8 @@ describe('LoginPageContent', () => {
 
       assertTexts([
         /plataforma exclusiva para/i,
-        'Retos y Eventos de Bienestar',
-        /familias en México/i,
+        'Proyecta tu viaje. Ahorra con Coti.',
+        /viajeros en México/i,
       ]);
     });
   });
@@ -70,7 +70,7 @@ describe('LoginPageContent', () => {
         preloadedState: { auth: { ...initialAuthState, isLoading: true } },
       });
 
-      assertText('DearAdry');
+      assertText('Coti');
       form.assertField('Email');
       assertNoText('Verificando autenticación...');
     });
@@ -80,7 +80,7 @@ describe('LoginPageContent', () => {
         preloadedState: { auth: { ...initialAuthState, isLoading: true } },
       });
 
-      assertText('DearAdry');
+      assertText('Coti');
       form.assertField('Email');
       form.assertField('Contraseña');
       form.assertButton(/iniciar sesión/i);
@@ -115,7 +115,7 @@ describe('LoginPageContent', () => {
       await user.typeInField('Contraseña', mockLoginData.password);
       const loginButton = await user.clickButton(/iniciar sesión/i);
 
-      assertText('DearAdry');
+      assertText('Coti');
       expect(loginButton).toBeInTheDocument();
     });
   });

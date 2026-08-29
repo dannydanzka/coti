@@ -1,7 +1,7 @@
 /**
  * Signup Service Interfaces
  *
- * DearAdry: Challenge & Events vertical
+ * Coti: Challenge & Events vertical
  */
 
 import type { AuthUserApiData } from '@interfaces';

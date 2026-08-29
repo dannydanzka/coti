@@ -2,14 +2,14 @@
  * Login Constants
  *
  * UI text constants for login page and authentication flow.
- * Following DearAdry architecture standards.
+ * Following Coti architecture standards.
  */
 
 export const LOGIN_UI_TEXT = {
   FOOTER: {
-    BRAND_TEXT: 'Retos y Eventos de Bienestar',
+    BRAND_TEXT: 'Proyecta tu viaje. Ahorra con Coti.',
     DESCRIPTION: 'Plataforma exclusiva para',
-    LOCATION: 'familias en México',
+    LOCATION: 'viajeros en México',
   },
   FORM: {
     EMAIL_LABEL: 'Email',
@@ -20,7 +20,7 @@ export const LOGIN_UI_TEXT = {
   },
   HEADER: {
     SUBTITLE: 'Administración Exclusiva',
-    TITLE: 'DearAdry',
+    TITLE: 'Coti',
   },
   LOADING: {
     FALLBACK: 'Cargando...',

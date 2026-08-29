@@ -17,7 +17,7 @@ export interface LoginFormProps {
   onSubmit: (data: LoginFormData) => Promise<string | undefined>;
   /**
    * Target of the "create account" link. Defaults to '/signup'; pass a value to
-   * forward the post-auth redirect so the origin context (e.g. Mango) survives.
+   * forward the post-auth redirect so the origin context (por ejemplo, una campaña) survives.
    */
   signupHref?: string;
 }

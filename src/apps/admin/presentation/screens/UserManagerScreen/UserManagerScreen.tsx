@@ -129,7 +129,7 @@ export const UserManagerScreen = () => {
             onClick={createPasswordHandler(user)}
           />
         )}
-        {canToggleUserStatus(user.id, user.role, user.email) && (
+        {canToggleUserStatus(user.id, user.role, user.isActive, user.email) && (
           <ToggleActiveButton
             isActive={user.isActive}
             isLoading={isProcessing}
@@ -140,7 +140,7 @@ export const UserManagerScreen = () => {
             )}
           />
         )}
-        {canDeleteUser(user.id, user.role, user.email) && (
+        {canDeleteUser(user.id, user.role, user.isActive, user.email) && (
           <Button
             disabled={isProcessing}
             icon={<Trash2 size={14} />}

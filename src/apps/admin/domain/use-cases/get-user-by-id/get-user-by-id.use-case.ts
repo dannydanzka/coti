@@ -6,7 +6,7 @@
  */
 
 import {
-  createAuthorizationError,
+  createForbiddenError,
   createNotFoundError,
   handleUseCaseError,
   UseCaseErrorResponse,
@@ -205,7 +205,7 @@ export const executeGetUserById = async (
 
     const accessValidation = validateUserAccess(authResult.user, user);
     if (!accessValidation.canAccess) {
-      return createAuthorizationError<GetUserByIdErrorResponse>(
+      return createForbiddenError<GetUserByIdErrorResponse>(
         accessValidation.reason || 'Acceso denegado'
       );
     }

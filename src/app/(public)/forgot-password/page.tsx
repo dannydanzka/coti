@@ -13,7 +13,7 @@ import { ForgotPasswordScreen } from '@apps/public/presentation/screens/ForgotPa
 
 const ForgotPasswordPage = () => {
   useEffect(() => {
-    document.title = 'Recuperar Contraseña | DearAdry';
+    document.title = 'Recuperar Contraseña | Coti';
   }, []);
 
   return <ForgotPasswordScreen />;

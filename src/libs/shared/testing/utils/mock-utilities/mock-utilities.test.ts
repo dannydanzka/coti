@@ -20,7 +20,7 @@ import {
 
 describe('Mock Utilities', () => {
   describe('Timers & API Utilities', () => {
-    it('should have timer utilities for DearAdry testing', () => {
+    it('should have timer utilities for Coti testing', () => {
       vi.useFakeTimers();
       expect(typeof timers.advance).toBe('function');
       expect(typeof timers.flush).toBe('function');
@@ -29,7 +29,7 @@ describe('Mock Utilities', () => {
       vi.useRealTimers();
     });
 
-    it('should have API mock utilities for DearAdry endpoints', () => {
+    it('should have API mock utilities for Coti endpoints', () => {
       const mockFetch = api.createMockFetch();
       const successResponse = api.success({ participants: ['María García', 'José Martínez'] });
       const errorResponse = api.error('Usuario Ana López no encontrado', 404);
@@ -41,7 +41,7 @@ describe('Mock Utilities', () => {
   });
 
   describe('Redux & Storage Utilities', () => {
-    it('should have Redux mock utilities for DearAdry state', () => {
+    it('should have Redux mock utilities for Coti state', () => {
       const dispatch = redux.mockDispatch();
       const selector = redux.mockSelector({ currentUser: 'Carlos Rodríguez' });
       const thunk = redux.mockAsyncThunk({ enrollmentData: 'rally-emocional-2025' });
@@ -64,7 +64,7 @@ describe('Mock Utilities', () => {
   });
 
   describe('Navigation & Observer Utilities', () => {
-    it('should have router mock utilities for DearAdry navigation', () => {
+    it('should have router mock utilities for Coti navigation', () => {
       const navigationMocks = router.createNavigationMocks();
       const routerMock = router.createRouterMock();
 

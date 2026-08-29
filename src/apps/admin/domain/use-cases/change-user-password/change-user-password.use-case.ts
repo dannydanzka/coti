@@ -7,7 +7,7 @@
  */
 
 import {
-  createAuthorizationError,
+  createForbiddenError,
   createNotFoundError,
   createValidationError,
   handleUseCaseError,
@@ -100,7 +100,7 @@ export const executeChangeUserPassword = async (
 
     const authValidation = validateAuthorization(authResult.user, targetUser);
     if (!authValidation.valid) {
-      return createAuthorizationError<ChangeUserPasswordErrorResponse>({
+      return createForbiddenError<ChangeUserPasswordErrorResponse>({
         key: authValidation.error ?? 'errors.generic.forbidden',
       });
     }

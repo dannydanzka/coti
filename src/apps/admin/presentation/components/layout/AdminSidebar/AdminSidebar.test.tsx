@@ -19,7 +19,7 @@ vi.mock('@hooks', async (importOriginal) => {
     useAuth: vi.fn(() => ({
       logout: vi.fn(),
       user: {
-        email: 'admin@dearadry.com',
+        email: 'admin@coti.mx',
         firstName: 'José',
         lastName: 'López',
         role: 'admin',

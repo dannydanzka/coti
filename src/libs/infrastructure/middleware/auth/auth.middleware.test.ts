@@ -44,7 +44,7 @@ describe('Auth Middleware', () => {
   describe('validateToken', () => {
     it('should validate valid token with Spanish user data', async () => {
       mockVerify.mockImplementationOnce(() => ({
-        email: 'maria.admin@dearadry.com',
+        email: 'maria.admin@coti.mx',
         exp: Math.floor(Date.now() / 1000) + 3600,
         firstName: 'María',
         iat: Math.floor(Date.now() / 1000),

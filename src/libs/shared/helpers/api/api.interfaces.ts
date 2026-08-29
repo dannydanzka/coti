@@ -1,6 +1,6 @@
 /**
  * API Route Interfaces
- * DearAdry Platform
+ * Coti Platform
  */
 
 export interface RouteParams {

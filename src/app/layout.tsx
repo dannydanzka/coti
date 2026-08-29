@@ -54,7 +54,7 @@ export const dynamic = 'force-dynamic';
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang='es'>
+    <html data-scroll-behavior='smooth' lang='es'>
       <body
         className={`${montserrat.variable} ${lato.variable} ${inter.variable}`}
         suppressHydrationWarning

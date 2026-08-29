@@ -50,7 +50,11 @@ export const TopBarLeft = styled.div`
   gap: ${spacing.md};
 `;
 
-export const TopBarTitle = styled.h1`
+/**
+ * Rótulo de la barra superior, no encabezado del documento: cada pantalla del
+ * panel pone su propio `h1`, así que este va como `p` para no duplicarlo.
+ */
+export const TopBarTitle = styled.p`
   color: ${color.textPrimary};
   font-size: 1.25rem;
   font-weight: 600;

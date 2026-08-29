@@ -274,7 +274,7 @@ export const EnrollButton = styled.button`
 
 export const MembersButton = styled.button`
   align-items: center;
-  background-color: ${brandColor.landingPinkVibrant};
+  background-color: ${brandColor.cotiCoral};
   border: none;
   border-radius: ${shape.full};
   color: ${color.white};

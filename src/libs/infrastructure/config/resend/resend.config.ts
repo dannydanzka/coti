@@ -20,10 +20,9 @@ const resendApiKey =
 export const resend = new Resend(resendApiKey);
 
 /**
- * Default sender email (verified domain: dearadry.com)
+ * Default sender email (verified domain: coti.mx)
  */
-export const DEFAULT_FROM_EMAIL =
-  process.env['RESEND_FROM_EMAIL'] || 'DearAdry <noreply@dearadry.com>';
+export const DEFAULT_FROM_EMAIL = process.env['RESEND_FROM_EMAIL'] || 'Coti <noreply@coti.mx>';
 
 /**
  * Check if Resend is configured (not using mock key)
@@ -37,7 +36,7 @@ export const isResendConfigured = (): boolean => {
  * Default admin email matches Resend account for sandbox compatibility
  */
 export const SYSTEM_EMAILS = {
-  admin: process.env['ADMIN_EMAIL'] || 'dearadrydev@gmail.com',
-  noreply: process.env['NOREPLY_EMAIL'] || 'noreply@dearadry.com',
-  support: process.env['SUPPORT_EMAIL'] || 'support@dearadry.com',
+  admin: process.env['ADMIN_EMAIL'] || 'dev@coti.mx',
+  noreply: process.env['NOREPLY_EMAIL'] || 'noreply@coti.mx',
+  support: process.env['SUPPORT_EMAIL'] || 'support@coti.mx',
 } as const;

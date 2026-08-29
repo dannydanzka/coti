@@ -5,7 +5,7 @@
  * Context isolation maintained through directory structure:
  * - Admin repositories live in ./admin/
  * - Auth repository (shared) lives in ./auth/
- * - DearAdry repositories live in ./dearadry/
+ * - Coti repositories live in ./coti/
  * - Public repositories live in ./public/
  *
  */

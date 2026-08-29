@@ -2,7 +2,7 @@
  * Signup Use Case
  *
  * Business logic for participant self-registration.
- * DearAdry Model: No email verification, immediate account access.
+ * Coti Model: No email verification, immediate account access.
  * User can explore events but cannot access challenges until kit delivered.
  *
  */

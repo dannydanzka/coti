@@ -21,7 +21,7 @@ vi.mock('@helpers/http/handleRequest/handleRequest', () => ({
 describe('UsersService', () => {
   const mockUserData = {
     createdAt: new Date(),
-    email: 'newuser@dearadry.com',
+    email: 'newuser@coti.mx',
     firstName: 'Nuevo',
     id: 'user-new-123',
     isActive: true,
@@ -34,7 +34,7 @@ describe('UsersService', () => {
   };
   describe('create', () => {
     const createRequest = {
-      email: 'newuser@dearadry.com',
+      email: 'newuser@coti.mx',
       firstName: 'Nuevo',
       lastName: 'Usuario',
       password: 'password123',

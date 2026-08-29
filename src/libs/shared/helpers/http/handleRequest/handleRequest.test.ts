@@ -36,7 +36,7 @@ describe('handleRequest', () => {
         .mockResolvedValueOnce(createFetchResponse(queryData));
 
       const updateParams: HandleRequestParams = {
-        body: { email: 'maria.garcia@dearadry.com', nombre: 'María García López' },
+        body: { email: 'maria.garcia@coti.mx', nombre: 'María García López' },
         endpoint: '/api/participantes/1',
         method: 'PUT',
         url: 'http://localhost:3000',

@@ -147,6 +147,20 @@ export const createAuthorizationError = <T extends UseCaseErrorResponse = UseCas
   );
 
 /**
+ * Creates a forbidden (403) error response.
+ *
+ * Úsalo cuando la identidad es válida pero le falta permiso. Es distinto de
+ * `createAuthorizationError` (401), que significa "no sé quién eres": el cliente
+ * cierra la sesión ante un 401, así que devolver 401 por una regla de permisos
+ * expulsa al usuario en lugar de mostrarle el motivo.
+ */
+export const createForbiddenError = <T extends UseCaseErrorResponse = UseCaseErrorResponse>(
+  input: UseCaseErrorInput = 'Acceso denegado',
+  reason?: string
+): T =>
+  buildResponse<T>(normalizeInput(input), HTTP_STATUS.FORBIDDEN, reason ? { reason } : undefined);
+
+/**
  * Creates a not found error response
  * For resource not found errors in use cases
  */

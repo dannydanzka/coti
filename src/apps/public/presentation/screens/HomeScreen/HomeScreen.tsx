@@ -16,8 +16,13 @@ export const HomeScreen = () => {
 
   return (
     <HomeWrapper>
-      <HomeTitle>{t('home.title', 'Travel Savings App')}</HomeTitle>
-      <HomeSubtitle>{t('home.subtitle', 'Esta herramienta proyecta, no reserva.')}</HomeSubtitle>
+      <HomeTitle>{t('home.title', 'Proyecta tu viaje. Ahorra con Coti.')}</HomeTitle>
+      <HomeSubtitle>
+        {t(
+          'home.subtitle',
+          'Dinos a dónde quieres ir y cuánto puedes apartar. Coti te dice en cuánto tiempo llegas — y te acompaña hasta lograrlo.'
+        )}
+      </HomeSubtitle>
     </HomeWrapper>
   );
 };

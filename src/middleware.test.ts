@@ -277,21 +277,27 @@ describe('middleware', () => {
     });
   });
 
-  describe('Admin login page', () => {
-    it('redirects authenticated admin from /admin/login', async () => {
+  describe('Login page', () => {
+    it('redirects an already authenticated user away from /login', async () => {
       vi.mocked(jwtVerify).mockResolvedValueOnce({
         payload: { role: 'owner', userId: 'u1' },
       } as never);
 
-      const response = await middleware(
-        createMockRequest('/admin/login', { cookie: 'valid-token' })
-      );
+      const response = await middleware(createMockRequest('/login', { cookie: 'valid-token' }));
       expect(response.status).toBe(307);
     });
 
-    it('allows unauthenticated access to /admin/login', async () => {
-      const response = await middleware(createMockRequest('/admin/login'));
+    it('allows unauthenticated access to /login', async () => {
+      const response = await middleware(createMockRequest('/login'));
       expect(response.status).toBe(200);
+    });
+
+    it('sends an unauthenticated admin visit to /login, not to a separate admin login', async () => {
+      const response = await middleware(createMockRequest('/admin'));
+
+      expect(response.status).toBe(307);
+      expect(response.headers.get('location')).toContain('/login');
+      expect(response.headers.get('location')).not.toContain('/admin/login');
     });
   });
 });
