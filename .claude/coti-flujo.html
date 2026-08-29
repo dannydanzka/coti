@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coti · Flujo de usuario — 8 pantallas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terracotta:#DE5C3A; --mustard:#E29A36; --sand:#DFB271; --leaf:#9BB56A;
+  --forest:#2C4F2F; --ink:#142A25; --brown:#523B1C;
+  --cream:#FCFAF3; --card:#FFF; --border:#E7E0D2; --muted:#F2ECE0; --muted-fg:#6B6357;
+  --forest-2:#3D6641; --forest-fg:#A8C2A9; --tint-warn:#FBF0DC; --tint-ok:#EEF4E7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:#F5F2EA;color:var(--ink);padding:48px 32px 80px;-webkit-font-smoothing:antialiased}
+h1.page{font-size:30px;font-weight:700;color:var(--forest);margin-bottom:4px}
+p.page{font-size:15px;color:var(--muted-fg);margin-bottom:40px}
+.grid{display:flex;flex-wrap:wrap;gap:60px 40px}
+.slot{width:390px}
+.slot > .cap{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cap .n{width:32px;height:32px;border-radius:999px;background:var(--forest);color:var(--cream);
+  font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.cap .t{font-size:19px;font-weight:700;color:var(--forest)}
+
+/* ---------- carcasa ---------- */
+.phone{width:390px;height:844px;background:var(--cream);border-radius:32px;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(20,42,37,.13)}
+.status{display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600}
+.status .ic{display:flex;align-items:flex-end;gap:6px}
+.bars{display:flex;align-items:flex-end;gap:2px}
+.bars i{width:3px;background:var(--ink);border-radius:1px;display:block}
+.bars i:nth-child(1){height:4px}.bars i:nth-child(2){height:6px}
+.bars i:nth-child(3){height:8px}.bars i:nth-child(4){height:10px}
+.dot{width:11px;height:11px;border-radius:999px;background:var(--ink)}
+.batt{width:22px;height:11px;border:1.2px solid var(--ink);border-radius:3px}
+
+.topbar{padding:6px 20px 14px}
+.topbar .row{display:flex;align-items:center;gap:12px}
+.back{width:36px;height:36px;border-radius:999px;background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:21px;color:var(--forest);flex:0 0 auto}
+.topbar .step{flex:1;text-align:center;font-size:13px;font-weight:500;color:var(--muted-fg)}
+.topbar .sp{width:36px;flex:0 0 auto}
+.track{height:6px;border-radius:999px;background:var(--muted);margin-top:12px;overflow:hidden}
+.track > i{display:block;height:100%;border-radius:999px;background:var(--forest)}
+
+.body{flex:1;padding:2px 20px 12px;display:flex;flex-direction:column;gap:15px;overflow:hidden}
+.foot{padding:10px 20px}
+.home{display:flex;justify-content:center;padding:2px 0 10px}
+.home i{width:134px;height:5px;border-radius:999px;background:var(--ink);display:block}
+
+/* ---------- tipografía ---------- */
+.h1{font-size:24px;font-weight:700;line-height:30px}
+.sub{font-size:14px;line-height:20px;color:var(--muted-fg);margin-top:6px}
+.label{font-size:12px;font-weight:600;letter-spacing:.6px;color:var(--brown)}
+.micro{font-size:12px;line-height:16px;color:var(--muted-fg)}
+
+/* ---------- componentes ---------- */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.card.flush{padding:0}
+.card.warn{background:var(--tint-warn);border-color:#F0DCB4}
+.card.ok{background:var(--tint-ok);border-color:#D6E4C6}
+.card.dark{background:var(--forest);border:0;color:var(--cream);padding:20px}
+.row{display:flex;align-items:center;gap:12px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.grow{flex:1;min-width:0}
+.divider{height:1px;background:var(--border)}
+.stack{display:flex;flex-direction:column}
+
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:15px;font:600 16px Inter,sans-serif;
+  background:var(--terracotta);color:var(--cream);text-align:center;cursor:pointer}
+.btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--forest)}
+.link{display:block;text-align:center;font-size:14px;font-weight:500;color:var(--muted-fg);margin-top:10px}
+
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 12px;
+  font-size:12px;font-weight:500;background:var(--muted);color:var(--brown)}
+.pill.on{background:var(--forest);color:var(--cream);font-weight:600}
+.pill.out{background:var(--card);border:1px solid var(--border);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .pill{font-size:13px;padding:8px 14px}
+
+.field{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:13px 14px;font-size:16px}
+.field.focus{border:1.5px solid var(--forest)}
+.field .ph{color:var(--muted-fg)}
+.field .chev{color:var(--muted-fg);font-size:15px}
+
+.seg{display:flex;gap:0;background:var(--muted);border-radius:999px;padding:4px}
+.seg > span{flex:1;text-align:center;border-radius:999px;padding:9px 0;font-size:13px;font-weight:500;color:var(--muted-fg)}
+.seg > span.on{background:var(--forest);color:var(--cream);font-weight:600}
+.seg.mini > span{padding:5px 10px;font-size:11px;flex:0 0 auto}
+.seg.mini > span.must{background:var(--terracotta);color:var(--cream);font-weight:600}
+.seg.mini > span.nice{background:var(--sand);color:var(--cream);font-weight:600}
+
+.slider{position:relative;height:26px}
+.slider .tr,.slider .fl{position:absolute;top:9px;height:8px;border-radius:999px}
+.slider .tr{left:0;right:0;background:var(--muted)}
+.slider .fl{left:0;background:var(--forest)}
+.slider .th{position:absolute;top:0;width:26px;height:26px;border-radius:999px;
+  background:var(--card);border:4px solid var(--forest);transform:translateX(-13px)}
+.slider.warm .fl{background:var(--terracotta)} .slider.warm .th{border-color:var(--terracotta)}
+
+.toggle{width:50px;height:28px;border-radius:999px;background:var(--forest);padding:3px;
+  display:flex;justify-content:flex-end;flex:0 0 auto}
+.toggle i{width:22px;height:22px;border-radius:999px;background:var(--card);display:block}
+.radio{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.radio.on{background:#F1F6EF}
+.radio .o{width:22px;height:22px;border-radius:999px;border:1.5px solid var(--border);
+  background:var(--card);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.radio.on .o{border:2px solid var(--forest)}
+.radio.on .o i{width:11px;height:11px;border-radius:999px;background:var(--forest);display:block}
+.radio .t{font-size:14px;font-weight:600} .radio .s{font-size:12px;color:var(--muted-fg);margin-top:2px}
+.radio .v{font-size:15px;font-weight:700;color:var(--muted-fg)} .radio.on .v{color:var(--forest)}
+
+.progress{height:10px;border-radius:999px;background:var(--muted);overflow:hidden}
+.progress > i{display:block;height:100%;background:var(--leaf);border-radius:999px}
+
+/* ---------- calendario ---------- */
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal .head .nav{width:26px;height:26px;border-radius:8px;background:var(--muted);color:var(--forest);
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+.cal .head .m{font-size:15px;font-weight:600}
+.cal .wk,.cal .w{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal .wk span{text-align:center;font-size:11px;font-weight:600;color:var(--muted-fg);padding:3px 0}
+.cal .w b{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400}
+.cal .w b.r{background:var(--muted);font-weight:600;color:var(--forest)}
+.cal .w b.s{background:var(--muted);border-radius:999px 0 0 999px}
+.cal .w b.e{background:var(--muted);border-radius:0 999px 999px 0}
+.cal .w b.s i,.cal .w b.e i{width:34px;height:34px;border-radius:999px;background:var(--forest);
+  color:var(--cream);font-weight:700;display:flex;align-items:center;justify-content:center;font-style:normal}
+
+/* ---------- proyección ---------- */
+.hero .cap2{font-size:13px;font-weight:500;color:var(--forest-fg)}
+.hero .amt{display:flex;align-items:center;gap:8px;margin:8px 0}
+.hero .amt b{font-size:27px;font-weight:700}
+.hero .amt span{font-size:20px;color:var(--forest-fg)}
+.hero .meta{font-size:12px;color:var(--forest-fg)}
+.hero .tags{display:flex;gap:8px;margin-top:12px}
+.hero .tags .pill{background:var(--forest-2);color:var(--cream);font-size:11px;padding:5px 10px}
+.brk .r{display:flex;align-items:center;gap:8px;padding:14px 16px;font-size:13px}
+.brk .r .n{flex:1;font-weight:500} .brk .r .v{font-weight:600;color:var(--forest)}
+.note{display:flex;gap:8px;background:var(--muted);border-radius:12px;padding:11px 12px;font-size:12px;line-height:17px;color:var(--brown)}
+
+/* ---------- frasco ---------- */
+.jar{position:relative;width:76px;height:92px}
+.jar .glass{position:absolute;left:5px;top:20px;width:66px;height:72px;border:2.5px solid var(--forest);
+  border-radius:16px;background:var(--card);overflow:hidden}
+.jar .fill{position:absolute;left:0;bottom:0;width:100%;height:47%;background:var(--mustard)}
+.jar .lid{position:absolute;left:13px;top:10px;width:50px;height:12px;border-radius:6px;background:var(--forest)}
+.jar .c{position:absolute;width:11px;height:11px;border-radius:999px;background:var(--terracotta)}
+.illus{background:#F3EEE0;border-radius:20px;padding:20px;display:flex;flex-direction:column;
+  align-items:center;gap:8px;text-align:center}
+.illus .t{font-size:20px;font-weight:700;line-height:26px;color:var(--forest)}
+.illus .s{font-size:14px;line-height:20px;color:var(--brown)}
+
+/* ---------- cajita ---------- */
+.jar2{position:relative;width:64px;height:80px;flex:0 0 auto}
+.jar2 .glass{position:absolute;left:4px;top:18px;width:56px;height:62px;border:2px solid var(--cream);
+  border-radius:14px;background:var(--forest-2);overflow:hidden}
+.jar2 .fill{position:absolute;left:0;bottom:0;width:100%;height:40%;background:var(--mustard)}
+.jar2 .lid{position:absolute;left:11px;top:9px;width:42px;height:10px;border-radius:5px;background:var(--sand)}
+.saved .k{font-size:10px;font-weight:600;letter-spacing:.8px;color:var(--forest-fg)}
+.saved .v{font-size:34px;font-weight:700;line-height:40px;color:var(--cream)}
+.saved .of{font-size:13px;color:var(--forest-fg)}
+.mtrack{height:12px;border-radius:999px;background:#234026;overflow:hidden;margin-top:14px}
+.mtrack > i{display:block;height:100%;background:var(--mustard);border-radius:999px}
+.miles{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;font-weight:500;color:#7E9A80}
+.miles b{color:var(--mustard)}
+.stats{display:flex;gap:10px}
+.stats .s{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}
+.stats .s b{display:block;font-size:16px;font-weight:700;color:var(--forest)}
+.stats .s span{font-size:11px;color:var(--muted-fg)}
+.bars2{display:flex;align-items:flex-end;gap:10px;height:80px}
+.bars2 .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%}
+.bars2 .c i{width:100%;border-radius:6px;background:var(--leaf);display:block}
+.bars2 .c.last i{background:var(--terracotta)}
+.bars2 .c span{font-size:10px;color:var(--muted-fg)}
+.tabs{display:flex;background:var(--card);border-top:1px solid var(--border);padding:10px 0 4px}
+.tabs .t{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;
+  font-weight:500;color:var(--muted-fg)}
+.tabs .t.on{color:var(--forest);font-weight:700}
+.tabs .t em{font-style:normal;font-size:17px}
+/* pantalla 1: calendario compacto para que quepan personas + la nota */
+.p1 .cal{padding:12px}
+.p1 .cal .head .nav{width:24px;height:24px}
+.p1 .cal .w b{height:28px;font-size:12px}
+.p1 .cal .w b.s i,.p1 .cal .w b.e i{width:26px;height:26px;font-size:12px}
+.p1 .note-p{padding:13px}
+/* pantalla 7: densidad compacta para que quepa el bloque de recordatorios */
+.p7 .illus{padding:14px;gap:6px}
+.p7 .jar{width:70px;height:80px}
+.p7 .jar .glass{left:4px;top:16px;width:62px;height:64px}
+.p7 .jar .lid{left:12px;top:6px;width:46px}
+.p7 .illus .t{font-size:19px;line-height:25px}
+.p7 .card{padding:14px}
+.p7 .between{padding:9px 16px}
+.p7 .field{padding:11px 14px}
+.p7 .seg > span{padding:7px 0}
+</style>
+</head>
+<body>
+
+<h1 class="page">Coti · Flujo de usuario</h1>
+<p class="page">8 pantallas · mobile 390×844 · proyecta, no reserva</p>
+
+<div class="grid">
+
+<!-- ============ 1 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">1</div><div class="t">Define tu viaje</div></div>
+  <div class="phone p1">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 1 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:12.5%"></i></div></div>
+    <div class="body" style="gap:12px">
+      <div><div class="h1">¿A dónde quieres ir?</div>
+        <div class="sub">Destino, fechas y con quién vas.</div></div>
+
+      <div class="stack" style="gap:7px"><div class="label">DESTINO</div>
+        <div class="field"><span>📍</span><b class="grow" style="font-weight:600">Tokio, Japón</b><span class="chev">⌄</span></div></div>
+
+      <div class="stack" style="gap:7px">
+        <div class="between"><div class="label">FECHAS</div><span class="pill on" style="font-size:11px;padding:4px 10px">9 noches</span></div>
+        <div class="row" style="gap:10px">
+          <div class="grow" style="border:1.5px solid var(--forest);border-radius:12px;padding:8px 13px">
+            <div style="font-size:11px;font-weight:500;color:var(--muted-fg)">Salida</div>
+            <div style="font-size:14px;font-weight:600">14 mar 2028</div></div>
+          <div class="grow" style="border:1.5px solid var(--forest);border-radius:12px;padding:8px 13px">
+            <div style="font-size:11px;font-weight:500;color:var(--muted-fg)">Regreso</div>
+            <div style="font-size:14px;font-weight:600">23 mar 2028</div></div>
+        </div></div>
+
+      <div class="card cal">
+        <div class="head"><span class="nav">‹</span><span class="m">marzo 2028</span><span class="nav">›</span></div>
+        <div class="wk"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        <div class="w"><b></b><b></b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div>
+        <div class="w"><b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b></div>
+        <div class="w"><b>13</b><b class="s"><i>14</i></b><b class="r">15</b><b class="r">16</b><b class="r">17</b><b class="r">18</b><b class="r">19</b></div>
+        <div class="w"><b class="r">20</b><b class="r">21</b><b class="r">22</b><b class="e"><i>23</i></b><b>24</b><b>25</b><b>26</b></div>
+        <div class="w"><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b><b></b><b></b></div>
+      </div>
+
+      <div class="stack" style="gap:7px"><div class="label">PERSONAS</div>
+        <div class="between" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:9px 13px">
+          <div style="display:flex">
+            <span style="width:34px;height:34px;border-radius:999px;background:var(--sand);border:2.5px solid var(--card);
+              display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--forest)">P</span>
+            <span style="width:34px;height:34px;border-radius:999px;background:var(--leaf);border:2.5px solid var(--card);
+              margin-left:-10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--forest)">A</span></div>
+          <div class="row" style="gap:14px">
+            <span style="width:34px;height:34px;border-radius:999px;border:1.5px solid var(--border);background:var(--card);
+              display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:var(--forest)">–</span>
+            <b style="font-size:20px">2</b>
+            <span style="width:34px;height:34px;border-radius:999px;background:var(--forest);color:var(--cream);
+              display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600">+</span></div>
+        </div></div>
+
+      <div class="card warn note-p">
+        <div class="row" style="align-items:flex-start;gap:10px">
+          <span style="width:26px;height:26px;border-radius:999px;background:var(--mustard);color:var(--cream);font-size:13px;
+            display:flex;align-items:center;justify-content:center;font-weight:700;flex:0 0 auto">!</span>
+          <div class="grow"><b style="font-size:12px;color:var(--brown)">Ojo con esto</b>
+            <div style="font-size:12px;line-height:17px;color:var(--brown);margin-top:2px">
+              Más personas suben el total, pero bajan el costo por persona en hospedaje.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn">Continuar</button></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 2 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">2</div><div class="t">Tu estilo de viaje</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 2 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:25%"></i></div></div>
+    <div class="body" style="gap:14px">
+      <div><div class="h1">¿Cómo viajas tú?</div>
+        <div class="sub">Esto ajusta el rango de tu proyección. Puedes cambiarlo cuando quieras.</div></div>
+
+      <div class="stack" style="gap:9px"><div class="label">TU ESTILO · ELIGE LAS QUE VAYAN CONTIGO</div>
+        <div class="chips">
+          <span class="pill on">✓ Mochilero</span><span class="pill out">Cómodo</span><span class="pill out">Boutique</span>
+          <span class="pill on">✓ Foodie</span><span class="pill out">Naturaleza</span><span class="pill on">✓ Cultura</span>
+          <span class="pill out">Fiesta</span><span class="pill out">Relax</span></div></div>
+    </div>
+    <div class="foot"><button class="btn">Continuar</button><span class="link">Saltar por ahora</span></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 3 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">3</div><div class="t">Tus atracciones</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 3 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:37.5%"></i></div></div>
+    <div class="body" style="gap:14px">
+      <div><div class="h1">¿Qué quieres hacer allá?</div>
+        <div class="sub">Marca lo que no te puedes perder y lo que estaría padre.</div></div>
+
+      <div class="stack" style="gap:9px"><div class="label">ATRACCIONES QUE QUIERES</div>
+        <div class="field"><span>🔍</span><span class="grow ph" style="font-size:15px">Buscar una atracción…</span><span class="chev">⌄</span></div></div>
+
+      <div class="row" style="gap:8px">
+        <span class="pill" style="background:var(--terracotta);color:var(--cream);font-weight:600">2 Must go</span>
+        <span class="pill" style="background:var(--sand);color:var(--cream);font-weight:600">4 Would be nice</span></div>
+
+      <div class="card flush">
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">Templo Senso-ji</b>
+          <span class="seg mini"><span class="must">Must go</span><span>Nice</span></span></div>
+        <div class="divider"></div>
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">Mercado Tsukiji</b>
+          <span class="seg mini"><span class="must">Must go</span><span>Nice</span></span></div>
+        <div class="divider"></div>
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">TeamLab Planets</b>
+          <span class="seg mini"><span>Must go</span><span class="nice">Nice</span></span></div>
+        <div class="divider"></div>
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">Monte Fuji · day trip</b>
+          <span class="seg mini"><span>Must go</span><span class="nice">Nice</span></span></div>
+        <div class="divider"></div>
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">Shibuya Crossing</b>
+          <span class="seg mini"><span>Must go</span><span class="nice">Nice</span></span></div>
+        <div class="divider"></div>
+        <div class="row" style="padding:12px 14px"><b class="grow" style="font-size:14px">Barrio de Akihabara</b>
+          <span class="seg mini"><span>Must go</span><span class="nice">Nice</span></span></div>
+      </div>
+      <div class="micro">Las “Must go” pesan más en el rango estimado.</div>
+    </div>
+    <div class="foot"><button class="btn">Continuar</button><span class="link">Saltar por ahora</span></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 4 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">4</div><div class="t">Tu proyección</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 4 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:50%"></i></div></div>
+    <div class="body" style="gap:14px">
+      <div class="card dark hero">
+        <div class="cap2">Este viaje te puede costar entre</div>
+        <div class="amt"><b>$58,400</b><span>–</span><b>$76,900</b></div>
+        <div class="meta">MXN · 2 personas · 9 noches · marzo 2028</div>
+        <div class="tags"><span class="pill">Tokio, Japón</span><span class="pill">Mochilero · foodie · cultura</span></div>
+      </div>
+
+      <div class="card flush brk">
+        <div class="label" style="padding:16px 16px 12px">DETALLES DE VIAJE</div>
+        <div class="divider"></div><div class="r"><span class="n">✈️  Vuelos (2 pax)</span><span class="v">$24,000 – $32,000</span></div>
+        <div class="divider"></div><div class="r"><span class="n">🏠  Hospedaje (9 noches)</span><span class="v">$16,200 – $21,600</span></div>
+        <div class="divider"></div><div class="r"><span class="n">🍜  Comida y bebida</span><span class="v">$9,900 – $13,500</span></div>
+        <div class="divider"></div><div class="r"><span class="n">🎟️  Atracciones</span><span class="v">$5,400 – $6,300</span></div>
+        <div class="divider"></div><div class="r"><span class="n">🚇  Transporte local</span><span class="v">$2,900 – $3,500</span></div>
+      </div>
+
+      <div class="note"><span>ⓘ</span><span>Es un rango estimado por temporada y estilo de viaje, no una cotización. Coti proyecta, no reserva.</span></div>
+    </div>
+    <div class="foot"><button class="btn">Crear mi plan de ahorro</button></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 5 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">5</div><div class="t">Tu plan de ahorro</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 5 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:62.5%"></i></div></div>
+    <div class="body">
+      <div><div class="h1">Define tu meta de ahorro</div>
+        <div class="sub">Tú pones el ritmo. Coti hace las cuentas.</div></div>
+
+      <div class="stack" style="gap:8px"><div class="label">TU META DE AHORRO</div>
+        <div class="card flush" style="overflow:hidden">
+          <div class="radio"><span class="o"></span><div class="grow"><div class="t">Mínimo</div><div class="s">Lo indispensable del viaje</div></div><span class="v">$58,400</span></div>
+          <div class="divider"></div>
+          <div class="radio on"><span class="o"><i></i></span><div class="grow"><div class="t">Cómodo</div><div class="s">Con margen para imprevistos</div></div><span class="v">$64,100</span></div>
+          <div class="divider"></div>
+          <div class="radio"><span class="o"></span><div class="grow"><div class="t">Sin límites</div><div class="s">Todo lo que quieres hacer</div></div><span class="v">$76,900</span></div>
+        </div></div>
+
+      <div class="stack" style="gap:8px"><div class="label">¿CON QUÉ FRECUENCIA APORTAS?</div>
+        <div class="seg"><span>Semanal</span><span>Quincenal</span><span class="on">Mensual</span></div></div>
+
+      <div class="stack" style="gap:10px"><div class="label">¿CUÁNTO PUEDES DESTINAR AL MES?</div>
+        <div class="field focus" style="padding:12px 16px">
+          <span style="font-size:22px;color:var(--muted-fg)">$</span>
+          <b class="grow" style="font-size:26px">3,200</b>
+          <span style="font-size:13px;font-weight:500;color:var(--muted-fg)">MXN / mes</span></div>
+        <div>
+          <div class="slider warm"><span class="tr"></span><span class="fl" style="width:36%"></span><span class="th" style="left:36%"></span></div>
+          <div class="between"><span class="micro">$500</span><span class="micro">$8,000</span></div></div></div>
+
+      <div class="card ok" style="padding:14px">
+        <div class="row" style="gap:8px">
+          <span style="width:22px;height:22px;border-radius:999px;background:var(--leaf);color:var(--cream);
+            display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">✓</span>
+          <b style="font-size:14px;color:var(--forest)">Sí llegas</b></div>
+        <div style="font-size:13px;line-height:19px;color:var(--brown);margin-top:6px">
+          Con $3,200 al mes juntas tu meta en 18 meses — justo antes de marzo de 2028.</div></div>
+    </div>
+    <div class="foot"><button class="btn">Continuar</button></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 6 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">6</div><div class="t">Tu punto de partida</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 6 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:75%"></i></div></div>
+    <div class="body" style="gap:16px">
+      <div><div class="h1">¿Ya llevas algo ahorrado?</div>
+        <div class="sub">Todo suma. Aunque sea poquito.</div></div>
+
+      <div class="card" style="padding:14px">
+        <div class="row"><b class="grow" style="font-size:14px;line-height:19px">Ya tengo un ahorro para este viaje</b>
+          <span class="toggle"><i></i></span></div></div>
+
+      <div class="card" style="padding:22px;text-align:center">
+        <div class="label" style="letter-spacing:.8px;font-size:11px">MONTO INICIAL</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin:6px 0">
+          <span style="font-size:26px;color:var(--muted-fg)">$</span>
+          <b style="font-size:42px;line-height:48px;color:var(--forest)">6,500</b></div>
+        <div style="font-size:13px;font-weight:500;color:var(--muted-fg)">MXN</div></div>
+
+      <div class="row" style="gap:8px">
+        <span class="pill out grow" style="justify-content:center;font-size:13px;padding:9px 0">$1,000</span>
+        <span class="pill out grow" style="justify-content:center;font-size:13px;padding:9px 0">$2,500</span>
+        <span class="pill out grow" style="justify-content:center;font-size:13px;padding:9px 0">$5,000</span>
+        <span class="pill out grow" style="justify-content:center;font-size:13px;padding:9px 0">$10,000</span></div>
+
+      <div class="card">
+        <div class="between"><span style="font-size:13px;color:var(--muted-fg)">Meta de ahorro</span><b style="font-size:14px">$64,100</b></div>
+        <div class="between" style="margin-top:12px"><span style="font-size:13px;color:var(--muted-fg)">Ya tienes</span><b style="font-size:14px">$6,500</b></div>
+        <div class="between" style="margin-top:12px"><b style="font-size:13px;color:var(--brown)">Te faltan</b><b style="font-size:16px;color:var(--terracotta)">$57,600</b></div>
+        <div class="progress" style="margin-top:12px"><i style="width:10%"></i></div>
+        <div class="micro" style="margin-top:10px">Arrancas con 10% de tu meta. Nada mal.</div></div>
+    </div>
+    <div class="foot"><button class="btn">Continuar</button><span class="link">Empiezo desde cero</span></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 7 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">7</div><div class="t">Activa tu ahorro</div></div>
+  <div class="phone p7">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="topbar"><div class="row"><div class="back">‹</div><div class="step">Paso 7 de 8</div><div class="sp"></div></div>
+      <div class="track"><i style="width:87.5%"></i></div></div>
+    <div class="body" style="gap:14px">
+      <div class="illus">
+        <div class="jar"><span class="lid"></span><span class="glass"><span class="fill"></span></span>
+          <span class="c" style="left:17px;top:58px"></span><span class="c" style="left:34px;top:54px"></span><span class="c" style="left:45px;top:62px"></span></div>
+        <div class="t">¡Listo! Tu cajita de ahorro está abierta</div>
+        <div class="s">Tokio te espera el 14 de marzo de 2028.</div></div>
+
+      <div class="card flush">
+        <div class="between" style="padding:11px 16px"><span style="font-size:13px;color:var(--muted-fg)">Destino</span><b style="font-size:13px">Tokio, Japón</b></div>
+        <div class="divider"></div>
+        <div class="between" style="padding:11px 16px"><span style="font-size:13px;color:var(--muted-fg)">Meta</span><b style="font-size:13px">$64,100 MXN</b></div>
+        <div class="divider"></div>
+        <div class="between" style="padding:11px 16px"><span style="font-size:13px;color:var(--muted-fg)">Aportación</span><b style="font-size:13px">$3,200 al mes · 18 meses</b></div>
+      </div>
+
+      <div class="card">
+        <div class="row"><div class="grow"><b style="font-size:14px">Recordarme cada mes</b>
+          <div class="micro" style="margin-top:2px">Para que no se te pase el aporte</div></div>
+          <span class="toggle"><i></i></span></div>
+        <div class="divider" style="margin:12px 0"></div>
+        <div class="field"><span class="grow" style="font-size:14px">El día 1 de cada mes</span><span class="chev">⌄</span></div>
+        <div class="seg" style="margin-top:12px"><span class="on">Email</span><span>Push</span></div>
+        <div class="field" style="background:var(--muted);border-color:transparent;margin-top:12px">
+          <span style="font-size:14px;color:var(--muted-fg)">✉</span>
+          <span class="grow" style="font-size:14px;color:var(--brown)">paola@correo.com</span></div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn">Ahorrar para mi viaje</button>
+      <span class="link" style="font-size:12px">Puedes cambiar esto cuando quieras.</span></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ 8 ============ -->
+<div class="slot">
+  <div class="cap"><div class="n">8</div><div class="t">Mi cajita de ahorro</div></div>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="ic"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="dot"></span><span class="batt"></span></span></div>
+    <div class="body" style="gap:14px;padding-top:8px">
+      <div class="row">
+        <div class="grow"><b style="font-size:22px">Hola, Paola</b>
+          <div style="font-size:13px;color:var(--muted-fg);margin-top:2px">Tokio · marzo 2028</div></div>
+        <span style="width:40px;height:40px;border-radius:999px;background:var(--card);border:1px solid var(--border);
+          display:flex;align-items:center;justify-content:center">🔔</span>
+        <span style="width:40px;height:40px;border-radius:999px;background:var(--sand);color:var(--forest);
+          display:flex;align-items:center;justify-content:center;font-weight:700">P</span></div>
+
+      <div class="card dark">
+        <div class="row" style="gap:16px">
+          <div class="jar2"><span class="lid"></span><span class="glass"><span class="fill"></span></span></div>
+          <div class="grow saved"><div class="k">LLEVAS AHORRADO</div><div class="v">$25,700</div><div class="of">de $64,100 MXN</div></div></div>
+        <div class="mtrack"><i style="width:40%"></i></div>
+        <div class="miles"><b>✓ 25%</b><span>50%</span><span>75%</span><span>100%</span></div>
+      </div>
+
+      <div class="row" style="background:var(--tint-warn);border-radius:999px;padding:9px 14px;gap:8px">
+        <span>🎉</span><b style="font-size:13px;color:var(--brown)">¡Vas 40%! Ya pasaste el primer hito.</b></div>
+
+      <div class="stats">
+        <div class="s"><b>$38,400</b><span>te faltan</span></div>
+        <div class="s"><b>12</b><span>meses</span></div>
+        <div class="s"><b>6</b><span>aportes</span></div></div>
+
+      <div class="card">
+        <div class="label" style="letter-spacing:.8px;font-size:11px">TUS APORTES</div>
+        <div class="bars2" style="margin-top:10px">
+          <div class="c"><i style="height:30px"></i><span>sep</span></div>
+          <div class="c"><i style="height:48px"></i><span>oct</span></div>
+          <div class="c"><i style="height:44px"></i><span>nov</span></div>
+          <div class="c"><i style="height:62px"></i><span>dic</span></div>
+          <div class="c"><i style="height:56px"></i><span>ene</span></div>
+          <div class="c last"><i style="height:72px"></i><span>feb</span></div></div></div>
+
+      <div class="card" style="padding:14px">
+        <div class="row"><div class="grow"><div class="micro">Próximo aporte</div>
+          <b style="font-size:15px">1 de marzo · $3,200</b></div>
+          <span style="border-radius:999px;background:var(--terracotta);color:var(--cream);padding:11px 18px;
+            font-size:14px;font-weight:600">Registrar</span></div></div>
+    </div>
+    <div class="tabs">
+      <div class="t"><em>🏠</em>Inicio</div><div class="t"><em>✈️</em>Viaje</div>
+      <div class="t on"><em>🫙</em>Cajita</div><div class="t"><em>👤</em>Perfil</div></div>
+    <div class="home"><i></i></div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
