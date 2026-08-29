@@ -8,4 +8,5 @@
 
 export * from './auth';
 export * from './profile';
+export * from './travel';
 export * from './user';

@@ -7,4 +7,5 @@
 export * from './admin';
 export * from './auth';
 export * from './common';
+export * from './travel';
 export * from './user';

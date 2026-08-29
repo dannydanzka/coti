@@ -376,6 +376,9 @@
       "homeMustBePublished": "Only a published landing with no parent page can be the home",
       "brokenNavTargets": "Some menu links point to nothing",
       "nothingToPublish": "This landing has no visible sections to publish"
+    },
+    "travel": {
+      "aporteInvalido": "The contribution must be greater than zero"
     }
   },
   "common": {
@@ -969,6 +972,16 @@
     "closing": {
       "title": "Seeing the world has no minimum age. It has a plan.",
       "text": "Open your savings box today. Coti does the math and stays with you until departure day."
+    }
+  },
+  "travel": {
+    "validation": {
+      "montoRequerido": "Enter how much you are contributing",
+      "montoInvalido": "That amount is not valid",
+      "montoEntero": "Use whole pesos, no cents",
+      "montoPositivo": "The contribution must be greater than zero",
+      "montoMaximo": "That amount is too high",
+      "notaMaxima": "The note cannot exceed 200 characters"
     }
   }
 }
